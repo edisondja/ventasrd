@@ -1,7 +1,9 @@
 <?php
     require('bootstrap.php');
 
+    //solo cargar un tablero
     $smarty->assign('content_config','single_board');
+
 
     if(isset($_GET['id'])) {
         
