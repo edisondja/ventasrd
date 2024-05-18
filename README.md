@@ -220,7 +220,7 @@ las dependencias que vamos a necesitar para trabajar el proyecto. ✔</p>
  </code>
                          
  <h3>Como funciona la autenticación de canjuro? ✔</h3>  
- <p>Es total simple la forma en que funciona autenticación de canjuro, cuando un usuario inicia sesion, se llama actions_board.php,
+ <p>Es totalmente simple la forma en que funciona la autenticación de canjuro, cuando un usuario inicia sesion, se llama actions_board.php,
     el archivo que mostramos con anticipacion donde se llaman las apis, se envia una accion llamda 'login_user' el switch va learla
     y llama la funcion de iniciar sesion del modelo ./Models/User.php, una vez la sesion fue exitosa nos va retornar un Json web token,
     el cual sera almacenado en el localStorage, capturandolo de esta forma "localStorage.getItem(token)".
