@@ -1,11 +1,12 @@
 <?php
 
     session_start();
-    
+   // session_destroy();
     require_once('vendor/autoload.php');
     require_once('config/config.php');
-    require_once('Models/EncryptToken.php');
+    require_once('Models/User.php');
     require_once('Models/Board.php');
+  
 
     $dominio = DOMAIN;
     $libs = include("libs/connect_cdn.php");

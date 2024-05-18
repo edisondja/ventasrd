@@ -7,13 +7,15 @@
 
         function __construct(){
 
-           $this->SetConection();
+               $this->SetConection();
 
         }
 
-        public static function guardar_tablero($titulo,$description,$fecha_creacion,$imagen_tablero,$id_usuario){
-       
-		
+        public  function guardar_tablero($titulo,$description,$fecha_creacion,$imagen_tablero,$id_usuario){
+
+
+
+
 			$this->conection; 
 			$sql = "insert into tableros(titulo,descripcion,fecha_creacion,imagen_tablero,id_usuario)values(?,?,?,?,?)";
 			$guardar = $this->conection->prepare($sql);
@@ -23,18 +25,16 @@
 	    }
 
 
- 
 
+        public  function cargar_tableros($id_tablero,$config='json'){
 
-        public static function cargar_tablero($id_tablero,$config='json'){
-
-			$this->conection;
+		    $this->conection;
 			$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where id_tablero=?";
 			$cargado = $this->conection->prepare($sql);
 			$cargado->bind_param('i',$id_tablero);
 			$cargado->execute();
 			$data = $cargado->get_result();
-			$data = mysqli_fetch_object($data) or die("no se pudo cargar el tablero");
+			$data = mysqli_fetch_object($data);
 			
 			if($config=='json'){
 
@@ -121,7 +121,7 @@
 
 	    }
     
-         function cargar_tableros($id_usuario='general',$opcion='json'){
+       public  function cargar_tablerosx($id_usuario='general',$opcion='json'){
 
 			$this->conection;
 			
@@ -149,11 +149,8 @@
 				echo json_encode($json);
 
 			}else{
-
 				/* If the var opcion dont is equal to json return array associative */
-
 				return 	$json;				
-
 			}
 
 	    }

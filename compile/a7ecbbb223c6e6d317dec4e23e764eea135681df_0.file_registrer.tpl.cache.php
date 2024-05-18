@@ -1,3 +1,29 @@
+<?php
+/* Smarty version 5.1.0, created on 2024-05-18 18:04:16
+  from 'file:registrer.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.1.0',
+  'unifunc' => 'content_6648d180580586_93227533',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'a7ecbbb223c6e6d317dec4e23e764eea135681df' => 
+    array (
+      0 => 'registrer.tpl',
+      1 => 1716048254,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6648d180580586_93227533 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
+$_smarty_tpl->getCompiled()->nocache_hash = '7276241326648d18054a302_61695774';
+?>
 <div class="col-md-3"></div>
 
 <div class="col-md-6 form-container">
@@ -43,7 +69,7 @@
 </div>
 
 <!-- Add the following CSS to your main stylesheet or within a <style> tag -->
-{literal}
+
     <style>
     .form-container {
         background-color: #ffffff;
@@ -73,5 +99,7 @@
 </style>
 
     
-{/literal}
 
+
+<?php }
+}

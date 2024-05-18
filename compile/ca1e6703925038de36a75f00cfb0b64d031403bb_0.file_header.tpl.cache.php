@@ -1,65 +1,123 @@
+<?php
+/* Smarty version 5.1.0, created on 2024-05-18 18:58:38
+  from 'file:template/header.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.1.0',
+  'unifunc' => 'content_6648de3e5281f6_12276887',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ca1e6703925038de36a75f00cfb0b64d031403bb' => 
+    array (
+      0 => 'template/header.tpl',
+      1 => 1716051466,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:board.tpl' => 1,
+    'file:single_board.tpl' => 1,
+    'file:profile.tpl' => 1,
+    'file:registrer.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+))) {
+function content_6648de3e5281f6_12276887 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
+$_smarty_tpl->getCompiled()->nocache_hash = '7424340876648de3e4d3b50_07995972';
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-    <title>{$titulo}</title>
-        <meta name="description" content="{$descripcion}">
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+    <title><?php echo $_smarty_tpl->getValue('titulo');?>
+</title>
+        <meta name="description" content="<?php echo $_smarty_tpl->getValue('descripcion');?>
+">
         <meta name="rating" content="RTA-5042-1996-1400-1577-RTA" />
         <meta http-equiv="Content-Language" content="en-US">
         <meta name="Robots" content="all"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
         <!-- ETIQUETAS TWITER -->
-        <meta name="twitter:card" content="{$og_imagen}" >
-        <meta name="twitter:site" content="{$name}">
-        <meta name="twitter:title" content="{$titulo}" >
-        <meta name="twitter:description" content="{$descripcion}" >
-        <meta name="twitter:image" content="{$og_imagen}" >
-        <meta name="twitter:url" content="{$url_board}" >
+        <meta name="twitter:card" content="<?php echo $_smarty_tpl->getValue('og_imagen');?>
+" >
+        <meta name="twitter:site" content="<?php echo $_smarty_tpl->getValue('name');?>
+">
+        <meta name="twitter:title" content="<?php echo $_smarty_tpl->getValue('titulo');?>
+" >
+        <meta name="twitter:description" content="<?php echo $_smarty_tpl->getValue('descripcion');?>
+" >
+        <meta name="twitter:image" content="<?php echo $_smarty_tpl->getValue('og_imagen');?>
+" >
+        <meta name="twitter:url" content="<?php echo $_smarty_tpl->getValue('url_board');?>
+" >
 
         <!-- ETIQUETAS FACEBOOK -->
-        <meta property="og:image" content="{$og_imagen}">
+        <meta property="og:image" content="<?php echo $_smarty_tpl->getValue('og_imagen');?>
+">
         <meta property="og:video" content="">
-        <meta property="og:title" content="{$titulo}">
-        <meta property="og:url" content="{$url_board}">
-        <meta property="og:description" content="{$descripcion}">
-        <meta property="og:site_name" content="{$name}">
+        <meta property="og:title" content="<?php echo $_smarty_tpl->getValue('titulo');?>
+">
+        <meta property="og:url" content="<?php echo $_smarty_tpl->getValue('url_board');?>
+">
+        <meta property="og:description" content="<?php echo $_smarty_tpl->getValue('descripcion');?>
+">
+        <meta property="og:site_name" content="<?php echo $_smarty_tpl->getValue('name');?>
+">
         <meta name="google" value="notranslate">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content=""/>
-        {$libs_cdn}
+        <?php echo $_smarty_tpl->getValue('libs_cdn');?>
+
 
   </head>
   <body style='background:#1e1e23;'>
-    <input type='hidden' value='{$dominio}' id='dominio'/> 
+    <input type='hidden' value='<?php echo $_smarty_tpl->getValue('dominio');?>
+' id='dominio'/> 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#18171f;">
     
         <div class="container-fluid">
     
-          <a class="navbar-brand" style="color: #09b9e1;"  href="{$dominio}"><img src='{$logosite}' /><strong style='color:#ebebeb; font-size:15px;'>{$user_session}</strong>
+          <a class="navbar-brand" style="color: #09b9e1;"  href="<?php echo $_smarty_tpl->getValue('dominio');?>
+"><img src='<?php echo $_smarty_tpl->getValue('logosite');?>
+' /><strong style='color:#ebebeb; font-size:15px;'><?php echo $_smarty_tpl->getValue('user_session');?>
+</strong>
           </a>    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         
-              {if $id_user!=''}
-                <input type='hidden' value='{$foto_perfil}' id='foto_perfil'/>
-                <input type='hidden' value='{$user_session}' id='nombre_usuario'/>
+              <?php if ($_smarty_tpl->getValue('id_user') != '') {?>
+                <input type='hidden' value='<?php echo $_smarty_tpl->getValue('foto_perfil');?>
+' id='foto_perfil'/>
+                <input type='hidden' value='<?php echo $_smarty_tpl->getValue('user_session');?>
+' id='nombre_usuario'/>
                 
                   <table style='margin:5px; display:none;'>
                     <tr>
-                      <td><img src='{$foto_perfil}' style='border-radius:100px; width:35px; height:30px; margin:2px;'></td>
+                      <td><img src='<?php echo $_smarty_tpl->getValue('foto_perfil');?>
+' style='border-radius:100px; width:35px; height:30px; margin:2px;'></td>
                       <td></td>
                     </tr>
 
                   </table>
-                {else}
-                   <input type='hidden' value='{$foto_perfil}' id='foto_perfil'/>
-                  <input type='hidden' value='{$user_session}' id='nombre_usuario'/>
-              {/if} 
+                <?php } else { ?>
+                   <input type='hidden' value='<?php echo $_smarty_tpl->getValue('foto_perfil');?>
+' id='foto_perfil'/>
+                  <input type='hidden' value='<?php echo $_smarty_tpl->getValue('user_session');?>
+' id='nombre_usuario'/>
+              <?php }?> 
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -68,19 +126,21 @@
                   Menu
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                   {if $id_user!=''}
+                   <?php if ($_smarty_tpl->getValue('id_user') != '') {?>
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item" href="{$dominio}/dashboard.php">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
+/dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
-                            <li><a class="dropdown-item" href="{$dominio}/controllers/board_profile.php">My Profile</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
+/controllers/board_profile.php">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
 
-                   {else}
+                   <?php } else { ?>
                       <li class="dropdown-item" id='login' style='cursor:pointer'>Login</li>
                        <a href="registrer.php" style='text-decoration:none;'>
                        <li class="dropdown-item"  style='cursor:pointer'>Registrer</li>
                        </a>
-                   {/if}
+                   <?php }?>
                 
                 </ul>
               </li>
@@ -114,8 +174,10 @@
                                   <table>
                                   
                                       <tr>
-                                          <td><img src='{$foto_perfil}' style='height:50px;width:50px;border-radius:100px;'>&nbsp;</td>
-                                          <td>{$user_session}</td>
+                                          <td><img src='<?php echo $_smarty_tpl->getValue('foto_perfil');?>
+' style='height:50px;width:50px;border-radius:100px;'>&nbsp;</td>
+                                          <td><?php echo $_smarty_tpl->getValue('user_session');?>
+</td>
                                       </tr>
                                   </table><hr/>
                                   <div class='card-body'>
@@ -148,30 +210,44 @@
                       </div>
                     </div>
                   </div>
-                    {if $content_config=='boards'}
+                    <?php if ($_smarty_tpl->getValue('content_config') == 'boards') {?>
 
-                    {foreach from=$tableros item=tablero}
-                        {include file="board.tpl"}
+                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('tableros'), 'tablero');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('tablero')->value) {
+$foreach0DoElse = false;
+?>
+                        <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 
-                    {/foreach}
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
-                    {elseif $content_config=='single_board'}
+                    <?php } elseif ($_smarty_tpl->getValue('content_config') == 'single_board') {?>
                         <!--  include template for board-->
-                      {include file="single_board.tpl"}
+                      <?php $_smarty_tpl->renderSubTemplate("file:single_board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
 
-                    {elseif $content_config=='profile'}
-                        {include file="profile.tpl"}
+                    <?php } elseif ($_smarty_tpl->getValue('content_config') == 'profile') {?>
+                        <?php $_smarty_tpl->renderSubTemplate("file:profile.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
                         <!--  include template for user-->
-                    {elseif $content_config=='registrer'}
+                    <?php } elseif ($_smarty_tpl->getValue('content_config') == 'registrer') {?>
 
-                        {include file="registrer.tpl"}
+                        <?php $_smarty_tpl->renderSubTemplate("file:registrer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
                         
-                    {else}
-                  {/if}
-                  {if $content_config!='profile'}
-                    {include file="footer.tpl"}
-                  {/if}
+                    <?php } else { ?>
+                  <?php }?>
+                  <?php if ($_smarty_tpl->getValue('content_config') != 'profile') {?>
+                    <?php $_smarty_tpl->renderSubTemplate("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+                  <?php }?>
 
 
             </div>
     
+<?php }
+}

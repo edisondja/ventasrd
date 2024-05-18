@@ -3,10 +3,8 @@
 
 require('EncryptToken.php');
 
-
 Class User extends EncryptToken{
 
-        
     public int $id_user;
     public string $usuario;
     public string $nombre;
@@ -16,10 +14,6 @@ Class User extends EncryptToken{
     public string $bio;
     public string $foto_url;
     public $conection;
-    
-
-
-
 
         function __construct(){
 
@@ -49,6 +43,7 @@ Class User extends EncryptToken{
                 );
                 $ready->execute();
                 $this->SendMailActivedAccount();
+            
                 echo "success";
 
 
@@ -163,6 +158,7 @@ Class User extends EncryptToken{
         public function SendMailActivedAccount(){
 
                 echo "verificando correo electronico";
+                header("location:../index.php");
         }
 
 

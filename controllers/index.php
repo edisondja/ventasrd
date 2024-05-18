@@ -16,9 +16,13 @@
     }else if(isset($_GET['search'])){
         
         $smarty->assign('pagina',0);
-        $smarty->assign('tableros',Board::search_tablero($_GET['search']));
+       //$smarty->assign('tableros',Video::search_tablero($_GET['search']));
 
+    }else{
+
+        $smarty->assign('tableros',Board::cargar_tablerosx());
     }
+    
 
     $smarty->assign('content_config','boards');
     $smarty->assign('titulo',"The best boards ".NAME_SITE);
@@ -26,5 +30,4 @@
     $smarty->assign('og_imagen',LOGOSITE);
     $smarty->assign('url_board',"$dominio/controllers/");
 
-    echo "la creta";
-    $smarty->display('template/header.tpl');
+   // $smarty->display('template/header.tpl');

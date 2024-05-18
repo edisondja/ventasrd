@@ -1,12 +1,13 @@
 
+
+
 <div class="col-sm-3"></div>
 <div class="col-sm-6" style='margin-bottom:15px;'>
 
-
-
            <div class='card text-white bg-dark mb-3'>
+           
                       <div class='body' style='padding:5px'>
-                        <div class='title'><strong><a href='https://youselft.com/profile_user.php?user={$tablero.usuario}'> <img class='imagenPerfil' src='{$dominio}/{$tablero.foto_url}'/></a>
+                        <div class='title'><strong><a href='{$url_board}/profile_user.php?user={$tablero.usuario}'> <img class='imagenPerfil' src='{$dominio}/{$tablero.foto_url}'/></a>
                           {$tablero.nombre} {$tablero.apellido} <i class="fa-solid fa-highlighter"></i></strong></div>
                      
                         <p style='padding-left: 10px;'>{$tablero.descripcion}​</p>

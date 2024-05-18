@@ -11,7 +11,7 @@
     define("PASSWORD_BD","");
     define("NAME_DB","VentasRD");
     #Config with scope complete used for the site tube
-    define("NAME_SITE","EDtube");
+    define("NAME_SITE","Ventas RD");
     define("DESCRIPTION_SLOGAN","El mejor lugar para comprar tus articulos");
     define("DESCRIPTION_SITE","Nunca vender fue tan facil como en ventasrd");
     #Favicon for the site very important 
@@ -25,8 +25,21 @@
     #The title description is the tag used for the browser for example..
     define("TITLE_DESCRIPTION","");-
     #Description for search using hastag
-    define("SEARCH_HASTAG","The Best badders Hashtag - edtube");
-    
+    define("SEARCH_HASTAG","Ventazs rd");
+
+    $conexion = new mysqli(HOST_BD, USER_BD, PASSWORD_BD, NAME_DB);
+
+    // Verificar la conexión
+    if ($conexion->connect_error) {
+        die("Error de conexión: " . $conexion->connect_error);
+    }
+
+
+
+    // Aquí puedes ejecutar consultas y realizar otras operaciones con la base de datos
+
+    // Cuando termines, no olvides cerrar la conexión
+    $conexion->close();
 
 
     

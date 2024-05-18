@@ -1,8 +1,6 @@
 <?php
 
-    
-
-  require '../logic.php'; 
+  require('../config/config.php');
   require '../models/User.php';
   require '../models/Coment.php';
   require 'Core.php';
@@ -33,16 +31,14 @@
 
         case 'create_user':
             
-           
-    
             $usuario = new User();
-            $usuario->usuario = $_POST['usuario'];
-            $usuario->nombre=  $_POST['nombre'];
+            $usuario->usuario = $_POST['user'];
+            $usuario->nombre=  $_POST['name'];
             $usuario->foto_url= '';
             $usuario->email = $_POST['email'];
-            $usuario->apellido=  $_POST['apellido'];
+            $usuario->apellido=  $_POST['last_name'];
             $usuario->bio =  $_POST['bio'];
-            $usuario->clave =  $_POST['clave'];
+            $usuario->clave =  $_POST['password'];
             $usuario->RegistrerUser();
     
 
