@@ -24,7 +24,7 @@ $smarty->assign([
     'titulo' => "The best boards " . NAME_SITE,
     'descripcion' => NAME_SITE . " platform free for all to share your contents",
     'og_imagen' => LOGOSITE,
-    'content_config' => 'registrer',
+    'content_config' => 'boards',
     'url_board' => "$dominio/"
 ]);
 

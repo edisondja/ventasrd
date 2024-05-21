@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-16 06:32:46
+/* Smarty version 5.1.0, created on 2024-05-21 06:46:19
   from 'file:profile.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_66458c6e96f3a5_22384574',
+  'unifunc' => 'content_664c271b117668_38914900',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f54976de8fd6f302d17146c6cef8094d95a7d985' => 
     array (
       0 => 'profile.tpl',
-      1 => 1715445650,
+      1 => 1716266759,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,9 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:board.tpl' => 1,
   ),
 ))) {
-function content_66458c6e96f3a5_22384574 (\Smarty\Template $_smarty_tpl) {
+function content_664c271b117668_38914900 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-$_smarty_tpl->getCompiled()->nocache_hash = '165993452666458c6e24bfa3_62305347';
-?>
-      <div class="col-md-3">
+?>      <div class="col-md-3">
             <br/>
             
                     <?php if ($_smarty_tpl->getValue('user_session') != '') {?>
@@ -87,12 +85,12 @@ $_smarty_tpl->getCompiled()->nocache_hash = '165993452666458c6e24bfa3_62305347';
      <div class='row'>
                 <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('boards'), 'tablero');
-$foreach0DoElse = true;
+$foreach1DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('tablero')->value) {
-$foreach0DoElse = false;
+$foreach1DoElse = false;
 ?>
                             
-                            <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+                            <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 
                 <?php

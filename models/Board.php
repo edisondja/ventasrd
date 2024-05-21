@@ -2,7 +2,17 @@
 
     Class Board extends EncryptToken{
         
+
+
+
+        public int $board_id;
+        public string $title;
+        public string $description;
+        public string $imagen_tablero;
+        public string $id_usuario;
+ 
         public $conection;
+    
     
 
         function __construct(){
@@ -11,20 +21,55 @@
 
         }
 
-        public  function guardar_tablero($titulo,$description,$fecha_creacion,$imagen_tablero,$id_usuario){
+        public  function guardar_tablero(){
 
 
-
+            $fecha = date('ymdis');
 
 			$this->conection; 
-			$sql = "insert into tableros(titulo,descripcion,fecha_creacion,imagen_tablero,id_usuario)values(?,?,?,?,?)";
+			$sql = "insert into tableros(descripcion,fecha_creacion,imagen_tablero,id_usuario)values(?,?,?,?)";
 			$guardar = $this->conection->prepare($sql);
-			$guardar->bind_param('ssssi',$titulo,$description,$fecha_creacion,$imagen_tablero,$id_usuario);
+			$guardar->bind_param('sssi',$this->description,$fecha,$this->imagen_tablero,$this->id_usuario);
 			$guardar->execute() or die("no se puedo guardar el tablero");
 
 	    }
 
 
+
+        public function actualizar_tablero($id_tablero) {
+            $fecha = date('ymdis');
+        
+            try {
+                $sql = "UPDATE tableros 
+                        SET descripcion = ?, 
+                            fecha_creacion = ?, 
+                            imagen_tablero = ?, 
+                            id_usuario = ? 
+                        WHERE id_tablero = ?";
+                $actualizar = $this->conection->prepare($sql);
+                if ($actualizar === false) {
+                    throw new Exception("Error al preparar la consulta: " . $this->conection->error);
+                }
+        
+                // Bind the parameters to the SQL query
+                $bind = $actualizar->bind_param('sssii', $this->description, $fecha, $this->imagen_tablero, $this->id_usuario, $id_tablero);
+                if ($bind === false) {
+                    throw new Exception("Error al vincular los parámetros: " . $actualizar->error);
+                }
+        
+                // Execute the prepared statement
+                $exec = $actualizar->execute();
+                if ($exec === false) {
+                    throw new Exception("Error al ejecutar la consulta: " . $actualizar->error);
+                }
+        
+                // Close the statement
+                $actualizar->close();
+            } catch (Exception $e) {
+                die("No se pudo actualizar el tablero: " . $e->getMessage());
+            }
+        }
+        
 
         public  function cargar_tableros($id_tablero,$config='json'){
 
@@ -34,10 +79,9 @@
 			$cargado->bind_param('i',$id_tablero);
 			$cargado->execute();
 			$data = $cargado->get_result();
-			$data = mysqli_fetch_object($data);
-			
-			if($config=='json'){
+            $data = mysqli_fetch_object($data);
 
+			if($config=='json'){
 				echo json_encode($data);
 				
 			}else{

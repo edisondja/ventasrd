@@ -8,7 +8,7 @@
 class Board {
 	public Mysqli  $s; 
 
-	public static function guardar_tablero($titulo,$description,$fecha_creacion,$imagen_tablero,$id_usuario){
+	public function guardar_tablero($titulo,$description,$fecha_creacion,$imagen_tablero,$id_usuario){
        
 		
 			global $conexion; 

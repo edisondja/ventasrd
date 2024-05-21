@@ -48,6 +48,7 @@
               {if $id_user!=''}
                 <input type='hidden' value='{$foto_perfil}' id='foto_perfil'/>
                 <input type='hidden' value='{$user_session}' id='nombre_usuario'/>
+                <input type='hidden' value='{$id_user}' id='id_usuario'/>
                 
                   <table style='margin:5px; display:none;'>
                     <tr>
@@ -72,7 +73,7 @@
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
                             <li><a class="dropdown-item" href="{$dominio}/dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
-                            <li><a class="dropdown-item" href="{$dominio}/controllers/board_profile.php">My Profile</a></li>
+                            <li><a class="dropdown-item" href="{$dominio}/profile.php">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
 
                    {else}
@@ -88,7 +89,7 @@
        
           </div>
               <form  method='get' action='index.php'>
-                    <table style='margin-left:30px; display:none;' >
+                    <table style='margin-left:30px;' >
                         <tr>
                             <td><input type='search' name='search'' class='form-control' placeholder='write the name of table'/></td>
                             <td><button class='btn btn-dark'>Search</button></td>
@@ -119,7 +120,7 @@
                                       </tr>
                                   </table><hr/>
                                   <div class='card-body'>
-                                      <textarea class='form-control' rows='5'></textarea>
+                                      <textarea class='form-control' id="board_title" rows='5'></textarea>
                                   </div><hr/>
                                   <div id='multimedia_view' class='flex-container'>
                                     
@@ -151,6 +152,8 @@
                     {if $content_config=='boards'}
 
                     {foreach from=$tableros item=tablero}
+
+                      
                         {include file="board.tpl"}
 
                     {/foreach}

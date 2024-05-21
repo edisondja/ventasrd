@@ -13,7 +13,7 @@
     $smarty = new \Smarty\Smarty;
     $smarty->setTemplateDir('template');
     $smarty->debugging = true;
-    $smarty->caching = true;
+   // $smarty->caching = true;
     $smarty->setConfigDir('config');
     $smarty->setCompileDir('compile');
     $smarty->setCacheDir('cache');

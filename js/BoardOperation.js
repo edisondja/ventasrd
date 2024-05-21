@@ -166,9 +166,37 @@ window.onload=function(){
     }
 
 
+    var post = document.querySelector('#post');
+
+
+    post.addEventListener('click',function(){
+
+        let FormDatas = new FormData();
+        FormDatas.append('action','create_board');
+        FormDatas.append('description',document.querySelector('#board_title').value);
+        FormDatas.append('user_id',document.querySelector('#id_usuario').value);
+
+      // alertify.message('pero bien que esta funcionando esto');
+
+        axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
+
+            alertify.message('running');
+            console.log(data.data);
+
+        }).catch(error=>{
+
+
+
+        });
+
+
+    });
+
+
     var singout = document.querySelector('#singout');
 
     singout.addEventListener('click',function(){
+
         
         localStorage.clear();
         let FormDatas = new FormData();
@@ -177,8 +205,14 @@ window.onload=function(){
 
         axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
 
-            console.log(data.data);
-            location.href=dominio;
+                console.log(data.data);
+
+                alertify.message('cerrando sesión');
+                storage.clear();
+                localStorage.clear();
+                location.href=dominio;
+            
+           
 
         }).catch(error=>{
 

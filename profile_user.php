@@ -1,7 +1,6 @@
 <?php
     require('bootstrap.php');
-    require('models/User.php');
-    require('models/Board.php');
+
 
     //cargar_tableros($id_usuario='general',$opcion='json')
 
@@ -20,11 +19,11 @@
         $get_user_id =  $profile->get_id_from_user($_GET['user']);
         $get_user_id = $get_user_id->id_user;
         $boards = new Board();
-        $data = $boards->cargar_tableros($get_user_id,'objects');
+        $data = $boards->cargar_tablerosx('general','asoc');
         //print_r( $data_user);
         $smarty->assign('boards',$data);
         $smarty->assign('data_profile',$data_user);
-        $smarty->display('../template/header.tpl');
+        $smarty->display('template/header.tpl');
 
     }
 

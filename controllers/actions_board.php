@@ -2,6 +2,7 @@
 
   require('../config/config.php');
   require '../models/User.php';
+  require '../models/Board.php';
   require '../models/Coment.php';
   require 'Core.php';
 
@@ -29,6 +30,31 @@
         break;
 
 
+        case 'create_board':
+          
+
+            $board = new Board();
+            $board->description = $_POST['description'];
+            $board->imagen_tablero= 'imagen_board.jpg';
+            $board->id_usuario = $_POST['user_id'];
+            $board->guardar_tablero();
+
+
+        break;
+
+
+        case 'update_board':
+            
+            $tablero = new Board();
+            $tablero->description = $_POST['description'];
+            $tablero->imagen_tablero = 'imagen_actualizada.jpg';
+            $tablero->id_usuario = $_POST['user_id'];
+            $id_tablero = $_POST['bord_id'];;
+            $tablero->actualizar_tablero($id_tablero);
+
+        break;
+
+
         case 'create_user':
             
             $usuario = new User();
@@ -46,8 +72,8 @@
         
         case 'update_coment':
 
-        
 
+        
         break;
 
 
@@ -109,7 +135,6 @@
         break;
 
         
-  
 
         case 'login':
 
@@ -126,21 +151,15 @@
         break;
         
         case 'get_metaog':
-            
-            
-
-            
+        
            // $usuario = new User();
            // $token =$usuario->VerifiyTokenExpired($usuario->getBearerToken());
             $url = $_POST['url'];
-           Core::GetGrapth($url);
-
-           
+            Core::GetGrapth($url);
 
         break;
             
-
-                
+        
         case 'get_user_information':
             
             // $usuario = new User();

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-14 03:15:43
+/* Smarty version 5.1.0, created on 2024-05-21 06:47:02
   from 'file:C:\xampp\htdocs\ventasrd\vendor\smarty\smarty\src/debug.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6642bb3fd76685_79569840',
+  'unifunc' => 'content_664c27466fc229_58967292',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6642bb3fd76685_79569840 (\Smarty\Template $_smarty_tpl) {
+function content_664c27466fc229_58967292 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\vendor\\smarty\\smarty\\src';
 $_smarty_tpl->getSmarty()->getRuntime('Capture')->open($_smarty_tpl, '_smarty_debug', 'debug_output', null);?>
     <!DOCTYPE html>
@@ -145,9 +145,9 @@ if (!empty($_smarty_tpl->getValue('template_data'))) {?>Total Time <?php echo ht
         <div>
             <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('template_data'), 'template');
-$foreach1DoElse = true;
+$foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('template')->value) {
-$foreach1DoElse = false;
+$foreach0DoElse = false;
 ?>
                 <span style="color: brown;"><?php echo htmlspecialchars((string) ($_smarty_tpl->getValue('template')['name']), ENT_QUOTES, 'UTF-8');?>
 </span>
@@ -169,10 +169,10 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     <table id="table_assigned_vars">
         <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('assigned_vars'), 'vars');
-$foreach2DoElse = true;
+$foreach1DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('vars')->key => $_smarty_tpl->getVariable('vars')->value) {
-$foreach2DoElse = false;
-$foreach2Backup = clone $_smarty_tpl->getVariable('vars');
+$foreach1DoElse = false;
+$foreach1Backup = clone $_smarty_tpl->getVariable('vars');
 ?>
             <tr>
                 <td>
@@ -195,7 +195,7 @@ $foreach2Backup = clone $_smarty_tpl->getVariable('vars');
                     <?php }?>
                 </td>
          <?php
-$_smarty_tpl->setVariable('vars', $foreach2Backup);
+$_smarty_tpl->setVariable('vars', $foreach1Backup);
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     </table>
@@ -205,10 +205,10 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     <table id="table_config_vars">
         <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('config_vars'), 'vars');
-$foreach3DoElse = true;
+$foreach2DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('vars')->key => $_smarty_tpl->getVariable('vars')->value) {
-$foreach3DoElse = false;
-$foreach3Backup = clone $_smarty_tpl->getVariable('vars');
+$foreach2DoElse = false;
+$foreach2Backup = clone $_smarty_tpl->getVariable('vars');
 ?>
             <tr>
                 <td>
@@ -223,7 +223,7 @@ $foreach3Backup = clone $_smarty_tpl->getVariable('vars');
                 </td>
             </tr>
         <?php
-$_smarty_tpl->setVariable('vars', $foreach3Backup);
+$_smarty_tpl->setVariable('vars', $foreach2Backup);
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-18 18:58:38
-  from 'file:template/header.tpl' */
+/* Smarty version 5.1.0, created on 2024-05-21 07:29:02
+  from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6648de3e5281f6_12276887',
+  'unifunc' => 'content_664c311eeb38f9_15428807',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'ca1e6703925038de36a75f00cfb0b64d031403bb' => 
+    'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
-      0 => 'template/header.tpl',
-      1 => 1716051466,
+      0 => '../template/header.tpl',
+      1 => 1716264803,
       2 => 'file',
     ),
   ),
@@ -25,11 +25,9 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_6648de3e5281f6_12276887 (\Smarty\Template $_smarty_tpl) {
+function content_664c311eeb38f9_15428807 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-$_smarty_tpl->getCompiled()->nocache_hash = '7424340876648de3e4d3b50_07995972';
-?>
-<!doctype html>
+?><!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -103,6 +101,8 @@ $_smarty_tpl->getCompiled()->nocache_hash = '7424340876648de3e4d3b50_07995972';
 ' id='foto_perfil'/>
                 <input type='hidden' value='<?php echo $_smarty_tpl->getValue('user_session');?>
 ' id='nombre_usuario'/>
+                <input type='hidden' value='<?php echo $_smarty_tpl->getValue('id_user');?>
+' id='id_usuario'/>
                 
                   <table style='margin:5px; display:none;'>
                     <tr>
@@ -132,7 +132,7 @@ $_smarty_tpl->getCompiled()->nocache_hash = '7424340876648de3e4d3b50_07995972';
 /dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
                             <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
-/controllers/board_profile.php">My Profile</a></li>
+/profile.php">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
 
                    <?php } else { ?>
@@ -148,7 +148,7 @@ $_smarty_tpl->getCompiled()->nocache_hash = '7424340876648de3e4d3b50_07995972';
        
           </div>
               <form  method='get' action='index.php'>
-                    <table style='margin-left:30px; display:none;' >
+                    <table style='margin-left:30px;' >
                         <tr>
                             <td><input type='search' name='search'' class='form-control' placeholder='write the name of table'/></td>
                             <td><button class='btn btn-dark'>Search</button></td>
@@ -181,7 +181,7 @@ $_smarty_tpl->getCompiled()->nocache_hash = '7424340876648de3e4d3b50_07995972';
                                       </tr>
                                   </table><hr/>
                                   <div class='card-body'>
-                                      <textarea class='form-control' rows='5'></textarea>
+                                      <textarea class='form-control' id="board_title" rows='5'></textarea>
                                   </div><hr/>
                                   <div id='multimedia_view' class='flex-container'>
                                     
@@ -218,7 +218,9 @@ $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('tablero')->value) {
 $foreach0DoElse = false;
 ?>
-                        <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+
+                      
+                        <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 
                     <?php
@@ -227,22 +229,22 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
                     <?php } elseif ($_smarty_tpl->getValue('content_config') == 'single_board') {?>
                         <!--  include template for board-->
-                      <?php $_smarty_tpl->renderSubTemplate("file:single_board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+                      <?php $_smarty_tpl->renderSubTemplate("file:single_board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 
                     <?php } elseif ($_smarty_tpl->getValue('content_config') == 'profile') {?>
-                        <?php $_smarty_tpl->renderSubTemplate("file:profile.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+                        <?php $_smarty_tpl->renderSubTemplate("file:profile.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
                         <!--  include template for user-->
                     <?php } elseif ($_smarty_tpl->getValue('content_config') == 'registrer') {?>
 
-                        <?php $_smarty_tpl->renderSubTemplate("file:registrer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+                        <?php $_smarty_tpl->renderSubTemplate("file:registrer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
                         
                     <?php } else { ?>
                   <?php }?>
                   <?php if ($_smarty_tpl->getValue('content_config') != 'profile') {?>
-                    <?php $_smarty_tpl->renderSubTemplate("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+                    <?php $_smarty_tpl->renderSubTemplate("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
                   <?php }?>
 

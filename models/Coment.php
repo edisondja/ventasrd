@@ -53,42 +53,53 @@ Class Coment extends EncryptToken{
 		}
 
 
-     function guardar_comentario(){
+		public function guardar_comentario() {
+			// Sanitizar el comentario
+			$comentario = str_replace("script", "000", $this->comentario);
 		
-				//print_r($conection);
-			
-				$comentario = str_replace("script","000",$this->comentario);
-
-				$fecha = date('Ymdhis');
-
-				if($this->tipo_post=='board'){
-
-					$sql = "insert into comentario(id_tablero,usuario_id,texto,fecha_publicacion,tipo_post,data_og)VALUES(?,?,?,?,?,?)";
-
-				}else{
-
-					$sql = "insert into comentario(id_post,usuario_id,texto,fecha_publicacion,tipo_post,data_og)VALUES(?,?,?,?,?,?)";
-
-				}
-
-				echo "$this->id_post,$this->id_user,$comentario,$fecha,$this->tipo_post,$this->data_og";
+			// Obtener la fecha actual
+			$fecha = date('Ymdhis');
+		
+			// Determinar la consulta SQL en función del tipo de post
+			if ($this->tipo_post == 'board') {
+				$sql = "INSERT INTO comentario (id_tablero, usuario_id, texto, fecha_publicacion, tipo_post, data_og) VALUES (?, ?, ?, ?, ?, ?)";
+			} else {
+				$sql = "INSERT INTO comentario (id_post, usuario_id, texto, fecha_publicacion, tipo_post, data_og) VALUES (?, ?, ?, ?, ?, ?)";
+			}
+		
+			// Debug output
+			echo "$this->id_post,$this->id_user,$comentario,$fecha,$this->tipo_post,$this->data_og";
+		
+			try {
+				// Preparar la consulta
 				$execute = $this->conection->prepare($sql);
-
-				$execute->bind_param('iissss',$this->id_post,$this->id_user,$comentario,$fecha,$this->tipo_post,$this->data_og);
-
-				try{
-
-					$execute->execute();
-					echo $execute->get_result();
-					echo "guardado cone exito";
-				
-				}catch(Exception $error){
-
-					echo $error;
+				if ($execute === false) {
+					throw new Exception("Error al preparar la consulta: " . $this->conection->error);
 				}
-				
+		
+				// Vincular los parámetros
+				$bind = $execute->bind_param('iissss', $this->id_post, $this->id_user, $comentario, $fecha, $this->tipo_post, $this->data_og);
+				if ($bind === false) {
+					throw new Exception("Error al vincular los parámetros: " . $execute->error);
+				}
+		
+				// Ejecutar la consulta
+				$exec = $execute->execute();
+				if ($exec === false) {
+					throw new Exception("Error al ejecutar la consulta: " . $execute->error);
+				}
+		
+				echo "Guardado con éxito";
+			} catch (Exception $error) {
+				echo "Error: " . $error->getMessage();
+			} finally {
+				// Cerrar el statement
+				if (isset($execute) && $execute !== false) {
+					$execute->close();
+				}
+			}
 		}
-
+		
         public function eliminar_comentario($id_comentario){
 				
 			$sql = "delete from comentario where id_comentario=?";

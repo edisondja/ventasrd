@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-18 18:58:38
+/* Smarty version 5.1.0, created on 2024-05-21 03:38:44
   from 'file:template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6648de3e76bf20_08616594',
+  'unifunc' => 'content_664bfb24e9bc73_47666927',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca1e6703925038de36a75f00cfb0b64d031403bb' => 
     array (
       0 => 'template/header.tpl',
-      1 => 1716051466,
+      1 => 1716087779,
       2 => 'file',
     ),
     '8ee7eef05d4e2d2693a95aa6d7e45943853f5ba3' => 
@@ -24,7 +24,7 @@ if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   ),
   'cache_lifetime' => 3600,
 ))) {
-function content_6648de3e76bf20_08616594 (\Smarty\Template $_smarty_tpl) {
+function content_664bfb24e9bc73_47666927 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -35,7 +35,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <title>The best boards Ventas RD</title>
-        <meta name="description" content="Ventas RD plataform free for alls share your contents">
+        <meta name="description" content="Ventas RD platform free for all to share your contents">
         <meta name="rating" content="RTA-5042-1996-1400-1577-RTA" />
         <meta http-equiv="Content-Language" content="en-US">
         <meta name="Robots" content="all"/>
@@ -45,16 +45,16 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
         <meta name="twitter:card" content="http://localhost/ventasrd/assets/hotpipe.png" >
         <meta name="twitter:site" content="Ventas RD">
         <meta name="twitter:title" content="The best boards Ventas RD" >
-        <meta name="twitter:description" content="Ventas RD plataform free for alls share your contents" >
+        <meta name="twitter:description" content="Ventas RD platform free for all to share your contents" >
         <meta name="twitter:image" content="http://localhost/ventasrd/assets/hotpipe.png" >
-        <meta name="twitter:url" content="http://localhost/ventasrd/controllers/" >
+        <meta name="twitter:url" content="http://localhost/ventasrd/" >
 
         <!-- ETIQUETAS FACEBOOK -->
         <meta property="og:image" content="http://localhost/ventasrd/assets/hotpipe.png">
         <meta property="og:video" content="">
         <meta property="og:title" content="The best boards Ventas RD">
-        <meta property="og:url" content="http://localhost/ventasrd/controllers/">
-        <meta property="og:description" content="Ventas RD plataform free for alls share your contents">
+        <meta property="og:url" content="http://localhost/ventasrd/">
+        <meta property="og:description" content="Ventas RD platform free for all to share your contents">
         <meta property="og:site_name" content="Ventas RD">
         <meta name="google" value="notranslate">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -68,22 +68,14 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
     
         <div class="container-fluid">
     
-          <a class="navbar-brand" style="color: #09b9e1;"  href="http://localhost/ventasrd"><img src='http://localhost/ventasrd/assets/hotpipe.png' /><strong style='color:#ebebeb; font-size:15px;'>edbellaco</strong>
+          <a class="navbar-brand" style="color: #09b9e1;"  href="http://localhost/ventasrd"><img src='http://localhost/ventasrd/assets/hotpipe.png' /><strong style='color:#ebebeb; font-size:15px;'></strong>
           </a>    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         
-                              <input type='hidden' value='http://localhost/ventasrd/yt' id='foto_perfil'/>
-                <input type='hidden' value='edbellaco' id='nombre_usuario'/>
-                
-                  <table style='margin:5px; display:none;'>
-                    <tr>
-                      <td><img src='http://localhost/ventasrd/yt' style='border-radius:100px; width:35px; height:30px; margin:2px;'></td>
-                      <td></td>
-                    </tr>
-
-                  </table>
-                 
+                                 <input type='hidden' value='' id='foto_perfil'/>
+                  <input type='hidden' value='' id='nombre_usuario'/>
+               
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -92,12 +84,10 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                   Menu
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                                               <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/ventasrd/dashboard.php">Dashboard</a></li>
-                            <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/ventasrd/controllers/board_profile.php">My Profile</a></li>
-                            <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
-
+                                         <li class="dropdown-item" id='login' style='cursor:pointer'>Login</li>
+                       <a href="registrer.php" style='text-decoration:none;'>
+                       <li class="dropdown-item"  style='cursor:pointer'>Registrer</li>
+                       </a>
                                    
                 </ul>
               </li>
@@ -131,8 +121,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                                   <table>
                                   
                                       <tr>
-                                          <td><img src='http://localhost/ventasrd/yt' style='height:50px;width:50px;border-radius:100px;'>&nbsp;</td>
-                                          <td>edbellaco</td>
+                                          <td><img src='' style='height:50px;width:50px;border-radius:100px;'>&nbsp;</td>
+                                          <td></td>
                                       </tr>
                                   </table><hr/>
                                   <div class='card-body'>

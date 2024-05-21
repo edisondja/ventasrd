@@ -151,6 +151,7 @@ Class User extends EncryptToken{
 
             session_start(); 
             session_destroy();
+            echo 'SigOut';
 
         }
 

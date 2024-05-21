@@ -125,3 +125,6 @@ CREATE TABLE reply_coment(
   FOREIGN KEY (user_emit) REFERENCES user(id_user) ON DELETE CASCADE,
   FOREIGN KEY (user_recept) REFERENCES user(id_user) ON DELETE CASCADE
 );
+
+
+ALTER TABLE comentario ADD COLUMN tipo_post VARCHAR(255) NOT NULL;

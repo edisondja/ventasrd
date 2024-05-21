@@ -17,7 +17,7 @@
     #Favicon for the site very important 
     define("FAVICON",DOMAIN."/assets/favicon.ico");
     #The dimesion for the site logo is 230px of width and 50px of height
-    define("LOGOSITE",DOMAIN."/assets/hotpipe.png");
+    define("LOGOSITE",DOMAIN."/assets/ventasRD.png");
     define("COPYRIGHT_DESCRIPTION","Copyright © 2024 VentasRD. All Righ-ts Reserved.");
     define("MAIL_SITE","jhon@ventasrd.com");
     define("SEARCH_DESCRIPTION","");
