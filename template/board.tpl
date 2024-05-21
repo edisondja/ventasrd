@@ -9,11 +9,15 @@
            
                       <div class='body' style='padding:5px'>
                         <div class='title'><strong><a href='{$url_board}/profile_user.php?user={$tablero.usuario}'> <img class='imagenPerfil' src='{$dominio}/{$tablero.foto_url}'/></a>
-                          {$tablero.nombre} {$tablero.apellido} <i class="fa-solid fa-highlighter"></i></strong></div>
+                          {$tablero.nombre} {$tablero.apellido} 
+                          <a href="{$dominio}/single_board.php?id={$tablero.id_tablero}/{$tablero.titulo|replace:" ":"_"}">
+                          <i class="fa-solid fa-highlighter"></i></strong></div>
+                          </a>
+                         
                      
-                      
+                        <p style='padding-left: 10px;'>{$tablero.descripcion}​</p>
                         <a href="{$dominio}/single_board.php?id={$tablero.id_tablero}/{$tablero.titulo|replace:" ":"_"}">
-                          {if $tablero.imagen_tablero!=='imagen_board.jpg'}
+                          {if $tablero.imagen_tablero!==''}
                             
                             <a href="{$dominio}/single_board.php?id={$tablero.id_tablero}/{$tablero.titulo|replace:" ":"_"}">
                             <img src="{$dominio}/{$tablero.imagen_tablero}" style='' class="card-img-top" alt="...">
@@ -22,7 +26,6 @@
                           {else}
 
                             <a href="{$dominio}/single_board.php?id={$tablero.id_tablero}/{$tablero.titulo|replace:" ":"_"}">
-                            <p style='padding-left: 10px;    text-decoration: none '>{$tablero.descripcion}​</p>
                             </a>
                           {/if}
                         </a>

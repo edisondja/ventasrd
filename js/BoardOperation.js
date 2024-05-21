@@ -180,7 +180,14 @@ window.onload=function(){
 
         axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
 
-            alertify.message('running');
+            alertify.message('Has publicado con exito tu oferta');
+
+            window.setInterval(function(){
+                
+                location.href=dominio;
+
+            },2000);
+
             console.log(data.data);
 
         }).catch(error=>{

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-21 07:26:13
+/* Smarty version 5.1.0, created on 2024-05-21 08:06:39
   from 'file:board.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_664c30757f4bb2_13532219',
+  'unifunc' => 'content_664c39ef3a2530_44678729',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c0a595b01c678dd0117d2e2fa30d32cef4e8f9fe' => 
     array (
       0 => 'board.tpl',
-      1 => 1716269172,
+      1 => 1716271598,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_664c30757f4bb2_13532219 (\Smarty\Template $_smarty_tpl) {
+function content_664c39ef3a2530_44678729 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?>
 
@@ -39,14 +39,22 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 '/></a>
                           <?php echo $_smarty_tpl->getValue('tablero')['nombre'];?>
  <?php echo $_smarty_tpl->getValue('tablero')['apellido'];?>
- <i class="fa-solid fa-highlighter"></i></strong></div>
+ 
+                          <a href="<?php echo $_smarty_tpl->getValue('dominio');?>
+/single_board.php?id=<?php echo $_smarty_tpl->getValue('tablero')['id_tablero'];?>
+/<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('replace')($_smarty_tpl->getValue('tablero')['titulo']," ","_");?>
+">
+                          <i class="fa-solid fa-highlighter"></i></strong></div>
+                          </a>
+                         
                      
-                      
+                        <p style='padding-left: 10px;'><?php echo $_smarty_tpl->getValue('tablero')['descripcion'];?>
+​</p>
                         <a href="<?php echo $_smarty_tpl->getValue('dominio');?>
 /single_board.php?id=<?php echo $_smarty_tpl->getValue('tablero')['id_tablero'];?>
 /<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('replace')($_smarty_tpl->getValue('tablero')['titulo']," ","_");?>
 ">
-                          <?php if ($_smarty_tpl->getValue('tablero')['imagen_tablero'] !== 'imagen_board.jpg') {?>
+                          <?php if ($_smarty_tpl->getValue('tablero')['imagen_tablero'] !== '') {?>
                             
                             <a href="<?php echo $_smarty_tpl->getValue('dominio');?>
 /single_board.php?id=<?php echo $_smarty_tpl->getValue('tablero')['id_tablero'];?>
@@ -63,8 +71,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 /single_board.php?id=<?php echo $_smarty_tpl->getValue('tablero')['id_tablero'];?>
 /<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('replace')($_smarty_tpl->getValue('tablero')['titulo']," ","_");?>
 ">
-                            <p style='padding-left: 10px;    text-decoration: none '><?php echo $_smarty_tpl->getValue('tablero')['descripcion'];?>
-​</p>
                             </a>
                           <?php }?>
                         </a>
