@@ -119,12 +119,11 @@ CREATE TABLE action_coment(
 CREATE TABLE reply_coment(
   id_reply_id INT PRIMARY KEY AUTO_INCREMENT,
   text_coment TEXT,
-  user_emit INT,
+  user_id INT,
+  coment_id INT, 
   fecha_creacion DATETIME,
-  user_recept INT,
-  FOREIGN KEY (user_emit) REFERENCES user(id_user) ON DELETE CASCADE,
-  FOREIGN KEY (user_recept) REFERENCES user(id_user) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES user(id_user) ON DELETE CASCADE,
+  FOREIGN KEY (coment_id) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
-
 
 ALTER TABLE comentario ADD COLUMN tipo_post VARCHAR(255) NOT NULL;

@@ -15,8 +15,7 @@ function reply_coment(id_coment,text_coment,id_user){
 
     axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
 
-        alert(data.data);
-
+        //alert(data.data);
 
     }).catch(error=>{
 

@@ -116,7 +116,7 @@ Class Coment extends EncryptToken{
 
 
 			$fecha = date('Ymdhis');
-			$sql = "insert into reply_coment (id_coment,id_user,text_coment,fecha_creacion)VALUES(?,?,?,?)";
+			$sql = "insert into reply_coment (coment_id,user_id,text_coment,fecha_creacion)VALUES(?,?,?,?)";
 			$insertar = $this->conection->prepare($sql);	
 			$insertar->bind_param('iiss',$id_coment,$id_user,$text_coment,$fecha);
 			$insertar->execute() or die('error saving coment');
@@ -125,7 +125,7 @@ Class Coment extends EncryptToken{
 
 		function load_childs_coment($id_coment){
 
-			$sql = "select * from reply_coment where id_coment=?";
+			$sql = "select * from reply_coment where coment_id=?";
 			$load = $this->conection->prepare($sql);	
 			$load->bind_param('i',$id_coment);
 			$load->execute();

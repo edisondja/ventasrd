@@ -7,7 +7,9 @@ $pagina = 0;
 
 // Determinar la acción según los parámetros GET
 if (!isset($_GET['boards']) && !isset($_GET['search'])) {
-    $tableros = $Board->cargar_tableros('general', '0');
+
+    $tableros = $Board->cargar_tablerosx('general', 'asoc');
+
 } elseif (isset($_GET['boards'])) {
     $tableros = $Board->paginar_tableros($_GET['boards']);
     $pagina = $_GET['boards'];
@@ -15,6 +17,7 @@ if (!isset($_GET['boards']) && !isset($_GET['search'])) {
     $tableros = $Board->search_tablero($_GET['search']);
 } else {
     $tableros = $Board->cargar_tablerosx('general', 'asoc');
+
 }
 
 // Asignar variables a Smarty
