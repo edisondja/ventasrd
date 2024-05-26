@@ -35,7 +35,7 @@
 
             $board = new Board();
             $board->description = $_POST['description'];
-            $board->imagen_tablero= 'imagen_board.jpg';
+            $board->imagen_tablero= '';
             $board->id_usuario = $_POST['user_id'];
             $board->guardar_tablero();
 
@@ -60,7 +60,7 @@
             $usuario = new User();
             $usuario->usuario = $_POST['user'];
             $usuario->nombre=  $_POST['name'];
-            $usuario->foto_url= '';
+            $usuario->foto_url= 'assets/user_profile.png';
             $usuario->email = $_POST['email'];
             $usuario->apellido=  $_POST['last_name'];
             $usuario->bio =  $_POST['bio'];
@@ -69,6 +69,15 @@
     
 
         break;
+
+        case 'user_info':   
+
+            $usuario = new User();
+            $usuario->id_user = (int) $_POST['user_id'];
+            $usuario->get_info_user();    
+
+        break;
+
         
         case 'update_coment':
 

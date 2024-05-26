@@ -1,4 +1,28 @@
-<div class="col-md-3"></div>
+<?php
+/* Smarty version 5.1.0, created on 2024-05-25 20:56:43
+  from 'file:registrer.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.1.0',
+  'unifunc' => 'content_6652346bcf22b8_37791728',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'a7ecbbb223c6e6d317dec4e23e764eea135681df' => 
+    array (
+      0 => 'registrer.tpl',
+      1 => 1716515909,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6652346bcf22b8_37791728 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
+?><div class="col-md-3"></div>
 
 <div class="col-md-6 form-container">
     <h3 class="text-center">JOIN NOW</h3>
@@ -43,7 +67,7 @@
 </div>
 
 <!-- Add the following CSS to your main stylesheet or within a <style> tag -->
-{literal}
+
     <style>
     .form-container {
         background-color: #ffffff;
@@ -73,5 +97,7 @@
 </style>
 
     
-{/literal}
 
+
+<?php }
+}

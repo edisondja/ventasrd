@@ -55,47 +55,84 @@ Class User extends EncryptToken{
         
         } 
 
-        function get_id_from_user($user){
+        function get_id_from_user($user,$config="asoc"){
 
             $sql = "select * from user where usuario=?";
 			$cargado = $this->conection->prepare($sql);
             $cargado->bind_param('s',$user);
             $cargado->execute();
             $user = $cargado->get_result();
-            $user = mysqli_fetch_object($user);
+            if($config=='asoc'){
+
+                $user = mysqli_fetch_object($user);
+
+            }else{
+                $user = mysqli_fetch_object($user);
+                $user  = json_decode($user);
+            }   
             return $user;
             
         }
 
-        function UpdateUser($usuario,$password,$email,$foto_perfil="",$id_user){
 
 
-                if($foto_temp!=""){
-
-       
-                    $fecha = date('ymdis');
-
-                    $foto_perfil = "imagenes_perfil/$fecha"."foto.jpg";
-                    shell_exec("ffmpeg -i $foto_temp $foto_perfil");
-                    $sql="update user set usuario=?,clave=?,email=?,foto_url=? where id_user=?";
-                    $conection->prepare($sql);
-                    $conection->bind_param('ssssi',$usuario,$password,$email,$foto_perfil,$id_user);
-                    $conection->execute();
-
-                    echo $foto_perfil;
-
-                }else{
-
-                    $sql="update user set usuario=?,clave=?,email=?,foto_url=? where id_user=?";
-                    $conection->prepare($sql);
-                    $conection->bind_param('ssssi',$usuario,$password,$email,$foto_perfil,$id_user);
-                    $conection->execute()  or die('error al actualizar perfil');
-
-                }
+        function get_info_user(){
 
 
+           // $this->DecodeToken($jwt)
+            $sql = "select * from user where id_user=?";
+			$cargado = $this->conection->prepare($sql);
+            $cargado->bind_param('i',$this->id_user);
+            $cargado->execute();
+            $user = $cargado->get_result();
+            $user = mysqli_fetch_object($user);
+            $user  = json_encode($user);
+              
+            echo $user;
+            
         }
 
+        public function updateUser($id_user, $usuario, $clave, $email, $sexo, $foto_temp = "", $nombre, $apellido, $bio) {
+            try {
+                $this->conection->begin_transaction();
+    
+                // Procesar la foto de perfil si se ha subido una nueva
+                if ($foto_temp !== "") {
+                    $fecha = date('ymdis');
+                    $foto_perfil = "imagenes/{$fecha}_foto.jpg";
+    
+                    if (!move_uploaded_file($foto_temp, $foto_perfil)) {
+                        throw new Exception("Error al subir la imagen.");
+                    }
+                } else {
+                    $foto_perfil = "";
+                }
+    
+                $sql = "UPDATE user SET usuario = ?, clave = ?, email = ?, sexo = ?, foto_url = ?, nombre = ?, apellido = ?, bio = ? WHERE id_user = ?";
+                $stmt = $this->conection->prepare($sql);
+    
+                if ($stmt === false) {
+                    throw new Exception("Error al preparar la consulta: " . $this->conection->error);
+                }
+    
+                $clave_hashed = md5($clave); // Hashear la clave antes de guardar
+                $stmt->bind_param('ssssssssi', $usuario, $clave_hashed, $email, $sexo, $foto_perfil, $nombre, $apellido, $bio, $id_user);
+    
+                if (!$stmt->execute()) {
+                    throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
+                }
+    
+                $this->conection->commit();
+                echo "Perfil actualizado con éxito";
+            } catch (Exception $e) {
+                $this->conection->rollback();
+                echo "Error: " . $e->getMessage();
+            } finally {
+                if (isset($stmt) && $stmt !== false) {
+                    $stmt->close();
+                }
+            }
+        }
         function LoadConfigPayUser(){
 
 

@@ -12,7 +12,7 @@
             var action_comment = 'normal';
             var set_data_og ="";
          
-            if(id_usuario!=0){
+            if(id_usuario!==0){
          
                  token = localStorage.getItem('token');
                  
@@ -24,7 +24,6 @@
                 {usuario:'edisondja',texto:'no hay forma con ese hombre',foto_url:'https://thumbs.dreamstime.com/b/hombre-gris-del-placeholder-de-la-foto-persona-136701248.jpg'}
 
             ];
-
 
             
                 function guardar_comentario(id_usuario,id_tablero,texto,tipo_post){

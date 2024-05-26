@@ -1,23 +1,25 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-21 07:29:02
+/* Smarty version 5.1.0, created on 2024-05-26 02:37:12
   from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_664c311eeb38f9_15428807',
+  'unifunc' => 'content_665284388a0b07_11550534',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
       0 => '../template/header.tpl',
-      1 => 1716264803,
+      1 => 1716683830,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:login.tpl' => 1,
+    'file:update_user.tpl' => 1,
     'file:board.tpl' => 1,
     'file:single_board.tpl' => 1,
     'file:profile.tpl' => 1,
@@ -25,7 +27,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_664c311eeb38f9_15428807 (\Smarty\Template $_smarty_tpl) {
+function content_665284388a0b07_11550534 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -87,7 +89,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#18171f;">
     
         <div class="container-fluid">
-    
+
           <a class="navbar-brand" style="color: #09b9e1;"  href="<?php echo $_smarty_tpl->getValue('dominio');?>
 "><img src='<?php echo $_smarty_tpl->getValue('logosite');?>
 ' /><strong style='color:#ebebeb; font-size:15px;'><?php echo $_smarty_tpl->getValue('user_session');?>
@@ -128,15 +130,14 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <?php if ($_smarty_tpl->getValue('id_user') != '') {?>
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
-/dashboard.php">Dashboard</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
                             <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
-/profile.php">My Profile</a></li>
+/profile_user.php?user=<?php echo $_smarty_tpl->getValue('user_session');?>
+">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
-
                    <?php } else { ?>
-                      <li class="dropdown-item" id='login' style='cursor:pointer'>Login</li>
+                      <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal" style='cursor:pointer'>Login</li>
                        <a href="registrer.php" style='text-decoration:none;'>
                        <li class="dropdown-item"  style='cursor:pointer'>Registrer</li>
                        </a>
@@ -163,6 +164,11 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
       </nav>
       <div class="container-fluid">
             <div class="row">  <hr/>
+              <?php $_smarty_tpl->renderSubTemplate("file:login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+              <?php $_smarty_tpl->renderSubTemplate("file:update_user.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">

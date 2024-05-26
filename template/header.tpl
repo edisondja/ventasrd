@@ -39,7 +39,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#18171f;">
     
         <div class="container-fluid">
-    
+
           <a class="navbar-brand" style="color: #09b9e1;"  href="{$dominio}"><img src='{$logosite}' /><strong style='color:#ebebeb; font-size:15px;'>{$user_session}</strong>
           </a>    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,6 +59,8 @@
                   </table>
                 {else}
                    <input type='hidden' value='{$foto_perfil}' id='foto_perfil'/>
+                   <input type='hidden' value='0' id='user_update'/>
+
                   <input type='hidden' value='{$user_session}' id='nombre_usuario'/>
               {/if} 
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
@@ -71,13 +73,12 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                    {if $id_user!=''}
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item" href="{$dominio}/dashboard.php">Dashboard</a></li>
+                            <li><a class="dropdown-item" id="user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
-                            <li><a class="dropdown-item" href="{$dominio}/profile.php">My Profile</a></li>
+                            <li><a class="dropdown-item" href="{$dominio}/profile_user.php?user={$user_session}">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
-
                    {else}
-                      <li class="dropdown-item" id='login' style='cursor:pointer'>Login</li>
+                      <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal" style='cursor:pointer'>Login</li>
                        <a href="registrer.php" style='text-decoration:none;'>
                        <li class="dropdown-item"  style='cursor:pointer'>Registrer</li>
                        </a>
@@ -104,6 +105,9 @@
       </nav>
       <div class="container-fluid">
             <div class="row">  <hr/>
+              {include file="login.tpl"}
+              {include file="update_user.tpl"}
+
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
