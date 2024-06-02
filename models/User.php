@@ -7,6 +7,7 @@ Class User extends EncryptToken{
 
     public int $id_user;
     public string $usuario;
+    public string $sexo;
     public string $nombre;
     public string $apellido;
     public string $clave;
@@ -92,51 +93,92 @@ Class User extends EncryptToken{
             
         }
 
-        public function updateUser($id_user, $usuario, $clave, $email, $sexo, $foto_temp = "", $nombre, $apellido, $bio) {
-            try {
-                $this->conection->begin_transaction();
-    
-                // Procesar la foto de perfil si se ha subido una nueva
-                if ($foto_temp !== "") {
-                    $fecha = date('ymdis');
-                    $foto_perfil = "imagenes/{$fecha}_foto.jpg";
-    
-                    if (!move_uploaded_file($foto_temp, $foto_perfil)) {
-                        throw new Exception("Error al subir la imagen.");
-                    }
-                } else {
-                    $foto_perfil = "";
-                }
-    
-                $sql = "UPDATE user SET usuario = ?, clave = ?, email = ?, sexo = ?, foto_url = ?, nombre = ?, apellido = ?, bio = ? WHERE id_user = ?";
-                $stmt = $this->conection->prepare($sql);
-    
-                if ($stmt === false) {
-                    throw new Exception("Error al preparar la consulta: " . $this->conection->error);
-                }
-    
-                $clave_hashed = md5($clave); // Hashear la clave antes de guardar
-                $stmt->bind_param('ssssssssi', $usuario, $clave_hashed, $email, $sexo, $foto_perfil, $nombre, $apellido, $bio, $id_user);
-    
-                if (!$stmt->execute()) {
-                    throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
-                }
-    
-                $this->conection->commit();
-                echo "Perfil actualizado con éxito";
-            } catch (Exception $e) {
-                $this->conection->rollback();
-                echo "Error: " . $e->getMessage();
-            } finally {
-                if (isset($stmt) && $stmt !== false) {
-                    $stmt->close();
-                }
-            }
+        public function updateUser() {
+           
+
+            $fecha = date('ymdis');
+            $sql = "update user
+            set
+                usuario = ?,
+                sexo = ?,
+                foto_url = ?,
+                fecha_creacion = ?,
+                nombre = ?,
+                apellido = ?,
+                bio = ?
+            where
+                id_user = ?;";
+
+            $ready = $this->conection->prepare($sql);
+            $ready->bind_param('sssssssi',
+            $this->usuario,
+            $this->sexo,
+            $this->foto_url,
+            $fecha,
+            $this->nombre,
+            $this->apellido,
+            $this->bio,
+            $this->id_user
+            );
+            $ready->execute();
+
+
+
         }
         function LoadConfigPayUser(){
 
 
         }
+
+       public function uploadImage($file, $targetDir = "../images/", $maxFileSize = 5 * 1024 * 1024, $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif']) {
+            // Verificar si el archivo existe en la solicitud
+          
+            file_put_contents('logs/logs.txt','entro informacion realmente');
+
+            if (!isset($file) || $file['error'] == UPLOAD_ERR_NO_FILE) {
+                return "/assets/user_profile.png";
+            }
+        
+            // Verificar si hay algún error en la subida
+            if ($file['error'] != UPLOAD_ERR_OK) {
+                return "/assets/user_profile.png";
+            }
+        
+            // Verificar el tamaño del archivo
+            if ($file["size"] > $maxFileSize) {
+                return "/assets/user_profile.png";
+            }
+        
+            // Verificar el tipo MIME del archivo
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mimeType = finfo_file($finfo, $file["tmp_name"]);
+            finfo_close($finfo);
+            if (!in_array($mimeType, $allowedMimeTypes)) {
+                return "/assets/user_profile.png";
+            }
+        
+            // Crear el directorio de subida si no existe
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+        
+            // Generar un nombre único para el archivo
+            $targetFile = $targetDir . uniqid() . '.' . pathinfo($file["name"], PATHINFO_EXTENSION);
+        
+            // Mover el archivo a la ubicación deseada
+            if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+               // return "El archivo " . htmlspecialchars(basename($file["name"])) . " ha sido subido exitosamente.";
+               
+               file_put_contents('../logs/logs.txt','entro informacion realmente');
+               return str_replace('..','',$targetFile); 
+
+            } else {
+                return "/assets/user_profile.png";
+            }
+        }
+        
+       
+        
 
         public function Login($user,$clave)
         

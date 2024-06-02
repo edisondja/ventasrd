@@ -9,7 +9,7 @@
     $smarty->assign('descripcion',NAME_SITE." plataform free for alls share your contents");
     $smarty->assign('og_imagen',LOGOSITE);
     
-    $smarty->assign('url_board',"$dominio/controllers/");
+    $smarty->assign('url_board',"$dominio/");
 
 
     if(isset($_GET['user'])){

@@ -60,6 +60,7 @@
             $usuario = new User();
             $usuario->usuario = $_POST['user'];
             $usuario->nombre=  $_POST['name'];
+            $usuario->sexo = $_POST['sex'];
             $usuario->foto_url= 'assets/user_profile.png';
             $usuario->email = $_POST['email'];
             $usuario->apellido=  $_POST['last_name'];
@@ -75,6 +76,24 @@
             $usuario = new User();
             $usuario->id_user = (int) $_POST['user_id'];
             $usuario->get_info_user();    
+
+        break;
+
+
+        
+        case 'update_user':
+            $image_path = '';
+            $usuario = new User();
+            $usuario->usuario=$_POST['username'];
+            $usuario->nombre=  $_POST['name'];
+            $usuario->sexo = $_POST['sex'];
+            $image_path=$usuario->uploadImage($_FILES['image']);
+            $usuario->foto_url = $image_path;
+            $usuario->apellido=  $_POST['last_name'];
+            $usuario->bio =$_POST['bio'];
+            $usuario->id_user = $_POST['user_id'];
+
+            $usuario->updateUser();
 
         break;
 

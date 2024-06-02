@@ -31,6 +31,10 @@
 			$guardar = $this->conection->prepare($sql);
 			$guardar->bind_param('sssi',$this->description,$fecha,$this->imagen_tablero,$this->id_usuario);
 			$guardar->execute() or die("no se puedo guardar el tablero");
+            $last_id = $this->conection->insert_id;
+            
+            return $last_id;
+
 
 	    }
 

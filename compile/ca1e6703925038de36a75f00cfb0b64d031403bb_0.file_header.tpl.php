@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-26 16:01:53
+/* Smarty version 5.1.0, created on 2024-06-02 03:36:21
   from 'file:template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_665340d1a789b5_32935886',
+  'unifunc' => 'content_665bcc953647f5_96265648',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca1e6703925038de36a75f00cfb0b64d031403bb' => 
     array (
       0 => 'template/header.tpl',
-      1 => 1716732106,
+      1 => 1717292127,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_665340d1a789b5_32935886 (\Smarty\Template $_smarty_tpl) {
+function content_665bcc953647f5_96265648 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -117,7 +117,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                 <?php } else { ?>
                    <input type='hidden' value='<?php echo $_smarty_tpl->getValue('foto_perfil');?>
 ' id='foto_perfil'/>
-                   <input type='hidden' value='0' id='user_update'/>
+                   <input type='hidden' value='0' class='user_update'/>
 
                   <input type='hidden' value='<?php echo $_smarty_tpl->getValue('user_session');?>
 ' id='nombre_usuario'/>
@@ -132,7 +132,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <?php if ($_smarty_tpl->getValue('id_user') != '') {?>
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item" id="user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
+                            <li><a class="dropdown-item user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
                             <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
 /profile_user.php?user=<?php echo $_smarty_tpl->getValue('user_session');?>

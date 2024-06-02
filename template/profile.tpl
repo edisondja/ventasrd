@@ -32,7 +32,7 @@
                             <td>
                                 
                             </td>
-                            <i class="fa-regular fa-sun" style='float:right;cursor:pointer'></i>
+                            <i class="fa-regular fa-sun" id="user_update" style='float:right;cursor:pointer'  data-bs-toggle="modal" data-bs-target="#updateUserModal"></i>
                             
                         </tr>
                          <tr>

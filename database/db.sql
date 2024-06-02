@@ -6,7 +6,7 @@ CREATE TABLE user (
   bio TEXT,
   nombre VARCHAR(100),
   apellido VARCHAR(100),
-  sexo VARCHAR(30),
+  sexo VARCHAR(1),
   email VARCHAR(200),
   clave VARCHAR(200),
   fecha_creacion DATETIME,

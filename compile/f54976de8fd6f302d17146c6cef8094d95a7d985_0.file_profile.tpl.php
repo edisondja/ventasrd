@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-21 06:46:19
+/* Smarty version 5.1.0, created on 2024-06-02 03:45:22
   from 'file:profile.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_664c271b117668_38914900',
+  'unifunc' => 'content_665bceb27f5025_00465133',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f54976de8fd6f302d17146c6cef8094d95a7d985' => 
     array (
       0 => 'profile.tpl',
-      1 => 1716266759,
+      1 => 1717292508,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:board.tpl' => 1,
   ),
 ))) {
-function content_664c271b117668_38914900 (\Smarty\Template $_smarty_tpl) {
+function content_665bceb27f5025_00465133 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?>      <div class="col-md-3">
             <br/>
@@ -63,7 +63,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                             <td>
                                 
                             </td>
-                            <i class="fa-regular fa-sun" style='float:right;cursor:pointer'></i>
+                            <i class="fa-regular fa-sun" id="user_update" style='float:right;cursor:pointer'  data-bs-toggle="modal" data-bs-target="#updateUserModal"></i>
                             
                         </tr>
                          <tr>
@@ -85,9 +85,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
      <div class='row'>
                 <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('boards'), 'tablero');
-$foreach1DoElse = true;
+$foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('tablero')->value) {
-$foreach1DoElse = false;
+$foreach0DoElse = false;
 ?>
                             
                             <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);

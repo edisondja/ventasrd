@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-25 20:56:43
+/* Smarty version 5.1.0, created on 2024-05-28 02:52:54
   from 'file:registrer.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6652346bcf22b8_37791728',
+  'unifunc' => 'content_66552ae6135638_36540499',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7ecbbb223c6e6d317dec4e23e764eea135681df' => 
     array (
       0 => 'registrer.tpl',
-      1 => 1716515909,
+      1 => 1716857571,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6652346bcf22b8_37791728 (\Smarty\Template $_smarty_tpl) {
+function content_66552ae6135638_36540499 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><div class="col-md-3"></div>
 
@@ -46,6 +46,14 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
         <div class="form-group mb-3">
             <label for="name"><strong>Name</strong></label>
             <input type="text" id="name" name="name" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="name"><strong>Sexo</strong></label>
+            <select name="sex" class="form-control">
+                    <option value='h'>Hombre</option>
+                    <option value='m'>Mujer</option>
+            </select>
         </div>
         
         <div class="form-group mb-3">

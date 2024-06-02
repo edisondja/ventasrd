@@ -59,7 +59,7 @@
                   </table>
                 {else}
                    <input type='hidden' value='{$foto_perfil}' id='foto_perfil'/>
-                   <input type='hidden' value='0' id='user_update'/>
+                   <input type='hidden' value='0' class='user_update'/>
 
                   <input type='hidden' value='{$user_session}' id='nombre_usuario'/>
               {/if} 
@@ -73,7 +73,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                    {if $id_user!=''}
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item" id="user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
+                            <li><a class="dropdown-item user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
                             <li><a class="dropdown-item" href="{$dominio}/profile_user.php?user={$user_session}">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>

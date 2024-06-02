@@ -23,6 +23,14 @@
             <label for="name"><strong>Name</strong></label>
             <input type="text" id="name" name="name" class="form-control" />
         </div>
+
+        <div class="form-group mb-3">
+            <label for="name"><strong>Sexo</strong></label>
+            <select name="sex" class="form-control">
+                    <option value='h'>Hombre</option>
+                    <option value='m'>Mujer</option>
+            </select>
+        </div>
         
         <div class="form-group mb-3">
             <label for="last_name"><strong>Last Name</strong></label>
