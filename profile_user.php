@@ -19,7 +19,7 @@
         $get_user_id =  $profile->get_id_from_user($_GET['user']);
         $get_user_id = $get_user_id->id_user;
         $boards = new Board();
-        $data = $boards->cargar_tablerosx('general','asoc');
+        $data = $boards->cargar_tablerosx($get_user_id,'asoc');
         //print_r( $data_user);
         $smarty->assign('boards',$data);
         $smarty->assign('data_profile',$data_user);

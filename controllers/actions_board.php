@@ -42,6 +42,16 @@
 
         break;
 
+        case 'drop_board':
+
+            
+            $board = new Board();
+            $board->board_id= $_POST['id_board'];
+            $board->id_usuario = $_POST['id_user'];
+            $board->desactivar_tablero();
+
+
+        break;
 
         case 'update_board':
             
@@ -92,16 +102,13 @@
             $usuario->apellido=  $_POST['last_name'];
             $usuario->bio =$_POST['bio'];
             $usuario->id_user = $_POST['user_id'];
-
             $usuario->updateUser();
-
         break;
 
         
         case 'update_coment':
 
 
-        
         break;
 
 

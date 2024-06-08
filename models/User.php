@@ -24,14 +24,15 @@ Class User extends EncryptToken{
 
         function RegistrerUser(){
 
-          
+            $type_user = 'pendiente';
+
             if($this->ExistUser($this->usuario)==true){
 
                 $clave = md5($this->clave);
                 $fecha = date('ymdis');
-                $sql = "insert into user(usuario,clave,email,sexo,foto_url,fecha_creacion,nombre,apellido,bio)VALUES(?,?,?,?,?,?,?,?,?)";
+                $sql = "insert into user(usuario,clave,email,sexo,foto_url,fecha_creacion,nombre,apellido,bio)VALUES(?,?,?,?,?,?,?,?,?,?)";
                 $ready = $this->conection->prepare($sql);
-                $ready->bind_param('sssssssss',
+                $ready->bind_param('ssssssssss',
                 $this->usuario,
                 $clave,
                 $this->email,
@@ -41,6 +42,7 @@ Class User extends EncryptToken{
                 $this->nombre,
                 $this->apellido,
                 $this->bio,
+                $type_user
                 );
                 $ready->execute();
                 $this->SendMailActivedAccount();
@@ -136,17 +138,17 @@ Class User extends EncryptToken{
             file_put_contents('logs/logs.txt','entro informacion realmente');
 
             if (!isset($file) || $file['error'] == UPLOAD_ERR_NO_FILE) {
-                return "/assets/user_profile.png";
+                return $file["tmp_name"];
             }
         
             // Verificar si hay algún error en la subida
             if ($file['error'] != UPLOAD_ERR_OK) {
-                return "/assets/user_profile.png";
+                return $file["tmp_name"];
             }
         
             // Verificar el tamaño del archivo
             if ($file["size"] > $maxFileSize) {
-                return "/assets/user_profile.png";
+                return $file["tmp_name"];
             }
         
             // Verificar el tipo MIME del archivo
@@ -154,7 +156,7 @@ Class User extends EncryptToken{
             $mimeType = finfo_file($finfo, $file["tmp_name"]);
             finfo_close($finfo);
             if (!in_array($mimeType, $allowedMimeTypes)) {
-                return "/assets/user_profile.png";
+                return $file["tmp_name"];
             }
         
             // Crear el directorio de subida si no existe
@@ -173,7 +175,7 @@ Class User extends EncryptToken{
                return str_replace('..','',$targetFile); 
 
             } else {
-                return "/assets/user_profile.png";
+                return $file["tmp_name"];
             }
         }
         
@@ -277,8 +279,11 @@ Class User extends EncryptToken{
 
         }
 
+        public function ActivarUsuario(){
 
+            
 
+        }
 
 }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-02 03:36:21
+/* Smarty version 5.1.0, created on 2024-06-03 01:13:38
   from 'file:template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_665bcc953647f5_96265648',
+  'unifunc' => 'content_665cfca23cf251_99331399',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca1e6703925038de36a75f00cfb0b64d031403bb' => 
     array (
       0 => 'template/header.tpl',
-      1 => 1717292127,
+      1 => 1717369990,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_665bcc953647f5_96265648 (\Smarty\Template $_smarty_tpl) {
+function content_665cfca23cf251_99331399 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -165,7 +165,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
       
       </nav>
       <div class="container-fluid">
-            <div class="row">  <hr/>
+            <div class="row" id="boards">  <hr/>
               <?php $_smarty_tpl->renderSubTemplate("file:login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
               <?php $_smarty_tpl->renderSubTemplate("file:update_user.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);

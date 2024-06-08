@@ -9,10 +9,11 @@ $pagina = 0;
 if (!isset($_GET['boards']) && !isset($_GET['search'])) {
 
     $tableros = $Board->cargar_tablerosx('general', 'asoc');
-
+    
 } elseif (isset($_GET['boards'])) {
     $tableros = $Board->paginar_tableros($_GET['boards']);
     $pagina = $_GET['boards'];
+    
 } elseif (isset($_GET['search'])) {
     $tableros = $Board->search_tablero($_GET['search']);
 } else {

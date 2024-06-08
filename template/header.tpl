@@ -104,7 +104,7 @@
       
       </nav>
       <div class="container-fluid">
-            <div class="row">  <hr/>
+            <div class="row" id="boards">  <hr/>
               {include file="login.tpl"}
               {include file="update_user.tpl"}
 

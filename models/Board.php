@@ -25,20 +25,31 @@
 
 
             $fecha = date('ymdis');
+            $tipo_tablero = 'activo';
+            //inactivo es cuando no se pueden ver para los usuarios
 
 			$this->conection; 
-			$sql = "insert into tableros(descripcion,fecha_creacion,imagen_tablero,id_usuario)values(?,?,?,?)";
+			$sql = "insert into tableros(descripcion,fecha_creacion,imagen_tablero,id_usuario,tipo_tablero)values(?,?,?,?,?)";
 			$guardar = $this->conection->prepare($sql);
-			$guardar->bind_param('sssi',$this->description,$fecha,$this->imagen_tablero,$this->id_usuario);
+			$guardar->bind_param('sssis',$this->description,$fecha,$this->imagen_tablero,$this->id_usuario,$tipo_tablero);
 			$guardar->execute() or die("no se puedo guardar el tablero");
             $last_id = $this->conection->insert_id;
-            
+            $guardar->close();
+
             return $last_id;
 
 
 	    }
 
-
+        public function desactivar_tablero(){
+            $tipo_tablero = 'inactivo';
+            $this->conection; 
+            $sql = "update tableros set tipo_tablero=? where id_usuario=? and id_tablero=?";
+            $guardar  = $this->conection->prepare($sql);
+            $guardar->bind_param('sii',$tipo_tablero,$this->id_usuario,$this->board_id);
+            $guardar->execute() or die("no se puedo guardar el tablero");
+            $guardar->close();
+        }
 
         public function actualizar_tablero($id_tablero) {
             $fecha = date('ymdis');
@@ -77,14 +88,15 @@
 
         public  function cargar_tableros($id_tablero,$config='json'){
 
+            $tipo_tablero='activo';
 		    $this->conection;
-			$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where id_tablero=?";
+			$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where id_tablero=? and tipo_tablero=?";
 			$cargado = $this->conection->prepare($sql);
-			$cargado->bind_param('i',$id_tablero);
+			$cargado->bind_param('is',$id_tablero,$tipo_tablero);
 			$cargado->execute();
 			$data = $cargado->get_result();
             $data = mysqli_fetch_object($data);
-
+            $cargado->close();
 			if($config=='json'){
 				echo json_encode($data);
 				
@@ -99,14 +111,17 @@
       function search_tablero($texto){
 
             global $conexion;
-    
+        
+            $tipo_tablero='activo';
             $texto = "%$texto%";
             
     
-            $data= $this->conection->prepare("select * from tableros inner join user on tableros.id_usuario=user.id_user where titulo like ? || descripcion like ? limit 20");
-            $data->bind_param('ss',$texto,$texto);
+            $data= $this->conection->prepare("select * from tableros inner join
+             user on tableros.id_usuario=user.id_user where titulo like ? || descripcion like ? and tipo_tablero=? limit 20");
+            $data->bind_param('sss',$texto,$texto,$tipo_tablero);
             $data->execute();
             $resp = $data->get_result();
+            $data->close();
             $datos = [];
             foreach ($resp as $key) {
     
@@ -125,6 +140,7 @@
             $acoplar = $this->conection->prepare($sql);
             $acoplar->bind_param('sisi',$texto,$precio,$metodo_de_pago,$id_asignar);
             $acoplar->execute() or die('error');
+            $acoplar->close();
             echo "update asset success";
     
         }
@@ -165,6 +181,8 @@
                 $guardar = $this->conection->prepare($sql);
                 $guardar->bind_param('iss',$id_tablero,$guardar_como,$tipo_asset);
                 $guardar->execute();
+                $guardar->close();
+                
 		
 
 	    }
@@ -187,6 +205,7 @@
 	
 			$cargado->execute();
 			$data = $cargado->get_result();
+            $cargado->close();
 			$json=[];
 			foreach ($data as $key) {
 
@@ -209,6 +228,7 @@
             $eliminar = $this->conection->prepare($sql);
             $eliminar->bind_param('i',$id_multimedia);
             $eliminar->execute();
+            $eliminar->close();
         }
     
      function cargar_multimedias_de_tablero($id_tablero,$config='json'){
@@ -217,6 +237,7 @@
                 $cargar = $this->conection->prepare($sql);
                 $cargar->bind_param('i',$id_tablero);
                 $cargar->execute();
+                $cargar->close();
                 $data = $cargar->get_result();
                 $datos = [];
                 foreach ($data as $key) {

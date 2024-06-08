@@ -11,8 +11,69 @@ window.onload=function(){
     var user_update = document.querySelector(".user_update");
     var token_get = '';
     let update_user_profile = document.querySelector('#user_update');
+    var my_boards = document.querySelectorAll('.fa-trash');
+    var files_json=[];
+    var id_medias=0;
+    var FormDatas_board = new FormData();
 
    
+
+    /*Es te fragmento de codigo es para detectar todos los tableros del usuario que inicio sesión 
+        asignandole el evento de poder eliminar su publicación si lo desea.
+    */
+    if(my_boards){
+
+        my_boards.forEach(board=>{
+
+
+                board.addEventListener('click',(e)=>{
+
+
+                    let id_board=e.target.getAttribute('data-value');
+                    
+                    
+                    alertify.confirm('Eliminar publicación','Estas seguro que deseas eliminar esta publicación',function(){
+
+                        alertify.message(`Eliminado ${id_board}`);
+                        document.querySelector(`#board${id_board}`).remove();
+
+                        let FormDatas = new FormData();
+                        FormDatas.append('action','drop_board');
+                        FormDatas.append('id_user',document.getElementById('id_usuario').value);
+                        FormDatas.append('id_board',id_board);
+
+                        //board${$table.id_tablero}
+                        axios.post(`${dominio}/controllers/actions_board.php`,FormDatas,{headers:{
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        }}).then(info=>{
+                
+
+                                console.log(info);
+                                //alertify.message('Cambios guardados con exito');
+                        
+                        }).catch(error=>{
+
+                            console.log(error);
+
+                        });
+
+
+                                            
+
+                    },function(){
+
+                    });
+                        
+                });
+
+        });
+
+
+    }else{
+
+        console.log('no tienes publicaciones');
+    }
+
 
     if(update_user_profile){
         
@@ -149,10 +210,11 @@ window.onload=function(){
                 formDatas.append('bio', bio);
 
                 if(fotoUrl==null){
-                   
+        
                         let index =  foto_perfil.indexOf('/images');  
                         let newUrl = foto_perfil.substring(index); 
                         formDatas.append('image',newUrl);
+                
                 }
 
                 axios.post(`${dominio}/controllers/actions_board.php`,formDatas,{headers:{
@@ -161,7 +223,7 @@ window.onload=function(){
 
                 }}).then(info=>{
         
-                            console.log(info);
+                        alertify.message('Cambios guardados con exito');
                 
                 }).catch(error=>{
 
@@ -189,6 +251,19 @@ window.onload=function(){
     });
 
 
+    function generar_media(data){
+
+
+        data.forEach(data=>{
+
+            FormDatas_board.append('media',data.media);
+           
+
+        });
+
+        console.log('Archivos media actual',data);
+    }
+
 
     var subir_imagen =  document.querySelector('#upload_images');
     var count = 0;
@@ -198,59 +273,58 @@ window.onload=function(){
             
             let files = data.target.files.length;
 
-            var formData = new FormData();
-
 
             for(i=0;i<files;i++){
-
+                id_medias++;
                 console.log(data.target.files[i].name);
-                var media = URL.createObjectURL(data.target.files[i])
+                var media = URL.createObjectURL(data.target.files[i]);
                 count++;
-
-
-                formData.append("media",data.target.files[i]);
+                
+                files_json.push({
+                        archivo_id:`fig${id_medias}`,
+                        media:data.target.files[i]
+                });
+                
 
                 if(data.target.files[i].type=='image/jpeg' || data.target.files[i].type=='image/png'){
-
-                    
-                    document.querySelector('#multimedia_view').innerHTML+=`
-                    <figure id='fig${i}'>
-                    <figcaption><i class="fa-solid fa-delete-left" style='float:right' id='${i}'></i></figcaption>
-                    <img src='${media}' style='margin:2px;height:130px; width:130px;'>
-                    </figure>`;
-
-                   
+                        document.querySelector('#multimedia_view').innerHTML+=`
+                        <figure id='fig${id_medias}'>
+                        <figcaption><i class="fa-solid fa-delete-left" style='float:right' id='${id_medias}'></i></figcaption>
+                        <img src='${media}'  class='Miniatura'>
+                        </figure>`;
                 }else{
-
-                    document.querySelector('#multimedia_view').innerHTML+=`
-                    <figure id='fig${i}'>
-                    <figcaption><i class="fa-solid fa-delete-left" style='float:right' id='${i}'></i></figcaption>
-                    <video src='${media}' controls style='margin:2px;height:130px;width:130px;'></video>
-                    </figure>
-                 `;
-                    
+                        document.querySelector('#multimedia_view').innerHTML+=`
+                        <figure id='fig${id_medias}'>
+                        <figcaption><i class="fa-solid fa-delete-left" style='float:right' id='${id_medias}'></i></figcaption>
+                        <video src='${media}'controls' class='Miniatura'></video>
+                        </figure>`;
                 }
 
-
-                formData.forEach(data=>{
-
-                    console.log(data);
-
-
-                });
+             
             }
 
 
             let figure = document.querySelectorAll('figcaption');
 
+
+            generar_media(files_json);
+
             figure.forEach(data=>{
 
-                    
+                    //aqui se debe de eliminar el archivo formData.append("media",data.target.files[i]) correspo
                 data.addEventListener('click',data=>{
+                    
+                    document.querySelector(`#fig${data.target.id}`).style.display='none';
+                    let id_archivo_json = `fig${data.target.id}`;
 
-                        document.querySelector(`#fig${data.target.id}`).style.display='none';
+                    alert(id_archivo_json);
 
-                        
+                    let actualizar_archivos = files_json.filter(archivo=>archivo.archivo_id!==id_archivo_json);
+                    
+                    files_json = actualizar_archivos;
+
+                    generar_media(files_json);
+
                 });
 
             });
@@ -281,22 +355,38 @@ window.onload=function(){
 
     post.addEventListener('click',function(){
 
-        let FormDatas = new FormData();
-        FormDatas.append('action','create_board');
-        FormDatas.append('description',document.querySelector('#board_title').value);
-        FormDatas.append('user_id',document.querySelector('#id_usuario').value);
 
+        if(document.querySelector('#board_title').value==''){
+        
+            alertify.message('No puedes dejar el campo de texto vacio');
+            return;
+        }
+
+        /* FormsDataBoard es una variable global que guarda la instancia
+        de la publicacion de un post
+        */
+
+
+
+        FormDatas_board.append('action','create_board');
+        FormDatas_board.append('description',document.querySelector('#board_title').value);
+        FormDatas_board.append('user_id',document.querySelector('#id_usuario').value);
+
+
+        FormDatas_board.forEach(data=>{
+            
+                console.log(data);
+        });
+        return;
       // alertify.message('pero bien que esta funcionando esto');
+      
+        axios.post(`${dominio}/controllers/actions_board.php`,
+        FormDatas_board,{headers:{
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token_get}`
+        }}).then(data=>{
 
-        axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
-
-            alertify.message('Has publicado con exito tu oferta');
-
-            window.setInterval(function(){
-                
-                location.href=dominio;
-
-            },2000);
+            location.href=dominio
 
             console.log(data.data);
 
@@ -312,34 +402,29 @@ window.onload=function(){
 
     var singout = document.querySelector('#singout');
 
-    singout.addEventListener('click',function(){
+    if(singout){
 
+            singout.addEventListener('click',function(){
         
-        localStorage.clear();
-        let FormDatas = new FormData();
-        FormDatas.append('action','sigout');
-
-
-        axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
-
-                console.log(data.data);
-
-                alertify.message('cerrando sesión');
-                storage.clear();
                 localStorage.clear();
-                location.href=dominio;
-            
-           
+                let FormDatas = new FormData();
+                FormDatas.append('action','sigout');
 
-        }).catch(error=>{
+                axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
+                        console.log(data.data);
 
-            alertify.warning(error);
+                    // alertify.message('cerrando sesión');
+                        localStorage.clear();
+                        location.href=dominio;      
+                }).catch(error=>{
 
-        });
+                    alertify.warning(error);
+                    console.log(error);
 
+                });
+            });
 
-
-    });
+    }
 
 }
 

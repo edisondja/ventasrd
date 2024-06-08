@@ -6,6 +6,13 @@
 
 }
 
+.Miniatura{
+    border-radius: 5px;
+    margin:2px;
+    height:130px;
+    width:130px;
+}
+
 
 .center_img{
 
