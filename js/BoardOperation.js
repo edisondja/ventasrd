@@ -256,7 +256,7 @@ window.onload=function(){
 
         data.forEach(data=>{
 
-            FormDatas_board.append('media',data.media);
+            FormDatas_board.append('media[]',data.media);
            
 
         });
@@ -353,50 +353,56 @@ window.onload=function(){
     var post = document.querySelector('#post');
 
 
-    post.addEventListener('click',function(){
-
-
-        if(document.querySelector('#board_title').value==''){
-        
-            alertify.message('No puedes dejar el campo de texto vacio');
+    post.addEventListener('click', function() {
+        // Verifica si el campo de título del tablero está vacío
+        if (document.querySelector('#board_title').value === '') {
+            alertify.message('No puedes dejar el campo de texto vacío');
             return;
         }
 
-        /* FormsDataBoard es una variable global que guarda la instancia
-        de la publicacion de un post
-        */
+        //visualizando barra de subida de archivos
 
+        document.querySelector('.progress').style.display = 'block';
+        document.querySelector('#porcentaje').style.display = 'block';
 
+        // Agrega los datos del formulario a FormDatas_board
+        FormDatas_board.append('action', 'create_board');
+        FormDatas_board.append('description', document.querySelector('#board_title').value);
+        FormDatas_board.append('user_id', document.querySelector('#id_usuario').value);
+    
+        // Configuración para el progreso de carga del archivo
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token_get}`
+            },
+            onUploadProgress: function(progressEvent) {
+                // Muestra la barra de progreso
+                // Calcula el porcentaje completado
+                const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                // Actualiza la barra de progreso
+                document.querySelector('.progress').value=percentCompleted;
+                document.querySelector('#porcentaje').innerHTML=`${percentCompleted}%`;
 
-        FormDatas_board.append('action','create_board');
-        FormDatas_board.append('description',document.querySelector('#board_title').value);
-        FormDatas_board.append('user_id',document.querySelector('#id_usuario').value);
-
-
-        FormDatas_board.forEach(data=>{
-            
-                console.log(data);
-        });
-        return;
-      // alertify.message('pero bien que esta funcionando esto');
-      
-        axios.post(`${dominio}/controllers/actions_board.php`,
-        FormDatas_board,{headers:{
-            'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer ${token_get}`
-        }}).then(data=>{
-
-            location.href=dominio
-
-            console.log(data.data);
-
-        }).catch(error=>{
-
-
-
-        });
-
-
+            }
+        };
+    
+        // Envía la solicitud POST usando Axios
+        axios.post(`${dominio}/controllers/actions_board.php`, FormDatas_board, config)
+            .then(response => {
+                // Oculta la barra de progreso al completar la solicitud
+                  document.querySelector('.progress').style.display = 'none';
+                  document.querySelector('#porcentaje').style.display='none';
+                console.log(response.data);
+                // Aquí puedes redirigir o actualizar la página según tus necesidades
+                // location.href = dominio;
+            })
+            .catch(error => {
+                // Manejo de errores
+                document.querySelector('.progress').style.display = 'none';
+                console.error('Error en la solicitud:', error);
+                alertify.error('Ocurrió un error al enviar el formulario');
+            });
     });
 
 
@@ -425,6 +431,18 @@ window.onload=function(){
             });
 
     }
+
+    function handleScroll() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            // Si se alcanza el final de la página, carga más datos
+           // alertify.message('llego al final de la pagina');
+        }
+    }
+    
+    // Evento de desplazamiento para detectar cuándo se alcanza el final de la página
+    window.addEventListener('scroll', handleScroll);
+
+
 
 }
 

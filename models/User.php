@@ -1,6 +1,5 @@
 <?php
 
-
 require('EncryptToken.php');
 
 Class User extends EncryptToken{
@@ -281,8 +280,11 @@ Class User extends EncryptToken{
 
         public function ActivarUsuario(){
 
-            
-
+            $type_user ='activo';
+            $sql = "update user set type_user";
+			$cargado = $this->conection->prepare($sql);
+            $cargado->bind_param('si',$type_user,$this->id_user);
+            $cargado->execute();
         }
 
 }

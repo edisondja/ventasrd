@@ -30,28 +30,33 @@
                 <img src="" class="img-fluid card-img-top" style='' />
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
+                {if  $multimedias_t=='' &&  $og_imagen!==''}
 
+                    <img src="{$og_imagen}" style='' class="card-img-top" alt="...">
+
+                {/if}
                 {if $multimedias_t}
                     <div class="carousel-item active">
                         <img src="{$og_imagen}"  style='height:340px'class="d-block w-100 d-block w-100 img-fluid card-img-top" alt="...">
-
                     </div>
                 
                     {foreach from=$multimedias_t item=multimedia}
-                         
+
                         {if $multimedia.tipo_multimedia=='imagen'}
 
                             <div class="carousel-item">
-                                <img src="{$dominio}/{$multimedia.ruta_multimedia}"  style='height:340px' class="d-block w-100 d-block w-100 img-fluid card-img-top" alt="...">
+                                <img src="{$dominio}{$multimedia.ruta_multimedia}"   class="d-block w-100 d-block w-100 img-fluid card-img-top" alt="...">
                             </div>
-                        {else}-
+                        {else}
                             <div class="carousel-item">
-                                <video src="{$dominio}/{$multimedia.ruta_multimedia}" style='height:340px' class="d-block w-100 img-fluid card-img-top" style="width:330px;height:220px;"  controls></video>
+                                <video src="{$dominio}{$multimedia.ruta_multimedia}"  class="d-block w-100 img-fluid card-img-top" style="width:330px;height:220px;"  controls></video>
                             </div>
                         {/if}
                               
         
                     {/foreach}
+
+                    
 
              
                 </div>

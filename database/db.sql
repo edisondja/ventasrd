@@ -72,6 +72,7 @@ CREATE TABLE asignar_multimedia_t(
   id_asignar INT PRIMARY KEY AUTO_INCREMENT,
   ruta_multimedia VARCHAR(100),
   tipo_multimedia VARCHAR(10),
+  type_media VARCHAR(50);
   texto TEXT,
   precio FLOAT,
   metodo_de_pago VARCHAR(30),

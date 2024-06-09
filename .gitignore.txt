@@ -1,0 +1,4 @@
+# Media directories
+/videos
+/imagenes
+/imagenes_tablero

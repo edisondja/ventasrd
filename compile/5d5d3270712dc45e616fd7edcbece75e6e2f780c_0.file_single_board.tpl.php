@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-21 07:38:15
+/* Smarty version 5.1.0, created on 2024-06-09 04:16:09
   from 'file:single_board.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_664c33470e7317_24900407',
+  'unifunc' => 'content_666510697897f9_23103894',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5d5d3270712dc45e616fd7edcbece75e6e2f780c' => 
     array (
       0 => 'single_board.tpl',
-      1 => 1716269892,
+      1 => 1717899365,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_664c33470e7317_24900407 (\Smarty\Template $_smarty_tpl) {
+function content_666510697897f9_23103894 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?>
     <div class="col-md-3">
@@ -62,12 +62,16 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                 <img src="" class="img-fluid card-img-top" style='' />
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
+                <?php if ($_smarty_tpl->getValue('multimedias_t') == '' && $_smarty_tpl->getValue('og_imagen') !== '') {?>
 
+                    <img src="<?php echo $_smarty_tpl->getValue('og_imagen');?>
+" style='' class="card-img-top" alt="...">
+
+                <?php }?>
                 <?php if ($_smarty_tpl->getValue('multimedias_t')) {?>
                     <div class="carousel-item active">
                         <img src="<?php echo $_smarty_tpl->getValue('og_imagen');?>
 "  style='height:340px'class="d-block w-100 d-block w-100 img-fluid card-img-top" alt="...">
-
                     </div>
                 
                     <?php
@@ -76,19 +80,19 @@ $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('multimedia')->value) {
 $foreach0DoElse = false;
 ?>
-                         
+
                         <?php if ($_smarty_tpl->getValue('multimedia')['tipo_multimedia'] == 'imagen') {?>
 
                             <div class="carousel-item">
-                                <img src="<?php echo $_smarty_tpl->getValue('dominio');?>
-/<?php echo $_smarty_tpl->getValue('multimedia')['ruta_multimedia'];?>
-"  style='height:340px' class="d-block w-100 d-block w-100 img-fluid card-img-top" alt="...">
+                                <img src="<?php echo $_smarty_tpl->getValue('dominio');
+echo $_smarty_tpl->getValue('multimedia')['ruta_multimedia'];?>
+"   class="d-block w-100 d-block w-100 img-fluid card-img-top" alt="...">
                             </div>
-                        <?php } else { ?>-
+                        <?php } else { ?>
                             <div class="carousel-item">
-                                <video src="<?php echo $_smarty_tpl->getValue('dominio');?>
-/<?php echo $_smarty_tpl->getValue('multimedia')['ruta_multimedia'];?>
-" style='height:340px' class="d-block w-100 img-fluid card-img-top" style="width:330px;height:220px;"  controls></video>
+                                <video src="<?php echo $_smarty_tpl->getValue('dominio');
+echo $_smarty_tpl->getValue('multimedia')['ruta_multimedia'];?>
+"  class="d-block w-100 img-fluid card-img-top" style="width:330px;height:220px;"  controls></video>
                             </div>
                         <?php }?>
                               
@@ -96,6 +100,8 @@ $foreach0DoElse = false;
                     <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+
+                    
 
              
                 </div>

@@ -39,7 +39,6 @@
             $board->id_usuario = $_POST['user_id'];
             $board->guardar_tablero();
 
-
         break;
 
         case 'drop_board':

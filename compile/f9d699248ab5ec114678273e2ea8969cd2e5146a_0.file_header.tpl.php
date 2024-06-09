@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-03 01:18:08
+/* Smarty version 5.1.0, created on 2024-06-09 15:23:31
   from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_665cfdb00b7c28_75214333',
+  'unifunc' => 'content_6665acd3beb239_26284978',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
       0 => '../template/header.tpl',
-      1 => 1717369990,
+      1 => 1717939409,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_665cfdb00b7c28_75214333 (\Smarty\Template $_smarty_tpl) {
+function content_6665acd3beb239_26284978 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -191,6 +191,10 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                                   <div class='card-body'>
                                       <textarea class='form-control' id="board_title" rows='5'></textarea>
                                   </div><hr/>
+                                  <div class="flex-container">
+                                  <progress id="file" style="display:none" class="progress"  max="100" value="0"></progress>
+                                      <strong style="margin-top: -3.4px;" id="porcentaje">&nbsp;0%</strong>
+                                  </div>
                                   <div id='multimedia_view' class='flex-container'>
                                     
                                   </div>  

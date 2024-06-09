@@ -1,6 +1,6 @@
 <?php
-   
 
+    require('Prop.php');
 
     use Firebase\JWT\ExpiredException;
     use Firebase\JWT\JWT;
@@ -9,7 +9,7 @@
     global $conexion;
     $conexion = new mysqli(HOST_BD, USER_BD, PASSWORD_BD, NAME_DB);
 
-    Class EncryptToken{
+    Class EncryptToken extends Prop{
      
         public string $key = 'meteorito62410';
 

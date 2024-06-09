@@ -126,6 +126,10 @@
                                   <div class='card-body'>
                                       <textarea class='form-control' id="board_title" rows='5'></textarea>
                                   </div><hr/>
+                                  <div class="flex-container">
+                                  <progress id="file" style="display:none" class="progress"  max="100" value="0"></progress>
+                                      <strong style="margin-top: -3.4px; display:none" id="porcentaje">&nbsp;0%</strong>
+                                  </div>
                                   <div id='multimedia_view' class='flex-container'>
                                     
                                   </div>  
