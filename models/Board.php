@@ -253,14 +253,21 @@
 
                     $tipo_asset = 'imagen';
                     $guardar_como = "../imagenes_tablero/$fecha_a$titulo_de_assets.jpg";
-                    move_uploaded_file($url_temp,$guardar_como);
+                    sleep(1);
+                    if (!move_uploaded_file($url_temp, $guardar_como)) {
+                        echo "Error al mover el archivo a $guardar_como";
+                        return;
+                    }
                 
                 }else if($tipo_a=='mp4' || $tipo_a=='webm' || $tipo_a=='avi'){   
                 
                     $tipo_asset = 'video';
                     $guardar_como = "../videos/$fecha_a$titulo_de_assets.mp4";
-                    move_uploaded_file($url_temp,$guardar_como);
-                
+                    sleep(1);
+                    if (!move_uploaded_file($url_temp, $guardar_como)) {
+                        echo "Error al mover el archivo a $guardar_como";
+                        return;
+                    }                
                 }else{
                     echo"Lo sentimos este tipo de archivo no esta permitido";
                 } 
@@ -277,9 +284,6 @@
                 $guardar->execute();
                 $guardar->close();
                 echo 'success asig';
-                
-		
-
 	    }
     
        public  function cargar_tablerosx($id_usuario='general',$opcion='json'){

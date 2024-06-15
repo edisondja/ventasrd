@@ -72,8 +72,11 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                    {if $id_user!=''}
-                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" style='cursor:pointer' data-bs-target="#exampleModal">Public Post</a></li>
+                            {if $type_user=='admin'}
+                              <li><a class="dropdown-item user_update" href="backcoffe.php" style='cursor:pointer'>Admin</a></li>
+                            {/if}
+                            <li><a class="dropdown-item user_update" data-bs-toggle="modal" style='cursor:pointer' data-bs-target="#updateUserModal">User Update</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
                             <li><a class="dropdown-item" href="{$dominio}/profile_user.php?user={$user_session}">My Profile</a></li>
                             <li class="dropdown-item" style='display:none' id='login' style='cursor:pointer'>Login</li>
@@ -176,7 +179,11 @@
                     {elseif $content_config=='registrer'}
 
                         {include file="registrer.tpl"}
-                        
+
+                    {elseif $content_config=="backoffice"}
+
+                        {include file="backoffice.tpl"}   
+
                     {else}
                   {/if}
                   {if $content_config!='profile'}

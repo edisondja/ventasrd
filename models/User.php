@@ -203,6 +203,7 @@ Class User extends EncryptToken{
                     $_SESSION['id_user'] = $data->id_user;
                     $_SESSION['usuario']= $data->usuario;
                     $_SESSION['foto_url'] = $data->foto_url;
+                    $_SESSION['type_user']= $data->type_user;
                     
                     
                    $token=$this->EncryptUser($data->id_user,$data->usuario);
@@ -278,6 +279,34 @@ Class User extends EncryptToken{
 
         }
 
+        public function BuscarUsuarios($context,$config){
+ 
+            $sql = "select * from user where nombre like ? || usuario like ? || emial=?";
+            $cargar = $this->conection->prepare($sql);
+            $search = "%".$context."%";
+            $cargar->bind_param('sss',$search,$search,$search);
+            $data = $cargar->get_result();
+
+            switch($config){
+
+                case 'asoc':
+
+                    return $data;
+
+                break;
+
+                case 'json':
+
+                    $data= json_encode($data);
+                    echo $data;
+
+                break;
+
+            }
+
+        }
+
+
         public function ActivarUsuario(){
 
             $type_user ='activo';
@@ -285,6 +314,16 @@ Class User extends EncryptToken{
 			$cargado = $this->conection->prepare($sql);
             $cargado->bind_param('si',$type_user,$this->id_user);
             $cargado->execute();
+        }
+
+        public function DesactivarUsuario(){
+
+            $type_user ='inactivo';
+            $sql = "update user set type_user";
+			$cargado = $this->conection->prepare($sql);
+            $cargado->bind_param('si',$type_user,$this->id_user);
+            $cargado->execute();
+
         }
 
 }

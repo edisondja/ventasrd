@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-02 15:34:44
+/* Smarty version 5.1.0, created on 2024-06-15 21:14:35
   from 'file:board.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_665c74f4c8d906_33569756',
+  'unifunc' => 'content_666de81ba96e91_70991003',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c0a595b01c678dd0117d2e2fa30d32cef4e8f9fe' => 
     array (
       0 => 'board.tpl',
-      1 => 1717335280,
+      1 => 1718478874,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_665c74f4c8d906_33569756 (\Smarty\Template $_smarty_tpl) {
+function content_666de81ba96e91_70991003 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?>
 
 
 <div class="col-sm-3">
 </div>
-<div class="col-sm-6" style='margin-bottom:15px;'>
+<div class="col-sm-5" style='margin-bottom:15px;'>
 
            <div class='card text-white bg-dark mb-3' id="board<?php echo $_smarty_tpl->getValue('tablero')['id_tablero'];?>
 ">
@@ -49,7 +49,6 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                           <i class="fa-solid fa-highlighter"></i></strong></div>
                           </a>
                          
-                     
                         <p style='padding-left: 10px;'><?php echo $_smarty_tpl->getValue('tablero')['descripcion'];?>
 ​</p>
                         <a href="<?php echo $_smarty_tpl->getValue('dominio');?>
@@ -64,7 +63,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ">
                             <img src="<?php echo $_smarty_tpl->getValue('dominio');?>
 /<?php echo $_smarty_tpl->getValue('tablero')['imagen_tablero'];?>
-" style='' class="card-img-top" alt="...">
+" class="card-img-top" alt="...">
                             </a>
 
                           <?php } else { ?>

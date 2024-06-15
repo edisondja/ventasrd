@@ -26,11 +26,13 @@
 
         $smarty->assign('id_user',$_SESSION['id_user']);
         $smarty->assign('foto_perfil',$dominio."/".$_SESSION['foto_url']);
-        $smarty->assign('user_session',$_SESSION['usuario']);
+        $smarty->assign('user_session',$_SESSION['usuario']);  
+        $smarty->assign('type_user',$_SESSION['type_user']);
 
        
     }else{
 
+        $smarty->assign('type_user','');
         $smarty->assign('id_user','');
         $smarty->assign('foto_perfil','');
         $smarty->assign('user_session','');

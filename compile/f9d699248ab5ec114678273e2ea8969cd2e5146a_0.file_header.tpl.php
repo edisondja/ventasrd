@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-09 15:23:31
+/* Smarty version 5.1.0, created on 2024-06-11 02:56:25
   from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6665acd3beb239_26284978',
+  'unifunc' => 'content_6667a0b96035c5_65081689',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
       0 => '../template/header.tpl',
-      1 => 1717939409,
+      1 => 1718067383,
       2 => 'file',
     ),
   ),
@@ -24,10 +24,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:single_board.tpl' => 1,
     'file:profile.tpl' => 1,
     'file:registrer.tpl' => 1,
+    'file:backoffice.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_6665acd3beb239_26284978 (\Smarty\Template $_smarty_tpl) {
+function content_6667a0b96035c5_65081689 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -131,8 +132,11 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <?php if ($_smarty_tpl->getValue('id_user') != '') {?>
-                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Public Post</a></li>
-                            <li><a class="dropdown-item user_update" data-bs-toggle="modal" data-bs-target="#updateUserModal">User Update</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" style='cursor:pointer' data-bs-target="#exampleModal">Public Post</a></li>
+                            <?php if ($_smarty_tpl->getValue('type_user') == 'admin') {?>
+                              <li><a class="dropdown-item user_update" href="backcoffe.php" style='cursor:pointer'>Admin</a></li>
+                            <?php }?>
+                            <li><a class="dropdown-item user_update" data-bs-toggle="modal" style='cursor:pointer' data-bs-target="#updateUserModal">User Update</a></li>
                             <li><a class="dropdown-item" style='cursor:pointer' id='singout'  >Sing out</a></li>
                             <li><a class="dropdown-item" href="<?php echo $_smarty_tpl->getValue('dominio');?>
 /profile_user.php?user=<?php echo $_smarty_tpl->getValue('user_session');?>
@@ -193,7 +197,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                                   </div><hr/>
                                   <div class="flex-container">
                                   <progress id="file" style="display:none" class="progress"  max="100" value="0"></progress>
-                                      <strong style="margin-top: -3.4px;" id="porcentaje">&nbsp;0%</strong>
+                                      <strong style="margin-top: -3.4px; display:none" id="porcentaje">&nbsp;0%</strong>
                                   </div>
                                   <div id='multimedia_view' class='flex-container'>
                                     
@@ -252,7 +256,12 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
                         <?php $_smarty_tpl->renderSubTemplate("file:registrer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
-                        
+
+                    <?php } elseif ($_smarty_tpl->getValue('content_config') == "backoffice") {?>
+
+                        <?php $_smarty_tpl->renderSubTemplate("file:backoffice.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>   
+
                     <?php } else { ?>
                   <?php }?>
                   <?php if ($_smarty_tpl->getValue('content_config') != 'profile') {?>
