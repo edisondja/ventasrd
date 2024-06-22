@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-11 02:56:25
+/* Smarty version 5.1.0, created on 2024-06-22 21:02:18
   from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6667a0b96035c5_65081689',
+  'unifunc' => 'content_66771fba3b6667_10430530',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
       0 => '../template/header.tpl',
-      1 => 1718067383,
+      1 => 1719082916,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_6667a0b96035c5_65081689 (\Smarty\Template $_smarty_tpl) {
+function content_66771fba3b6667_10430530 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -169,6 +169,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
       
       </nav>
       <div class="container-fluid">
+     
             <div class="row" id="boards">  <hr/>
               <?php $_smarty_tpl->renderSubTemplate("file:login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
@@ -226,7 +227,10 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                       </div>
                     </div>
                   </div>
+                  
+          
                     <?php if ($_smarty_tpl->getValue('content_config') == 'boards') {?>
+                
 
                     <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('tableros'), 'tablero');
@@ -234,8 +238,7 @@ $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('tablero')->value) {
 $foreach0DoElse = false;
 ?>
-
-                      
+                           
                         <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 

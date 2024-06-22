@@ -1,9 +1,6 @@
+<div class="col-md-3"></div>
 
-
-
-<div class="col-sm-3">
-</div>
-<div class="col-sm-5" style='margin-bottom:15px;'>
+<div class="col-sm-6" style='margin-bottom:15px;'>
 
            <div class='card text-white bg-dark mb-3' id="board{$tablero.id_tablero}">
        

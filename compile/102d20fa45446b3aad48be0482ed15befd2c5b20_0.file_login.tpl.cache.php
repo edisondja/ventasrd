@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-21 02:48:41
+/* Smarty version 5.1.0, created on 2024-06-17 01:28:29
   from 'file:login.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6674cde9cb7ea3_69467203',
+  'unifunc' => 'content_666f751dd28049_53962018',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,9 +20,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6674cde9cb7ea3_69467203 (\Smarty\Template $_smarty_tpl) {
+function content_666f751dd28049_53962018 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-?><!-- Modal -->
+$_smarty_tpl->getCompiled()->nocache_hash = '1130427128666f751dd222c7_38468062';
+?>
+<!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -12,6 +12,7 @@ CREATE TABLE user (
   fecha_creacion DATETIME,
   foto_url TEXT,
   usuario VARCHAR(50),
+  estado VARCHAR(15),
   type_user VARCHAR(50)
 );
 
@@ -50,6 +51,7 @@ CREATE TABLE comentario(
   id_tablero INT,
   texto TEXT,
   data_og JSON,
+  estado VARCHAR(15),
   usuario_id INT,
   fecha_publicacion DATETIME,
   tipo_comentario VARCHAR(10),
@@ -120,6 +122,7 @@ CREATE TABLE action_coment(
 CREATE TABLE reply_coment(
   id_reply_id INT PRIMARY KEY AUTO_INCREMENT,
   text_coment TEXT,
+  estado VARCHAR(15),
   user_id INT,
   coment_id INT, 
   fecha_creacion DATETIME,

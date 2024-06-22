@@ -10,11 +10,23 @@
 
     $dominio = DOMAIN;
     $libs = include("libs/connect_cdn.php");
+        /*
+        load cdns
+    */
+    $libs_string='';
+    foreach($libs as $lib){
+
+        $libs_string.=$lib."\r";
+
+    }
+
+
     $smarty = new \Smarty\Smarty;
     $smarty->setTemplateDir('template');
-    $smarty->debugging = true;
-   // $smarty->caching = true;
+  //  $smarty->debugging = true;
+//    $smarty->caching = true;
     $smarty->setConfigDir('config');
+    $smarty->assign('libs_cdn',$libs_string);
     $smarty->setCompileDir('compile');
     $smarty->setCacheDir('cache');
     $smarty->assign('name',NAME_SITE);
@@ -38,17 +50,5 @@
         $smarty->assign('user_session','');
 
     }
-    /*
-        load cdns
-    */
-    $libs_string='';
-    foreach($libs as $lib){
-
-        $libs_string.=$lib."\r";
-
-    }
-
-
-    $smarty->assign('libs_cdn',$libs_string);
 
 ?>

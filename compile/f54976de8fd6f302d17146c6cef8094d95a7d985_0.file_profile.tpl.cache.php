@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-21 02:48:58
+/* Smarty version 5.1.0, created on 2024-06-17 01:46:19
   from 'file:profile.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6674cdfa883bd4_66970775',
+  'unifunc' => 'content_666f794b5713f0_84282161',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,9 +21,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:board.tpl' => 1,
   ),
 ))) {
-function content_6674cdfa883bd4_66970775 (\Smarty\Template $_smarty_tpl) {
+function content_666f794b5713f0_84282161 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-?>      <div class="col-md-3">
+$_smarty_tpl->getCompiled()->nocache_hash = '426390808666f794b4f0e94_40420275';
+?>
+      <div class="col-md-3">
             <br/>
             
                     <?php if ($_smarty_tpl->getValue('user_session') != '') {?>
@@ -85,12 +87,12 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
      <div class='row'>
                 <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('boards'), 'tablero');
-$foreach0DoElse = true;
+$foreach1DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('tablero')->value) {
-$foreach0DoElse = false;
+$foreach1DoElse = false;
 ?>
                             
-                            <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+                            <?php $_smarty_tpl->renderSubTemplate("file:board.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
 
                 <?php

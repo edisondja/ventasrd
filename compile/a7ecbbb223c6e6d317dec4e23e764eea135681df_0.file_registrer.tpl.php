@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-28 02:52:54
+/* Smarty version 5.1.0, created on 2024-06-22 04:07:16
   from 'file:registrer.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_66552ae6135638_36540499',
+  'unifunc' => 'content_667631d459ede0_84700983',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_66552ae6135638_36540499 (\Smarty\Template $_smarty_tpl) {
+function content_667631d459ede0_84700983 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><div class="col-md-3"></div>
 

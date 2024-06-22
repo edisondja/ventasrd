@@ -2,13 +2,13 @@
     require('bootstrap.php');
 
     //solo cargar un tablero
+  
+
     $smarty->assign('content_config','single_board');
-
-
+   
     if(isset($_GET['id'])) {
         
         $Board = new Board();   
-
         $data_board = (array) $Board->cargar_tableros($_GET['id'],'0');
         $multimedias_tableros =$Board->cargar_multimedias_de_tablero($_GET['id'],'asoc');
         $smarty->assign('board',$data_board);

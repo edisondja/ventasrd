@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-21 02:48:42
+/* Smarty version 5.1.0, created on 2024-06-17 01:28:30
   from 'file:footer.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6674cdea849f56_63411568',
+  'unifunc' => 'content_666f751e703f81_42023560',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,9 +20,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6674cdea849f56_63411568 (\Smarty\Template $_smarty_tpl) {
+function content_666f751e703f81_42023560 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
+$_smarty_tpl->getCompiled()->nocache_hash = '1831531865666f751e6fa899_26253707';
 ?>
+
             
             <?php if ($_smarty_tpl->getValue('content_config') == 'boards') {?>
               <nav aria-label="Page navigation example" >

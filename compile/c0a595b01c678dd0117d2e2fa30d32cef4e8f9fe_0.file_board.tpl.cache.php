@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-22 20:59:55
+/* Smarty version 5.1.0, created on 2024-06-17 01:28:44
   from 'file:board.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_66771f2bc8c5f6_47652985',
+  'unifunc' => 'content_666f752cce4162_64388125',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c0a595b01c678dd0117d2e2fa30d32cef4e8f9fe' => 
     array (
       0 => 'board.tpl',
-      1 => 1719082794,
+      1 => 1718478874,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,16 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_66771f2bc8c5f6_47652985 (\Smarty\Template $_smarty_tpl) {
+function content_666f752cce4162_64388125 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-?><div class="col-md-3"></div>
+$_smarty_tpl->getCompiled()->nocache_hash = '2082600361666f752cc0b583_94358061';
+?>
 
-<div class="col-sm-6" style='margin-bottom:15px;'>
+
+
+<div class="col-sm-3">
+</div>
+<div class="col-sm-5" style='margin-bottom:15px;'>
 
            <div class='card text-white bg-dark mb-3' id="board<?php echo $_smarty_tpl->getValue('tablero')['id_tablero'];?>
 ">

@@ -4,7 +4,16 @@
     require('../logic.php');
     
 
+    
     $libs = include("libs/connect_cdn.php");
+    $libs_string='';
+    foreach($libs as $lib){
+
+        $libs_string.=$lib."\r";
+
+    }
+
+
     $smarty = new Smarty();
     $smarty->setTemplateDir('../template/');
     $smarty->setConfigDir('../config');
@@ -33,14 +42,7 @@
     /*
         load cdns
     */
-    $libs_string='';
-    foreach($libs as $lib){
-
-        $libs_string.=$lib."\r";
-
-    }
-
-
+ 
     $smarty->assign('libs_cdn',$libs_string);
 
 ?>

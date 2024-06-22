@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-05-21 06:47:02
+/* Smarty version 5.1.0, created on 2024-06-21 02:48:03
   from 'file:C:\xampp\htdocs\ventasrd\vendor\smarty\smarty\src/debug.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_664c27466fc229_58967292',
+  'unifunc' => 'content_6674cdc314b6a3_79725320',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_664c27466fc229_58967292 (\Smarty\Template $_smarty_tpl) {
+function content_6674cdc314b6a3_79725320 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\vendor\\smarty\\smarty\\src';
 $_smarty_tpl->getSmarty()->getRuntime('Capture')->open($_smarty_tpl, '_smarty_debug', 'debug_output', null);?>
     <!DOCTYPE html>

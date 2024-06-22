@@ -7,12 +7,14 @@
         <a class="nav-link" style="cursor: pointer;"  data-bs-toggle="modal" data-bs-target="#enviar_correo">Correo Masivo</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">Usuarios</a>
+    <a class="nav-link" href="backcoffe.php?option=users">Usuarios</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Publicaciones</a>
+        <a class="nav-link" href="backcoffe.php?option=boards">Publicaciones</a>
     </li>
-
+    <li class="nav-item">
+    <a class="nav-link" href="backcoffe.php?option=config">Configuraciones</a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="#">Logout</a>
     </li>

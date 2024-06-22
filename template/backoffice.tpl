@@ -1,48 +1,23 @@
 
-<div class="container-fluid">
-<div class="row">
-    {include file='menu_backoffice.tpl'}
-    {include file='enviar_correo.tpl'}
-    <style>
-
-</style>
-
-<div class="col-md-8 col-12 content-container mx-auto">
-    <input type="search" class="form-control mb-4" placeholder="Busca lo que deseas">
-    <hr/>
-
-    <h3 style="color: aliceblue;">Buscar usuarios</h3>
+        {include file='back_office_components/menu_backoffice.tpl'}
+        {include file='back_office_components/enviar_correo.tpl'}
 
 
-    <table class="table table-dark table-striped">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Tipo de usuario</th>
-                <th>Foto</th>
-                <th>Block</th>
-                <th>Enviar Correo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Edison</td>
-                <td>De Jesus Abreu</td>
-                <td>edisondja@gmail.com</td>
-                <td>admin</td>
-                <td>Foto</td>
-                <td>Block</td>
-                <td>edisondja@gmail.com</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        
+        {if $option == 'usuarios'}  
 
-    
-</div>
-</div>
+            {include file='back_office_components/modulo_usuario.tpl'}
+
+        {else if $option=='publicaciones'}
+            <!-- Aqui se coloca el modulo de ver los posts de los usuarios-->
+
+        {else if $option=='configuraciones'}
+            
+            <!-- Aqui se coloca el modulo de ver los posts de los usuarios-->
+        
+
+        {/if}
+
 
 <style>
     .content-container {

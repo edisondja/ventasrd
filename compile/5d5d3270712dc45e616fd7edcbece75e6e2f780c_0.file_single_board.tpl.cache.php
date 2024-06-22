@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-21 02:49:02
+/* Smarty version 5.1.0, created on 2024-06-17 01:45:01
   from 'file:single_board.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6674cdfe408b94_31231516',
+  'unifunc' => 'content_666f78fd7e0030_98672208',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,9 +20,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6674cdfe408b94_31231516 (\Smarty\Template $_smarty_tpl) {
+function content_666f78fd7e0030_98672208 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-?><div class="col-md-3">
+$_smarty_tpl->getCompiled()->nocache_hash = '616410477666f78fd6e3762_33819824';
+?>
+<div class="col-md-3">
     <br/>
     <svg class="bd-placeholder-img rounded float-start" style="width:100%;display:none;"
          xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 200x200"
@@ -75,9 +77,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 
                     <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('multimedias_t'), 'multimedia');
-$foreach0DoElse = true;
+$foreach1DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('multimedia')->value) {
-$foreach0DoElse = false;
+$foreach1DoElse = false;
 ?>
 
                     <?php if ($_smarty_tpl->getValue('multimedia')['tipo_multimedia'] == 'imagen') {?>

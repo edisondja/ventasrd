@@ -23,15 +23,25 @@ Class User extends EncryptToken{
 
         function RegistrerUser(){
 
-            $type_user = 'pendiente';
+            $estado = $this->disable();
+            $tipo_usuario = 'normal';
 
             if($this->ExistUser($this->usuario)==true){
 
                 $clave = md5($this->clave);
                 $fecha = date('ymdis');
-                $sql = "insert into user(usuario,clave,email,sexo,foto_url,fecha_creacion,nombre,apellido,bio)VALUES(?,?,?,?,?,?,?,?,?,?)";
+                $sql="INSERT INTO
+                    USER (usuario,clave,
+                         email,sexo,
+                         foto_url,
+                         fecha_creacion,
+                         nombre,
+                         apellido,
+                         bio,estado,
+                         type_user)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?)";
                 $ready = $this->conection->prepare($sql);
-                $ready->bind_param('ssssssssss',
+                $ready->bind_param('sssssssssss',
                 $this->usuario,
                 $clave,
                 $this->email,
@@ -41,7 +51,8 @@ Class User extends EncryptToken{
                 $this->nombre,
                 $this->apellido,
                 $this->bio,
-                $type_user
+                $estado,
+                $tipo_usuario
                 );
                 $ready->execute();
                 $this->SendMailActivedAccount();
@@ -184,8 +195,6 @@ Class User extends EncryptToken{
         public function Login($user,$clave)
         
         {
-
-                
                 session_start();    
                 $clave = md5($clave);
                 $sql = "select * from user where email=? or usuario=? and clave=?";
@@ -204,6 +213,7 @@ Class User extends EncryptToken{
                     $_SESSION['usuario']= $data->usuario;
                     $_SESSION['foto_url'] = $data->foto_url;
                     $_SESSION['type_user']= $data->type_user;
+                    $_SESSION['estado_user'] = $data->estado;
                     
                     
                    $token=$this->EncryptUser($data->id_user,$data->usuario);
@@ -211,6 +221,7 @@ Class User extends EncryptToken{
                     $user_user = [
                             'token'=>$token,
                             'usuario'=>$data->usuario,
+                            'estado'=>$data->estado,
                             'nombre'=>$data->nombre,
                             'apellido'=>$data->apellido,
                             'foto_url'=>$data->foto_url,
@@ -275,42 +286,52 @@ Class User extends EncryptToken{
             return true;
           }
 
-
-
+          
         }
 
-        public function BuscarUsuarios($context,$config){
- 
-            $sql = "select * from user where nombre like ? || usuario like ? || emial=?";
+        public function BuscarUsuarios($context, $config) {
+            $sql = "SELECT * FROM user WHERE nombre LIKE ? OR usuario LIKE ? limit 50";
             $cargar = $this->conection->prepare($sql);
-            $search = "%".$context."%";
-            $cargar->bind_param('sss',$search,$search,$search);
-            $data = $cargar->get_result();
-
-            switch($config){
-
-                case 'asoc':
-
-                    return $data;
-
-                break;
-
-                case 'json':
-
-                    $data= json_encode($data);
-                    echo $data;
-
-                break;
-
+            
+            if (!$cargar) {
+                // Manejo de error en la preparación de la consulta
+                throw new Exception("Error preparando la consulta: " . $this->conection->error);
             }
-
+        
+            $search = "%" . $context . "%";
+            $cargar->bind_param('ss', $search, $search);
+            
+            $cargar->execute();
+            $result = $cargar->get_result();
+        
+            if ($result === false) {
+                // Manejo de error en la ejecución de la consulta
+                throw new Exception("Error ejecutando la consulta: " . $this->conection->error);
+            }
+        
+            $data = [];
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        
+            switch ($config) {
+                case 'asoc':
+                    return $data;
+        
+                case 'json':
+                    echo json_encode($data);
+                    break;
+        
+                default:
+                    throw new Exception("Configuración no válida: " . $config);
+            }
         }
 
 
         public function ActivarUsuario(){
 
             $type_user ='activo';
-            $sql = "update user set type_user";
+            $sql = "update user set estado=? and id_user=?";
 			$cargado = $this->conection->prepare($sql);
             $cargado->bind_param('si',$type_user,$this->id_user);
             $cargado->execute();
@@ -319,7 +340,7 @@ Class User extends EncryptToken{
         public function DesactivarUsuario(){
 
             $type_user ='inactivo';
-            $sql = "update user set type_user";
+            $sql = "update user set estado=? and id_user=?";
 			$cargado = $this->conection->prepare($sql);
             $cargado->bind_param('si',$type_user,$this->id_user);
             $cargado->execute();

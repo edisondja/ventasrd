@@ -10,8 +10,16 @@
 
  //$_POST = json_decode(file_get_contents("php://input"),true);
 
+  if(isset($_POST['action'])){
 
-  $action= $_POST['action'];
+    $action= $_POST['action'];
+
+  }else{
+
+    $action= $_GET['action'];
+
+  }
+
 
 
        switch($action){
@@ -29,10 +37,18 @@
             
         break;
 
+        case 'search_users':
+
+            $contex = $_GET['context'];
+            $config = $_GET['config'];
+            $user = new User();
+            $user->BuscarUsuarios($contex,$config);
+
+        break;
+
 
         case 'create_board':
-          
-
+        
             $board = new Board();
             $board->description = $_POST['description'];
             $board->imagen_tablero= '';
@@ -43,13 +59,11 @@
 
         case 'drop_board':
 
-            
             $board = new Board();
             $board->board_id= $_POST['id_board'];
             $board->id_usuario = $_POST['id_user'];
             $board->desactivar_tablero();
-
-
+            
         break;
 
         case 'update_board':

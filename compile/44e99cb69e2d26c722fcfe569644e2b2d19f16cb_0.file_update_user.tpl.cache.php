@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-21 02:48:41
+/* Smarty version 5.1.0, created on 2024-06-17 01:28:29
   from 'file:update_user.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6674cde9e12838_33979993',
+  'unifunc' => 'content_666f751de7b8c6_26708884',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,9 +20,11 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6674cde9e12838_33979993 (\Smarty\Template $_smarty_tpl) {
+function content_666f751de7b8c6_26708884 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
-?><!-- Modal -->
+$_smarty_tpl->getCompiled()->nocache_hash = '75613423666f751de76201_92981881';
+?>
+<!-- Modal -->
 <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content ">
