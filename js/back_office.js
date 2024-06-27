@@ -10,6 +10,8 @@ var config = {
     }};
 
 
+    BuscarUsuarios('');
+
     var btn = document.querySelector('#flexSwitchCheckDefault');
 /*
 window.setInterval(()=>{
@@ -38,7 +40,8 @@ var token_get = localStorage.getItem('token');
 
     function BuscarUsuarios(contexto){
 
-        
+        let registros = '';
+        let tabla = '';
         let FormDatas = new FormData();
         FormDatas.append('action','search_users');
         FormDatas.append('config','json');
@@ -53,51 +56,110 @@ var token_get = localStorage.getItem('token');
 
         axios.get(url.toString(),config).then(data=>{
                         
+                      registros = data.data;
+
+                      registros.forEach(data=>{
+
                         console.log(data);
+                        tabla+=tabla_usuario(data);
+                 
+                        document.getElementById("data_usuario").innerHTML=tabla;
+                        AgregarEventoSwitch();
+
+            
+                    });
+            
+            
                         
                     }).catch(error=>{
 
                             console.log(error);
-
                     });
+
+
+  
 
     }
 
 
-    function DesactivarUsuario(id_usaurio){
+    function DesactivarUsuario(id_usuario){
 
             let FormDatas = new FormData();
             FormDatas.append('action','disable_user');
             FormDatas.append('id_user',id_usuario);
             let api_user =`${get_domain}/controllers/actions_board.php`;
 
-            axios.get(api_user,
+            axios.post(api_user,
                         FormDatas,
-                        headers).then(data=>{
+                        config).then(data=>{
                             
-                            console.log(data);
-                            
+                            alertify.message(data.data);
+
                         }).catch(error=>{
 
+                            alertify.message("No se pudo desactivar el usuario");
+
                         });
+    }
+
+
+    function  AgregarEventoSwitch(){
+
+
+        let asignar_switch = document.querySelectorAll('.form-check-input');
+
+        
+        asignar_switch.forEach(event=>{
+
+
+                event.addEventListener('click',(object)=>{
+
+                    alertify.confirm('Desactivar',`Estas seguro que deseas
+                        desactivar este usuario?
+                    `,function(){
+
+                        
+                        if(object.target.checked==true){
+
+                            ActivarUsuario(object.target.value);
+                           // alert(object.target.checked+' activar');
+                        }else{
+
+                            //alert(object.target.checked+' desactivar');
+                            DesactivarUsuario(object.target.value);
+
+                        }
+
+                    },function(){});
+                     
+
+                });
+
+
+        });
 
 
     }
 
+    
+    function Cargar5Usuarios(){
+        
+
+    }
 
 
-    function ActivarUsuario(id_usaurio){
+    function ActivarUsuario(id_user){
 
         let FormDatas = new FormData();
         FormDatas.append('action','enable_user');
-        FormDatas.append('id_user',id_usuario);
+        FormDatas.append('id_user',id_user);
         let api_user =`${get_domain}/controllers/actions_board.php`;
 
-        axios.get(api_user,
+        axios.post(api_user,
                     FormDatas,
-                    headers).then(data=>{
+                    config).then(data=>{
                         
-                        console.log(data);
+                        alertify.message(data.data);
                         
                     }).catch(error=>{
 
@@ -106,21 +168,39 @@ var token_get = localStorage.getItem('token');
 
 
     function tabla_usuario(data){
-            
-        return `<tr>
+        
+        let Row =
+         `<tr>
            <td>${data.nombre}</td>
                 <td>${data.nombre}</td>
                 <td>${data.email}</td>
                 <td>${data.type_user}</td>
                 <td><img class="imagenPerfil" src="${get_domain}/${data.foto_url}"/></td>
                 <td>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Bloquear a ${data.nombre}</label>
+                <div class="form-check form-switch">`;
+                if(data.estado=='activo'){
+
+                 Row+=`<input class="form-check-input" 
+                    type="checkbox" role="switch" checked=true  
+                    value="${data.id_user}"/>
+                    <label class="form-check-label" 
+                    for="flexSwitchCheckDefault">Bloquear a ${data.nombre}</label>`;
+                
+                }else{
+
+                    Row+=`<input class="form-check-input" 
+                    type="checkbox" role="switch" 
+                    value="${data.id_user}"/>
+                    <label class="form-check-label" 
+                    for="flexSwitchCheckDefault">Bloquear a ${data.nombre}</label>`;
+                }
+                Row+=`
                 </div>
                 </td>
-                <td>edisondja@gmail.com</td>
+                <td>${data.email}</td>
             </tr>`;
+
+            return Row;
 
     }
 

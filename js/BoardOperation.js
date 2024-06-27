@@ -47,7 +47,6 @@ window.onload=function(){
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
                         }}).then(info=>{
                 
-
                                 console.log(info);
                                 //alertify.message('Cambios guardados con exito');
                         
@@ -167,9 +166,25 @@ window.onload=function(){
         axios.post(`controllers/actions_board.php`,FormDatas).then(data=>{
 
 
-            location.href=dominio;
-            localStorage.setItem('token',data.data.token);
-            localStorage.setItem('usuario',data.data.usuario);
+        
+
+            if(data.data.estado=='activo'){
+            
+                localStorage.setItem('token',data.data.token);
+                localStorage.setItem('usuario',data.data.usuario);
+                location.href=dominio;
+
+            }else if(data.data.estado=='inactivo'){
+
+                alertify.confirm('Notifiación',`Estimado usuario lamentamos 
+                informarle que su cuenta esta inactiva, ya si su cuenta fue
+                activada anteriorante, significa que fue inactivada por
+                la administración.
+                
+                `,function(){},function(){});
+
+                Singout_f('no_redirect');
+            }
 
             //alert(localStorage.getItem('token'));
             /*localStorage.setItem('name',token);
@@ -406,28 +421,39 @@ window.onload=function(){
     });
 
 
+
+    function Singout_f(config='redirect'){
+
+        localStorage.clear();
+        let FormDatas = new FormData();
+        FormDatas.append('action','sigout');
+
+        axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
+                console.log(data.data);
+
+            // alertify.message('cerrando sesión');
+                localStorage.clear();
+                if(config=='redirect'){
+                    
+                    location.href=dominio;      
+
+                }
+        }).catch(error=>{
+
+            alertify.warning(error);
+            console.log(error);
+
+        });
+    }
+
+
     var singout = document.querySelector('#singout');
 
     if(singout){
 
             singout.addEventListener('click',function(){
         
-                localStorage.clear();
-                let FormDatas = new FormData();
-                FormDatas.append('action','sigout');
-
-                axios.post(`${dominio}/controllers/actions_board.php`,FormDatas).then(data=>{
-                        console.log(data.data);
-
-                    // alertify.message('cerrando sesión');
-                        localStorage.clear();
-                        location.href=dominio;      
-                }).catch(error=>{
-
-                    alertify.warning(error);
-                    console.log(error);
-
-                });
+                Singout_f();
             });
 
     }

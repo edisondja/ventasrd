@@ -46,6 +46,23 @@
 
         break;
 
+        
+        case 'disable_user':
+
+            $user = new User();
+            $user->id_user = $_POST['id_user'];
+            $user->DesactivarUsuario();
+
+        break;
+
+        case 'enable_user':
+
+            $user = new User();
+            $user->id_user = $_POST['id_user'];
+            $user->ActivarUsuario();
+
+
+        break;
 
         case 'create_board':
         

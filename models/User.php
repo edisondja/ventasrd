@@ -330,20 +330,23 @@ Class User extends EncryptToken{
 
         public function ActivarUsuario(){
 
-            $type_user ='activo';
-            $sql = "update user set estado=? and id_user=?";
+            $estado ='activo';
+            $sql = "update user set estado=? where id_user=?";
 			$cargado = $this->conection->prepare($sql);
-            $cargado->bind_param('si',$type_user,$this->id_user);
+            $cargado->bind_param('si',$estado,$this->id_user);
             $cargado->execute();
+
+            echo "Usuario activado";
         }
 
         public function DesactivarUsuario(){
 
-            $type_user ='inactivo';
-            $sql = "update user set estado=? and id_user=?";
+            $estado ='inactivo';
+            $sql = "update user set estado=? where id_user=?";
 			$cargado = $this->conection->prepare($sql);
-            $cargado->bind_param('si',$type_user,$this->id_user);
+            $cargado->bind_param('si',$estado,$this->id_user);
             $cargado->execute();
+            echo "Usuario desactivado";
 
         }
 
