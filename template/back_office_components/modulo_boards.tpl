@@ -29,29 +29,29 @@
 </style>
 
 <div class="col-md-8 col-12 content-container mx-auto tabla_buscar">
-<h3 style="color: aliceblue;">Buscar usuarios</h3>
-        <input type="hidden" id="modulo_select" value="users">
-  <!-- Configuracion de modulo para saber por que criterio se esta buscando
+<h3 style="color: aliceblue;">Buscar publicaciones</h3>
+    <!-- Configuracion de modulo para saber por que criterio se esta buscando
         desde el archivo back_office.js pueda detectar la configuracion
         para saber que datas filtrar -->
-    <input type="hidden" id="modulo_select" value="users">
+    <input type="hidden" id="modulo_select" value="boards">
     <input type="search" class="form-control mb-4" id="search" placeholder="Busca lo que deseas">
-
+    
 
     <table class="table table-dark table-float-header ">
-    <thead>
+    <thead >
         <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Email</th>
-            <th>Estado de usuario</th>
+        
+            <th>Descripcion</th>
+            <th>Portada</th>
+            <th>Fecha publicacion</th>
+            <th>Estado</th>
             <th>Foto</th>
+            <th>Usuario</th>
             <th>Block</th>
-
             
         </tr>
     </thead>
-            <tbody id="data_usuario" class="tabla_buscar"> 
+            <tbody id="data_boards" class="tabla_buscar"> 
                 
             </tbody>
     </table>

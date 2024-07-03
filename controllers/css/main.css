@@ -192,7 +192,7 @@
 }
 
 .menu-container {
-    background-color: #1c1d1e;
+    background-color: #0c0c0e;
     padding: 15px;
     border-radius: 5px;
     color: white;
@@ -209,8 +209,8 @@
     transition: background-color 0.3s, color 0.3s;
 }
 .nav-link:hover {
-    background-color: #495057;
-    color: #f8f9fa;
+    background-color: #dcdfe2;
+    color: #1e1e1f;
 }
 .nav-link.active {
     background-color: #495057;
@@ -231,4 +231,75 @@
 
 }
 
+.menu-fijo {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    width: 25%;
+    z-index: 500;
+    padding-left: 15px;
+    
 
+}
+.menu-fijo .list-group-item {
+    background-color: #212222;
+    color: white;
+}
+.menu-fijo .list-group-item:hover {
+    background-color: #202325;
+}
+
+
+@media (max-width: 768px) {
+    .menu-fijo {
+        display: none;
+    }
+}
+
+ul,li{
+
+    cursor: pointer;
+    background: #121313;
+}
+
+.table-float-header {
+    overflow-y: auto;
+    height: 400px; /* Altura de la tabla con scroll */
+    display: block;
+}
+
+.table-float-header thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #343a40; /* Color de fondo de la cabecera */
+}
+
+.table-float-header th{
+    background-color: #343a40; /* Asegúrate de que el fondo sea el mismo que el de la tabla */
+    color: #ffffff; /* Color del texto */
+}
+
+
+
+
+.table-float-header thead tr {
+    display: table;
+    width:  100%;
+    table-layout: fixed;
+}
+
+
+
+
+.table-float-header tbody {
+    display: table;
+    width:  100%;
+
+}
+
+
+
+.table-float-header thead, .table-float-header thead {
+    display: block;
+}

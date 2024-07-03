@@ -64,7 +64,7 @@ var token_get = localStorage.getItem('token');
                         tabla+=tabla_usuario(data);
                  
                         document.getElementById("data_usuario").innerHTML=tabla;
-                        AgregarEventoSwitch();
+                        AgregarEventoSwitch('users');
 
             
                     });
@@ -103,7 +103,7 @@ var token_get = localStorage.getItem('token');
     }
 
 
-    function  AgregarEventoSwitch(){
+    function  AgregarEventoSwitch(config){
 
 
         let asignar_switch = document.querySelectorAll('.form-check-input');
@@ -121,13 +121,22 @@ var token_get = localStorage.getItem('token');
                         
                         if(object.target.checked==true){
 
-                            ActivarUsuario(object.target.value);
+                            if(config=='users'){
+                                ActivarUsuario(object.target.value);
+                            }else if($config=='boards'){
+                                //desactivar board
+                            }
                            // alert(object.target.checked+' activar');
                         }else{
 
-                            //alert(object.target.checked+' desactivar');
-                            DesactivarUsuario(object.target.value);
+                            if(config=='users'){
 
+                                //alert(object.target.checked+' desactivar');
+                                DesactivarUsuario(object.target.value);
+
+                            }else if($config=='boards'){
+                                //desactivar board
+                            }
                         }
 
                     },function(){});
@@ -142,11 +151,6 @@ var token_get = localStorage.getItem('token');
     }
 
     
-    function Cargar5Usuarios(){
-        
-
-    }
-
 
     function ActivarUsuario(id_user){
 
@@ -172,7 +176,7 @@ var token_get = localStorage.getItem('token');
         let Row =
          `<tr>
            <td>${data.nombre}</td>
-                <td>${data.nombre}</td>
+                <td>${data.apellido}</td>
                 <td>${data.email}</td>
                 <td>${data.type_user}</td>
                 <td><img class="imagenPerfil" src="${get_domain}/${data.foto_url}"/></td>
@@ -197,7 +201,6 @@ var token_get = localStorage.getItem('token');
                 Row+=`
                 </div>
                 </td>
-                <td>${data.email}</td>
             </tr>`;
 
             return Row;
@@ -239,7 +242,6 @@ var token_get = localStorage.getItem('token');
 
 
 
-
     var buscar = document.querySelector('#search');
 
 
@@ -247,16 +249,132 @@ var token_get = localStorage.getItem('token');
 
         let valor = data.target.value;
 
-        BuscarUsuarios(valor);
+        /*La funcion detectar modulo captura
+            el valode configuracion del modulo
+            actual que se esta actulizando
+            para asi usar la barra de busqueda
+            para diferentes entidades
+        */
+
+        switch(detectar_modulo()){
+
+            case 'users':
+
+                BuscarUsuarios(valor);
+
+            break;
+
+
+            case 'boards':
+
+                BuscarTableros(valor);
+
+            break;
+
+
+            case 'config':
+
+
+            break;
+
+        }
 
 
     });
 
 
+    function detectar_modulo(){
+
+        let mod = document.querySelector('#modulo_select').value;
+
+        return mod;
+    }
+
+    function BuscarTableros(contexto){
+
+
+        let registros = '';
+        let tabla = '';
+        let FormDatas = new FormData();
+        FormDatas.append('action','ssearch_boards');
+        FormDatas.append('config','json');
+        FormDatas.append('context',contexto);
+        let api_user = `${get_domain}/controllers/actions_board.php`;
+
+        let url = new URL(api_user);
+        url.searchParams.append('action', 'search_users');
+        url.searchParams.append('config', 'json');
+        url.searchParams.append('context', contexto);
+
+        axios.get(url.toString(),config).then(data=>{
+                        
+                      registros = data.data;
+
+                      registros.forEach(data=>{
+
+                        console.log(data);
+                        tabla+=tabla_board(data);
+                 
+                        document.getElementById("data_boards").innerHTML=tabla;
+                        AgregarEventoSwitch('boards');
+
+            
+                    });
+            
+            
+                        
+                    }).catch(error=>{
+
+                            console.log(error);
+                    });
 
 
 
+    }
 
+
+    function tabla_board(data) {
+
+        
+        let Row = `
+                <tr>
+                    <td>${data.descripcion}</td>
+                    <td><img class="imagenPerfil" src="${get_domain}/${data.imagen_tablero}" /></td>
+                    <td>${data.fecha_creacion}</td>
+                    <td>${data.estado}</td>
+                    <td><img class="imagenPerfil" src="${get_domain}/${data.foto_url}" /></td>
+                    <td>${data.usuario}</td>
+                    <td>
+                        <div class="form-check form-switch">`;
+                        
+            if (data.estado == 'activo') {
+                Row += `<input class="form-check-input" 
+                                type="checkbox" 
+                                role="switch" 
+                                checked=true  
+                                value="${data.id_tablero}" />
+                            <label class="form-check-label" 
+                                for="flexSwitchCheckDefault">
+                                Bloquear a ${data.nombre}
+                            </label>`;
+            } else {
+                Row += `<input class="form-check-input" 
+                                type="checkbox" 
+                                role="switch" 
+                                value="${data.id_tablero}" />
+                            <label class="form-check-label" 
+                                for="flexSwitchCheckDefault">
+                                Bloquear a ${data.nombre}
+                            </label>`;
+            }
+            
+            Row += `</div>
+                    </td>
+                </tr>`;
+            
+        return Row;
+    }
+    
 
 
 

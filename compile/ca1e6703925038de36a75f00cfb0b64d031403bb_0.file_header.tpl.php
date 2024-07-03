@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-22 21:01:58
+/* Smarty version 5.1.0, created on 2024-06-28 05:38:00
   from 'file:template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_66771fa604acc0_20627361',
+  'unifunc' => 'content_667e301827dbd1_62642390',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca1e6703925038de36a75f00cfb0b64d031403bb' => 
     array (
       0 => 'template/header.tpl',
-      1 => 1719082916,
+      1 => 1719545878,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
     'file:login.tpl' => 1,
     'file:update_user.tpl' => 1,
+    'file:menu.tpl' => 1,
     'file:board.tpl' => 1,
     'file:single_board.tpl' => 1,
     'file:profile.tpl' => 1,
@@ -28,7 +29,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_66771fa604acc0_20627361 (\Smarty\Template $_smarty_tpl) {
+function content_667e301827dbd1_62642390 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -170,7 +171,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
       </nav>
       <div class="container-fluid">
      
-            <div class="row" id="boards">  <hr/>
+              <hr/>
               <?php $_smarty_tpl->renderSubTemplate("file:login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
               <?php $_smarty_tpl->renderSubTemplate("file:update_user.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
@@ -227,8 +228,16 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
                       </div>
                     </div>
                   </div>
-                  
-          
+                   <!-- Incluir menu -->
+
+
+                   <?php if ($_smarty_tpl->getValue('content_config') !== "backoffice") {?>
+
+                    <?php $_smarty_tpl->renderSubTemplate('file:menu.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+
+                   <?php }?>
+
                     <?php if ($_smarty_tpl->getValue('content_config') == 'boards') {?>
                 
 

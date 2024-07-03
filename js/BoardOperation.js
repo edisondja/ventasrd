@@ -184,6 +184,12 @@ window.onload=function(){
                 `,function(){},function(){});
 
                 Singout_f('no_redirect');
+            }else{
+
+                alertify.confirm('Notifiación',`Usuario
+                o contraseña incorrecto.
+                `,function(){},function(){});
+
             }
 
             //alert(localStorage.getItem('token'));

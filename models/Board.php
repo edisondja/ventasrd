@@ -11,7 +11,8 @@
         public string $imagen_tablero;
         public string $id_usuario;
         public bool $portada_board = false;
- 
+
+
         public $conection;
     
     
@@ -60,15 +61,15 @@
 
 
             $fecha = date('ymdis');
-            $tipo_tablero = $this->enable();
+            $estado = $this->enable();
 
             //inactivo es cuando no se pueden ver para los usuarios
 
 			$this->conection; 
 
-			$sql = "insert into tableros(descripcion,fecha_creacion,imagen_tablero,id_usuario,tipo_tablero)values(?,?,?,?,?)";
+			$sql = "insert into tableros(descripcion,fecha_creacion,imagen_tablero,id_usuario,estado)values(?,?,?,?,?)";
 			$guardar = $this->conection->prepare($sql);
-			$guardar->bind_param('sssis',$this->description,$fecha,$this->imagen_tablero,$this->id_usuario,$tipo_tablero);
+			$guardar->bind_param('sssis',$this->description,$fecha,$this->imagen_tablero,$this->id_usuario,$estado);
 			$guardar->execute() or die("no se puedo guardar el tablero");
             $last_id = $this->conection->insert_id;
             $guardar->close();
@@ -111,15 +112,42 @@
 
 	    }
 
-        public function desactivar_tablero(){
-            $this->conection; 
-            $estado =$this->disable();
-            $sql = "update tableros set tipo_tablero=? where id_usuario=? and id_tablero=?";
+        private function actualizar_estado_board($estado){
+
+            /*Fragmento utilizado para cambiar los estados de los tableros */
+            $sql = "update tableros set estado=? where id_usuario=? and id_tablero=?";
             $guardar  = $this->conection->prepare($sql);
             $guardar->bind_param('sii',$estado,$this->id_usuario,$this->board_id);
             $guardar->execute() or die("no se puedo guardar el tablero");
             $guardar->close();
+
         }
+
+
+        public function desactivar_tablero(){
+            $this->conection; 
+            $estado =$this->disable();
+            $this->actualizar_estado_board($estado);
+          
+        }
+
+
+        public function bloquear_tablero(){
+            $this->conection; 
+            $estado =$this->banned();
+            $this->actualizar_estado_board($estado);
+
+        }
+
+
+        public function activar_tablero(){
+            $this->conection; 
+            $estado =$this->enable();
+            $this->actualizar_estado_board($estado);
+
+        }
+
+
 
         public function actualizar_tablero($id_tablero) {
             $fecha = date('ymdis');
@@ -156,29 +184,45 @@
         }
         
 
-        public  function cargar_tableros($id_tablero,$config='json'){
-
-		    $this->conection;
+        public function cargar_tableros($id_tablero, $config = 'json') {
+            // Asumimos que $this->conection es una instancia válida de mysqli
+            $this->conection;
             $estado = $this->enable();
-			$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where id_tablero=? and tipo_tablero=?";
-			$cargado = $this->conection->prepare($sql);
-			$cargado->bind_param('is',$id_tablero,$estado);
-			$cargado->execute();
-			$data = $cargado->get_result();
-            $data = mysqli_fetch_object($data);
+        
+            $sql = "SELECT * FROM tableros INNER JOIN user ON tableros.id_usuario = user.id_user WHERE id_tablero = ? AND  tableros.estado = ?";
+            $cargado = $this->conection->prepare($sql);
+        
+            if ($cargado === false) {
+                // Manejo de errores de preparación
+                die('Error en la preparación de la consulta: ' . $this->conection->error);
+            }
+        
+            $cargado->bind_param('is', $id_tablero, $estado);
+        
+            if ($cargado->execute() === false) {
+                // Manejo de errores de ejecución
+                die('Error en la ejecución de la consulta: ' . $cargado->error);
+            }
+        
+            $result = $cargado->get_result();
+            if ($result === false) {
+                // Manejo de errores de obtención de resultados
+                die('Error al obtener el resultado: ' . $cargado->error);
+            }
+        
+            $data = $result->fetch_object();
             $cargado->close();
-			if($config=='json'){
-				echo json_encode($data);
-				
-			}else{
-
-				return $data;
-
-			}
-			
-	    }
+        
+            if ($config == 'json') {
+                echo json_encode($data);
+            } else {
+                return $data;
+            }
+        }
+        
     
       public function paginar_tableros($inicio){
+        $estado = $this->enable();
 
         $limite = 8;
 
@@ -192,38 +236,53 @@
             $inicio = ($fin - $limite);
         }
 
-            $sql = "select * from tableros limit ?,?";
+            $sql = "select * from tableros where estado=? limit ?,?";
             $cargar = $this->conection->prepare($sql);
-            $cargar->bind_param('ii',$inicio,$fin);
+            $cargar->bind_param('sii',$estado,$inicio,$fin);
             $cargar->execute();
             $data = $cargar->get_result();
             return $data;
 
       }
 
-      function search_tablero($texto){
-
-            global $conexion;
+      function search_tablero($texto, $config = 'asoc') {
+        global $conexion;
         
-            $tipo_tablero='activo';
+            $estado = $this->enable();
             $texto = "%$texto%";
             
-    
-            $data= $this->conection->prepare("select * from tableros inner join
-             user on tableros.id_usuario=user.id_user where titulo like ? || descripcion like ? and tipo_tablero=? limit 20");
-            $data->bind_param('sss',$texto,$texto,$tipo_tablero);
+            // Prepara la consulta SQL
+            $data = $this->conection->prepare("
+                SELECT * 
+                FROM tableros 
+                INNER JOIN user ON tableros.id_usuario = user.id_user 
+                WHERE (tableros.titulo LIKE ? OR tableros.descripcion LIKE ?) 
+                AND tableros.estado = ? 
+                LIMIT 20
+            ");
+            
+            // Enlaza los parámetros a la consulta
+            $data->bind_param('sss', $texto, $texto, $estado);
             $data->execute();
+            
+            // Obtiene el resultado
             $resp = $data->get_result();
             $data->close();
+            
+            // Procesa el resultado
             $datos = [];
-            foreach ($resp as $key) {
-    
+            while ($key = $resp->fetch_assoc()) {
                 $datos[] = $key;
             }
             
-            return $datos;
-    
+            // Devuelve el resultado en el formato especificado
+            if ($config !== 'json') {
+                return $datos;
+            } else {
+                echo json_encode($datos);
+            }
         }
+        
 
 
         function asignar_metadatos_a_multimedia($id_asignar,$texto,$precio,$metodo_de_pago){
@@ -277,7 +336,7 @@
                 $sql="insert into asignar_multimedia_t(id_tablero,
                 ruta_multimedia,
                 tipo_multimedia,
-                type_media)values(?,?,?,?)";
+                estado)values(?,?,?,?)";
                 //echo $id_tablero . ", " . $guardar_como . ", " . $tipo_asset . ", " . $estado;
                 $guardar = $this->conection->prepare($sql);
                 $guardar->bind_param('isss',$id_tablero,$guardar_como,$tipo_asset,$estado);
@@ -293,12 +352,12 @@
 			
 			if($id_usuario=='general'){
 				
-				$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where tableros.tipo_tablero=? order by id_tablero desc limit 20";
+				$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where tableros.estado=? order by id_tablero desc limit 20";
 				$cargado = $this->conection->prepare($sql);
                 $cargado->bind_param('s',$estatus);		
 			}else{
 					
-				$sql = "select * from tableros  inner join user on tableros.id_usuario=user.id_user where id_usuario=? and tableros.tipo_tablero=? order by id_tablero desc limit 20";
+				$sql = "select * from tableros  inner join user on tableros.id_usuario=user.id_user where id_usuario=? and tableros.estado=? order by id_tablero desc limit 20";
 				$cargado = $this->conection->prepare($sql);
 				$cargado->bind_param('is',$id_usuario,$estatus);		
 			}
@@ -326,7 +385,7 @@
 
             $estado =$this->disable();
             $this->conection;
-            $sql = "update asignar_multimedia_t set type_media=? where id_asignar=?";
+            $sql = "update asignar_multimedia_t set estado=? where id_asignar=?";
             $eliminar = $this->conection->prepare($sql);
             $eliminar->bind_param('si',$estado,$id_multimedia);
             $eliminar->execute();
@@ -336,7 +395,7 @@
      function cargar_multimedias_de_tablero($id_tablero,$config='json'){
                 $this->conection;
                 $estado =$this->enable();
-                $sql = "select * from asignar_multimedia_t where id_tablero=? and type_media=?";
+                $sql = "select * from asignar_multimedia_t where id_tablero=? and estado=?";
                 $cargar = $this->conection->prepare($sql);
                 $cargar->bind_param('is',$id_tablero,$estado);
                 $cargar->execute();

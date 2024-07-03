@@ -108,7 +108,7 @@
       </nav>
       <div class="container-fluid">
      
-            <div class="row" id="boards">  <hr/>
+              <hr/>
               {include file="login.tpl"}
               {include file="update_user.tpl"}
 
@@ -161,8 +161,15 @@
                       </div>
                     </div>
                   </div>
-                  
-          
+                   <!-- Incluir menu -->
+
+
+                   {if $content_config!=="backoffice"}
+
+                    {include file='menu.tpl'}
+
+                   {/if}
+
                     {if $content_config=='boards'}
                 
 

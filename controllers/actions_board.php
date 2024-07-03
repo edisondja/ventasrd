@@ -6,7 +6,6 @@
   require '../models/Coment.php';
   require 'Core.php';
 
- 
 
  //$_POST = json_decode(file_get_contents("php://input"),true);
 
@@ -46,7 +45,39 @@
 
         break;
 
+
+        case 'search_boards':
+
+            $context = $_GET['context'];
+            $config = $_GET['config'];
+            $Board = new Board();
+            $Board->search_tablero($context,$config);
+
+
+        break;
+
+
+        case 'block_board':
+            
+            $board = new Board();
+            $board->board_id= $_POST['id_board'];
+            $board->id_usuario = $_POST['id_user'];
+            $board->bloquear_tablero();
+
+
+        break;
         
+
+        case 'active_board':
+
+            $board = new Board();
+            $board->board_id= $_POST['id_board'];
+            $board->id_usuario = $_POST['id_user'];
+            $board->bloquear_tablero(); 
+
+        break;
+
+
         case 'disable_user':
 
             $user = new User();
@@ -60,7 +91,6 @@
             $user = new User();
             $user->id_user = $_POST['id_user'];
             $user->ActivarUsuario();
-
 
         break;
 

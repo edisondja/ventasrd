@@ -53,6 +53,14 @@ class Prop{
 
     }
 
+
+    public function banned(){
+
+        return 'baneado';
+
+    }
+
+
 }
 
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-22 21:02:18
+/* Smarty version 5.1.0, created on 2024-06-30 23:55:32
   from 'file:backoffice.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_66771fba6bfe21_63589423',
+  'unifunc' => 'content_6681d454578410_38313222',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b845d6946b1bc01f4d228e229546d0b4d314524d' => 
     array (
       0 => 'backoffice.tpl',
-      1 => 1719082753,
+      1 => 1719784421,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,14 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:back_office_components/menu_backoffice.tpl' => 1,
     'file:back_office_components/enviar_correo.tpl' => 1,
     'file:back_office_components/modulo_usuario.tpl' => 1,
+    'file:back_office_components/modulo_boards.tpl' => 1,
   ),
 ))) {
-function content_66771fba6bfe21_63589423 (\Smarty\Template $_smarty_tpl) {
+function content_6681d454578410_38313222 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?>
+
+<div class="row">
         <?php $_smarty_tpl->renderSubTemplate('file:back_office_components/menu_backoffice.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
         <?php $_smarty_tpl->renderSubTemplate('file:back_office_components/enviar_correo.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
@@ -40,6 +43,9 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 
         <?php } elseif ($_smarty_tpl->getValue('option') == 'publicaciones') {?>
             <!-- Aqui se coloca el modulo de ver los posts de los usuarios-->
+            <?php $_smarty_tpl->renderSubTemplate('file:back_office_components/modulo_boards.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+
 
         <?php } elseif ($_smarty_tpl->getValue('option') == 'configuraciones') {?>
             
@@ -47,6 +53,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
         
 
         <?php }?>
+
+</div>
 
 
 <style>

@@ -1,4 +1,6 @@
 
+
+<div class="row">
         {include file='back_office_components/menu_backoffice.tpl'}
         {include file='back_office_components/enviar_correo.tpl'}
 
@@ -10,6 +12,8 @@
 
         {else if $option=='publicaciones'}
             <!-- Aqui se coloca el modulo de ver los posts de los usuarios-->
+            {include file='back_office_components/modulo_boards.tpl'}
+
 
         {else if $option=='configuraciones'}
             
@@ -17,6 +21,8 @@
         
 
         {/if}
+
+</div>
 
 
 <style>

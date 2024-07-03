@@ -63,6 +63,7 @@ CREATE TABLE tableros (
   id_tablero INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(100),
   descripcion TEXT,
+  estado VARCHAR(15),
   fecha_creacion DATETIME,
   id_usuario INT,
   tipo_tablero VARCHAR(10),
