@@ -89,7 +89,7 @@ Class User extends EncryptToken{
 
 
 
-        function get_info_user(){
+        function get_info_user($config='json'){
 
 
            // $this->DecodeToken($jwt)
@@ -99,9 +99,20 @@ Class User extends EncryptToken{
             $cargado->execute();
             $user = $cargado->get_result();
             $user = mysqli_fetch_object($user);
-            $user  = json_encode($user);
-              
-            echo $user;
+            if($config=='json'){
+
+                $user  = json_encode($user);
+                echo $user;
+
+            }else{
+
+                /*Devuelve un objecto de con los
+                 datos del usuario logueado*/
+                 
+                return $user;
+
+            }
+        
             
         }
 

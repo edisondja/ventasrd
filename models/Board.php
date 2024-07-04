@@ -11,15 +11,17 @@
         public string $imagen_tablero;
         public string $id_usuario;
         public bool $portada_board = false;
+        public User $CapturarUsuario;
 
 
         public $conection;
     
     
 
-        function __construct(){
+        function __construct(){ 
 
-               $this->SetConection();
+                $this->CapturarUsuario= new User();
+                $this->SetConection();
         }
 
         public function detectar_imagen_portada($portada,$id_tablero,$archivo_temp){
@@ -125,25 +127,42 @@
 
 
         public function desactivar_tablero(){
+
             $this->conection; 
-            $estado =$this->disable();
-            $this->actualizar_estado_board($estado);
-          
+            $this->actualizar_estado_board($this->disable());
+            echo "tablero desactivado";
         }
 
 
         public function bloquear_tablero(){
-            $this->conection; 
-            $estado =$this->banned();
-            $this->actualizar_estado_board($estado);
+
+            $this->CapturarUsuario->id_user = $this->id_usuario;
+
+
+            $usaurio = $this->CapturarUsuario->get_info_user('asoc');
+            
+            if($usaurio->type_user=='admin'){
+
+                /*
+                    Si el usuario que esta intentando bloquear este tablero es admin se
+                    esta accion de bloqueo sera iniciada
+                */
+
+                $this->conection; 
+                $this->actualizar_estado_board($this->disable());
+                echo "tablero bloqueado";
+
+            }
+
+           
 
         }
 
 
         public function activar_tablero(){
             $this->conection; 
-            $estado =$this->enable();
-            $this->actualizar_estado_board($estado);
+            $this->actualizar_estado_board($this->enable());
+            echo "tablero activado";
 
         }
 
@@ -253,11 +272,12 @@
             
             // Prepara la consulta SQL
             $data = $this->conection->prepare("
-                SELECT * 
-                FROM tableros 
-                INNER JOIN user ON tableros.id_usuario = user.id_user 
-                WHERE (tableros.titulo LIKE ? OR tableros.descripcion LIKE ?) 
-                AND tableros.estado = ? 
+                SELECT t.descripcion,t.fecha_creacion,t.tipo_tablero,
+                t.imagen_tablero,u.foto_url,u.usuario,t.estado,t.id_tablero
+                FROM tableros as t
+                INNER JOIN user as u ON t.id_usuario = u.id_user 
+                WHERE (t.titulo LIKE ? OR t.descripcion LIKE ?) 
+                AND t.estado = ? 
                 LIMIT 20
             ");
             

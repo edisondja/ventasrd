@@ -123,9 +123,12 @@ var token_get = localStorage.getItem('token');
 
                             if(config=='users'){
                                 ActivarUsuario(object.target.value);
-                            }else if($config=='boards'){
-                                //desactivar board
-                            }
+
+                            }else if(config=='boards'){
+
+                                ActivarTablero(object.target.value);
+
+                            }   
                            // alert(object.target.checked+' activar');
                         }else{
 
@@ -134,8 +137,10 @@ var token_get = localStorage.getItem('token');
                                 //alert(object.target.checked+' desactivar');
                                 DesactivarUsuario(object.target.value);
 
-                            }else if($config=='boards'){
-                                //desactivar board
+                            }else if(config=='boards'){
+
+                                BloquearTablero(object.target.value);
+                                
                             }
                         }
 
@@ -302,7 +307,7 @@ var token_get = localStorage.getItem('token');
         let api_user = `${get_domain}/controllers/actions_board.php`;
 
         let url = new URL(api_user);
-        url.searchParams.append('action', 'search_users');
+        url.searchParams.append('action', 'search_boards');
         url.searchParams.append('config', 'json');
         url.searchParams.append('context', contexto);
 
@@ -335,11 +340,14 @@ var token_get = localStorage.getItem('token');
 
     function tabla_board(data) {
 
-        
+       
         let Row = `
-                <tr>
-                    <td>${data.descripcion}</td>
-                    <td><img class="imagenPerfil" src="${get_domain}/${data.imagen_tablero}" /></td>
+                <tr>  
+                    <td>${data.descripcion.substring(0,10)}..</td>
+                    <td><img class="imagenPerfil" 
+                        src="${get_domain}/${data.imagen_tablero}" 
+                         onerror="this.onerror=null; this.src='${get_domain}/assets/no_found.png'"/>
+                    </td>
                     <td>${data.fecha_creacion}</td>
                     <td>${data.estado}</td>
                     <td><img class="imagenPerfil" src="${get_domain}/${data.foto_url}" /></td>
@@ -355,7 +363,7 @@ var token_get = localStorage.getItem('token');
                                 value="${data.id_tablero}" />
                             <label class="form-check-label" 
                                 for="flexSwitchCheckDefault">
-                                Bloquear a ${data.nombre}
+                                Bloquear tablero
                             </label>`;
             } else {
                 Row += `<input class="form-check-input" 
@@ -364,7 +372,7 @@ var token_get = localStorage.getItem('token');
                                 value="${data.id_tablero}" />
                             <label class="form-check-label" 
                                 for="flexSwitchCheckDefault">
-                                Bloquear a ${data.nombre}
+                                Bloquear tablero
                             </label>`;
             }
             
@@ -375,6 +383,56 @@ var token_get = localStorage.getItem('token');
         return Row;
     }
     
+
+
+    
+    function BloquearTablero(id_tablero){
+
+        let FormDatas = new FormData();
+        FormDatas.append('action','block_board');
+        FormDatas.append('id_board',id_tablero);
+        FormDatas.append('id_usuario',id_usuario.value);
+
+        let api_user =`${get_domain}/controllers/actions_board.php`;
+
+        axios.post(api_user,
+                    FormDatas,
+                    config).then(data=>{
+                        
+                        alertify.message(data.data);
+
+                    }).catch(error=>{
+
+                        alertify.message("No se pudo desactivar el tablero");
+
+                    });
+    }
+
+
+    function ActivarTablero(id_tablero){
+
+        let FormDatas = new FormData();
+        FormDatas.append('action','active_board');
+        FormDatas.append('id_board',id_tablero);
+        FormDatas.append('id_usuario',id_usuario.value);
+        
+
+        let api_user =`${get_domain}/controllers/actions_board.php`;
+
+        axios.post(api_user,
+                    FormDatas,
+                    config).then(data=>{
+                        
+                        alertify.message(data.data);
+
+                    }).catch(error=>{
+
+                        alertify.message("No se pudo activar el tablero");
+
+                    });
+    }
+
+
 
 
 

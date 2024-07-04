@@ -60,10 +60,11 @@
         case 'block_board':
             
             $board = new Board();
-            $board->board_id= $_POST['id_board'];
-            $board->id_usuario = $_POST['id_user'];
-            $board->bloquear_tablero();
+            $board->id_usuario = $_POST['id_usuario'];
+            $board->board_id=(int) $_POST['id_board'];
 
+            $board->bloquear_tablero();
+            
 
         break;
         
@@ -71,8 +72,8 @@
         case 'active_board':
 
             $board = new Board();
-            $board->board_id= $_POST['id_board'];
-            $board->id_usuario = $_POST['id_user'];
+            $board->board_id=(int) $_POST['id_board'];
+            $board->id_usuario = $_POST['id_usuario'];
             $board->bloquear_tablero(); 
 
         break;
