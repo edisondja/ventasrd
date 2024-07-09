@@ -132,3 +132,20 @@ CREATE TABLE reply_coment(
 );
 
 ALTER TABLE comentario ADD COLUMN tipo_post VARCHAR(255) NOT NULL;
+
+
+CREATE TABLE configuracion(
+	configuracion_id INT PRIMARY KEY AUTO_INCREMENT,
+	nombre_sitio VARCHAR(150),
+	descripcion_slogan TEXT,
+	descripcion_sitio TEXT,
+	favicon_url VARCHAR(200),
+	sitio_logo_url VARCHAR(200),
+	copyright_descripcion TEXT,
+	email_sitio VARCHAR(180),
+	busqueda_descripcion TEXT,
+	pagina_descripcion TEXT,
+	titulo_descripcion TEXT,
+	busqueda_hastag TEXT
+	
+);

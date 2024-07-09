@@ -46,6 +46,24 @@
         break;
 
 
+        case 'upload_lotype_config':
+
+
+        break;
+
+
+        case 'upload_favicon_config':
+            
+
+        break;
+
+
+        case 'config_site_text':
+        
+
+        break;
+    
+
         case 'search_boards':
 
             $context = $_GET['context'];

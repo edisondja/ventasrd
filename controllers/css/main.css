@@ -256,11 +256,6 @@
     }
 }
 
-ul,li{
-
-    cursor: pointer;
-    background: #121313;
-}
 
 .table-float-header {
     overflow-y: auto;
@@ -276,7 +271,7 @@ ul,li{
 }
 
 .table-float-header th{
-    background-color: #343a40; /* Asegúrate de que el fondo sea el mismo que el de la tabla */
+    background-color: #0e1114; /* Asegúrate de que el fondo sea el mismo que el de la tabla */
     color: #ffffff; /* Color del texto */
 }
 
@@ -302,4 +297,10 @@ ul,li{
 
 .table-float-header thead, .table-float-header thead {
     display: block;
+}
+
+.title_block{
+    color: whitesmoke;
+    text-align: center;
+
 }

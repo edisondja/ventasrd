@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-07-03 03:34:42
+/* Smarty version 5.1.0, created on 2024-07-09 03:15:58
   from 'file:back_office_components/modulo_boards.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6684aab2363956_59638583',
+  'unifunc' => 'content_668c8f4e74f952_41601502',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9ffbfab8269009cfe4a8abcaf49f7f46c2f0a9e7' => 
     array (
       0 => 'back_office_components/modulo_boards.tpl',
-      1 => 1719970098,
+      1 => 1720487756,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6684aab2363956_59638583 (\Smarty\Template $_smarty_tpl) {
+function content_668c8f4e74f952_41601502 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_components';
 ?><style>
     .content-container {
@@ -52,7 +52,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_compo
 </style>
 
 <div class="col-md-8 col-12 content-container mx-auto tabla_buscar">
-<h3 style="color: aliceblue;">Buscar publicaciones</h3>
+<h3 style="color: aliceblue;">Buscar publicaciones  <i class="fa-solid fa-photo-film"></i>   </h3>
     <!-- Configuracion de modulo para saber por que criterio se esta buscando
         desde el archivo back_office.js pueda detectar la configuracion
         para saber que datas filtrar -->

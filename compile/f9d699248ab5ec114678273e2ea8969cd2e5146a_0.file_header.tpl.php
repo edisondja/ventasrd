@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-28 05:37:59
+/* Smarty version 5.1.0, created on 2024-07-09 03:09:54
   from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_667e3017b4fa96_42051932',
+  'unifunc' => 'content_668c8de229f040_85899987',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
       0 => '../template/header.tpl',
-      1 => 1719545878,
+      1 => 1720487383,
       2 => 'file',
     ),
   ),
@@ -29,7 +29,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_667e3017b4fa96_42051932 (\Smarty\Template $_smarty_tpl) {
+function content_668c8de229f040_85899987 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -281,6 +281,10 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 ?>
                   <?php }?>
 
+
+    
+
+             
 
             </div>
     

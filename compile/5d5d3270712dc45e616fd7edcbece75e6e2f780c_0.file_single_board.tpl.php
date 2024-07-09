@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-06-28 05:27:54
+/* Smarty version 5.1.0, created on 2024-07-07 00:11:05
   from 'file:single_board.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_667e2dbac80a51_25597907',
+  'unifunc' => 'content_6689c0f9b0b5c0_07362506',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5d5d3270712dc45e616fd7edcbece75e6e2f780c' => 
     array (
       0 => 'single_board.tpl',
-      1 => 1719545273,
+      1 => 1720303863,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_667e2dbac80a51_25597907 (\Smarty\Template $_smarty_tpl) {
+function content_6689c0f9b0b5c0_07362506 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?>
 <div class="row">
@@ -36,7 +36,22 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
     </div>
     <div class="col-md-6">
         <br/>
+        <?php if ($_smarty_tpl->getValue('estado') !== 'baneado') {?>
         <div class="card text-white bg-dark mb-3">
+        <div style="position: absolute; right: 10px; top: 10px;">
+        <div class="dropdown custom-dropdown">
+        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-align-justify"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Reportar</a></li>
+            <li><a class="dropdown-item" href="#">Agregar a favorito</a></li>
+            <li><a class="dropdown-item" href="#">Puntear</a></li>
+        </ul>
+    </div>
+    
+    </div>
+
             <div class="card-body" style=''>
                 <input type='hidden' value='<?php echo $_smarty_tpl->getValue('id_tablero');?>
 ' id='id_tablero'/>
@@ -116,6 +131,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 <div class="card" style="margin-top: 2%;background: #2e3633;">
                     <ul class="list-group list-group-flush">
                         <?php }?>
+                        
                         <li class="list-group-item" style='margin-left:85%; display:none;' id='cerrar_comentarios'>
                             <svg style='color:#515151;' xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -158,7 +174,17 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             </div>
         </div>
         <br/>
-    </div>
+    <?php } else { ?>
+        <p class="h3 title_block">Contenido bloqueado por los administradores</p>
+        <div class="card">
+            <div class="card-body">
+                <img  class="card-img-top fixed-size-image" src="<?php echo $_smarty_tpl->getValue('dominio');?>
+/assets/block_content.png"/>
+            </div>
+        </div>
+    <?php }?>
+   </div>
+
 </div>
 
 <?php echo '<script'; ?>

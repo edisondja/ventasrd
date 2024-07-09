@@ -18,7 +18,8 @@
         {else if $option=='configuraciones'}
             
             <!-- Aqui se coloca el modulo de ver los posts de los usuarios-->
-        
+            {include file='back_office_components/modulo_configuracion.tpl'}
+
 
         {/if}
 

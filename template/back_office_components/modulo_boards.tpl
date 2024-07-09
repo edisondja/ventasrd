@@ -29,7 +29,7 @@
 </style>
 
 <div class="col-md-8 col-12 content-container mx-auto tabla_buscar">
-<h3 style="color: aliceblue;">Buscar publicaciones</h3>
+<h3 style="color: aliceblue;">Buscar publicaciones  <i class="fa-solid fa-photo-film"></i>   </h3>
     <!-- Configuracion de modulo para saber por que criterio se esta buscando
         desde el archivo back_office.js pueda detectar la configuracion
         para saber que datas filtrar -->

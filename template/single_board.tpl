@@ -12,7 +12,22 @@
     </div>
     <div class="col-md-6">
         <br/>
+        {if $estado!=='baneado'}
         <div class="card text-white bg-dark mb-3">
+        <div style="position: absolute; right: 10px; top: 10px;">
+        <div class="dropdown custom-dropdown">
+        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-align-justify"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Reportar</a></li>
+            <li><a class="dropdown-item" href="#">Agregar a favorito</a></li>
+            <li><a class="dropdown-item" href="#">Puntear</a></li>
+        </ul>
+    </div>
+    
+    </div>
+
             <div class="card-body" style=''>
                 <input type='hidden' value='{$id_tablero}' id='id_tablero'/>
                 {if $user_session!=''}
@@ -71,6 +86,7 @@
                 <div class="card" style="margin-top: 2%;background: #2e3633;">
                     <ul class="list-group list-group-flush">
                         {/if}
+                        
                         <li class="list-group-item" style='margin-left:85%; display:none;' id='cerrar_comentarios'>
                             <svg style='color:#515151;' xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -112,7 +128,16 @@
             </div>
         </div>
         <br/>
-    </div>
+    {else}
+        <p class="h3 title_block">Contenido bloqueado por los administradores</p>
+        <div class="card">
+            <div class="card-body">
+                <img  class="card-img-top fixed-size-image" src="{$dominio}/assets/block_content.png"/>
+            </div>
+        </div>
+    {/if}
+   </div>
+
 </div>
 {literal}
 <script type="text/javascript" src='js/single_board.js'></script>

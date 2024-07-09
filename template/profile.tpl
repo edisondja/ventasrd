@@ -2,7 +2,6 @@
       <div class="row">
         <div class="col-md-3">
                 <br/>
-                
                         {if $user_session!=''}
                             <input type='hidden' value='{$id_user}' id='id_usuario'/>
                             <input type='hidden' value='{$user_session}' id='usuario'/>
@@ -13,11 +12,11 @@
                             <input type='hidden' value='0' id='foto_url'/>
                         {/if}
                     <svg class="bd-placeholder-img rounded float-start" style="width:100%;display:none;"
-                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 200x200" 
-                    preserveAspectRatio="xMidYMid slice" 
-                    focusable="false"><title>Placeholder</title><rect width="100%" 
-                    height="100%" fill="#868e96"></rect><text x="3%" y="50%" 
-                    fill="#dee2e6" dy=".3em">La publicidad sera colocada aca 200x200</text></svg>
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 200x200" 
+                        preserveAspectRatio="xMidYMid slice" 
+                        focusable="false"><title>Placeholder</title><rect width="100%" 
+                        height="100%" fill="#868e96"></rect><text x="3%" y="50%" 
+                        fill="#dee2e6" dy=".3em">La publicidad sera colocada aca 200x200</text></svg>
             </div> 
             <div class="col-md-6">
                     <div class="card" style='padding:20px;'>
@@ -49,18 +48,18 @@
 
             </div>
         </div>
+          
 
-</div>
-    </div> <br/>
-     <div class='row'>
-                {foreach from=$boards item=tablero}
-                            
-                            {include file="board.tpl"}
-
-                {/foreach}
-
-        </div><br/>
              
+</div><hr/>
+
+{foreach from=$boards item=tablero}
+                            
+    {include file="board.tpl"}
+
+{/foreach}
+    </div> <br/>
+                
     
     {literal}
         <script type="text/javascript" src=''></script>

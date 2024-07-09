@@ -9,9 +9,10 @@
     if(isset($_GET['id'])) {
         
         $Board = new Board();   
-        $data_board = (array) $Board->cargar_tableros($_GET['id'],'0');
+        $data_board =(array) $Board->cargar_solo_tablero($_GET['id']);
         $multimedias_tableros =$Board->cargar_multimedias_de_tablero($_GET['id'],'asoc');
         $smarty->assign('board',$data_board);
+        $smarty->assign('estado',$data_board['estado']);
         $smarty->assign('titulo',$data_board['titulo']);
         $smarty->assign('descripcion',$data_board['descripcion']);
         $smarty->assign('id_tablero',$data_board['id_tablero']);

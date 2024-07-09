@@ -3,8 +3,6 @@
     //define("DOMAIN","https://943b-152-166-176-57.ngrok.io/edtube");
     //define("DOMAIN","https://ventasrd.com");
     define("DOMAIN","http://localhost/ventasrd");
-
-
     #These are the data for the connection of the database 
     define("HOST_BD","localhost");
     define("USER_BD","root");
@@ -34,10 +32,7 @@
         die("Error de conexión: " . $conexion->connect_error);
     }
 
-
-
     // Aquí puedes ejecutar consultas y realizar otras operaciones con la base de datos
-
     // Cuando termines, no olvides cerrar la conexión
     $conexion->close();
 

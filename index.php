@@ -15,9 +15,9 @@ if (!isset($_GET['boards']) && !isset($_GET['search'])) {
     $pagina = $_GET['boards'];
     
 } elseif (isset($_GET['search'])) {
-    $tableros = $Board->search_tablero($_GET['search']);
+    $tableros = $Board->search_tablero($_GET['search'],'ascoc');
 } else {
-    $tableros = $Board->cargar_tablerosx('general', 'asoc');
+  //  $tableros = $Board->cargar_tablerosx('general', 'asoc');
 
 }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-07-03 03:33:58
+/* Smarty version 5.1.0, created on 2024-07-09 03:16:27
   from 'file:back_office_components/modulo_usuario.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_6684aa86a050c9_66828752',
+  'unifunc' => 'content_668c8f6b025a87_64566798',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '068e62321e2bf2bf57e044d591293517c63e3f74' => 
     array (
       0 => 'back_office_components/modulo_usuario.tpl',
-      1 => 1719970094,
+      1 => 1720487783,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6684aa86a050c9_66828752 (\Smarty\Template $_smarty_tpl) {
+function content_668c8f6b025a87_64566798 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_components';
 ?><style>
     .content-container {
@@ -52,7 +52,7 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_compo
 </style>
 
 <div class="col-md-8 col-12 content-container mx-auto tabla_buscar">
-<h3 style="color: aliceblue;">Buscar usuarios</h3>
+<h3 style="color: aliceblue;">Buscar usuarios <i class="fa-solid fa-users"></i></h3>
         <input type="hidden" id="modulo_select" value="users">
   <!-- Configuracion de modulo para saber por que criterio se esta buscando
         desde el archivo back_office.js pueda detectar la configuracion

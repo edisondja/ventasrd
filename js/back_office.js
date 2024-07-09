@@ -8,9 +8,18 @@ var config = {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token_get}`
     }};
+    
 
+    if(detectar_modulo()=='users'){
 
-    BuscarUsuarios('');
+        BuscarUsuarios('');
+
+    }else if(detectar_modulo()=='boards'){
+
+        BuscarTableros('');
+
+    }
+    
 
     var btn = document.querySelector('#flexSwitchCheckDefault');
 /*
@@ -114,9 +123,23 @@ var token_get = localStorage.getItem('token');
 
                 event.addEventListener('click',(object)=>{
 
-                    alertify.confirm('Desactivar',`Estas seguro que deseas
-                        desactivar este usuario?
-                    `,function(){
+                    let mensaje ='';
+
+                    if(config=='users'){
+
+                        mensaje =`Estas seguro que deseas
+                        desactivar este usuario?`;                    
+
+                    }else{
+
+                        
+                        mensaje =`Estas seguro que deseas
+                        desactivar esta publicación`;                    
+                        
+                    }
+
+                    alertify.confirm('Desactivar',mensaje
+                    ,function(){
 
                         
                         if(object.target.checked==true){
@@ -434,8 +457,78 @@ var token_get = localStorage.getItem('token');
 
 
 
+    if(detectar_modulo()=='config'){
 
 
+
+            let subir_logo = document.querySelector('#sitio_logo');
+
+            subir_logo.addEventListener('change',function(){
+
+
+                alert('subir_logo');
+
+
+            });
+
+            let subir_favicon = document.querySelector('#favicon');
+
+            subir_favicon.addEventListener('change',function(){
+
+                alert('subir_favicon');
+
+
+            });
+
+
+            document.getElementById('guardar_config').addEventListener('click', function(event) {
+
+
+
+                let nombre_sitio = document.getElementById('nombre_sitio').value;
+                let descripcion_slogan = document.getElementById('descripcion_slogan').value;
+                let descripcion_sitio = document.getElementById('descripcion_sitio').value;
+                let favicon =  document.getElementById('favicon').files[0] ? document.getElementById('favicon').files[0].name : '';
+                let sitio_logo =  document.getElementById('sitio_logo').files[0] ? document.getElementById('sitio_logo').files[0].name : '';
+                let copyright_descripcion =  document.getElementById('copyright_descripcion').value;
+                let email_sitio = document.getElementById('email_sitio').value;
+                let busqueda_descripcion = document.getElementById('busqueda_descripcion').value;
+                let pagina_descripcion = document.getElementById('pagina_descripcion').value;
+                let titulo_descripcion = document.getElementById('titulo_descripcion').value;
+                let busqueda_hastag = document.getElementById('busqueda_hastag').value;
+
+                let api_config =`${get_domain}/controllers/actions_board.php`;
+
+                let FormDatas = new FormData();
+                FormDatas.append('action','config_site_text');
+                FormDatas.append('nombre_sitio',nombre_sitio);
+                FormDatas.append('descripcion_slogan',descripcion_slogan);
+                FormDatas.append('descripcion_sitio',descripcion_sitio);
+                FormDatas.append('favicon',descripcion_sitio);
+                FormDatas.append('sitio_logo',sitio_logo);
+                FormDatas.append('email_sitio',email_sitio);
+                FormDatas.append('busqueda_descripcion',busqueda_descripcion);
+                FormDatas.append('titulo_descripcion',titulo_descripcion);
+                FormDatas.append('busqueda_hastag',busqueda_hastag);
+
+
+                axios.post(api_config,
+                    FormDatas,
+                    config).then(data=>{
+
+                    
+                    message.alertify('Datos del sitio actualizado con exito');
+
+                }).catch(error=>{
+
+                    message.alertify('Error actualizando sitio')
+
+                });
+
+                
+        
+            });
+    }
 
 
 

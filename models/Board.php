@@ -56,7 +56,6 @@
                 $guardar->bind_param('si',$ruta_portada,$id_tablero);
                 $guardar->execute();
         }
-
        
 
         public  function guardar_tablero(){
@@ -149,7 +148,7 @@
                 */
 
                 $this->conection; 
-                $this->actualizar_estado_board($this->disable());
+                $this->actualizar_estado_board($this->banned());
                 echo "tablero bloqueado";
 
             }
@@ -201,14 +200,55 @@
                 die("No se pudo actualizar el tablero: " . $e->getMessage());
             }
         }
+
+
+
+        public function cargar_solo_tablero($id_tablero) {
+            // Asumimos que $this->conection es una instancia válida de mysqli
+            $this->conection;
+            $estado = $this->disable();
+            $sql = "SELECT 
+            t.descripcion,
+            t.titulo,
+            t.id_tablero,
+            t.imagen_tablero,
+            t.fecha_creacion,
+            t.estado,
+            u.usuario,
+            u.foto_url
+            FROM tableros as t INNER JOIN user as u
+            ON t.id_usuario = u.id_user
+            WHERE t.id_tablero = ? AND  t.estado <> ? 
+            ";
+
+            $cargar = $this->conection->prepare($sql);
+            $cargar->bind_param('is',
+                $id_tablero,
+                $estado            
+            );
+
+            $cargar->execute();
+
+            $data = $cargar->get_result();
+        
+            $data = mysqli_fetch_object($data);
+
+            return $data;
+
+        }
+
         
 
         public function cargar_tableros($id_tablero, $config = 'json') {
             // Asumimos que $this->conection es una instancia válida de mysqli
             $this->conection;
             $estado = $this->enable();
-        
-            $sql = "SELECT * FROM tableros INNER JOIN user ON tableros.id_usuario = user.id_user WHERE id_tablero = ? AND  tableros.estado = ?";
+            $estado2 = $this->banned();
+            $sql = "SELECT * FROM tableros INNER JOIN user
+             ON tableros.id_usuario = user.id_user 
+            WHERE id_tablero = ? AND  tableros.estado = ?
+            OR tableros.estado=?
+            ";
             $cargado = $this->conection->prepare($sql);
         
             if ($cargado === false) {
@@ -216,7 +256,7 @@
                 die('Error en la preparación de la consulta: ' . $this->conection->error);
             }
         
-            $cargado->bind_param('is', $id_tablero, $estado);
+            $cargado->bind_param('iss', $id_tablero, $estado,$estado2);
         
             if ($cargado->execute() === false) {
                 // Manejo de errores de ejecución
@@ -271,18 +311,35 @@
             $texto = "%$texto%";
             
             // Prepara la consulta SQL
-            $data = $this->conection->prepare("
-                SELECT t.descripcion,t.fecha_creacion,t.tipo_tablero,
-                t.imagen_tablero,u.foto_url,u.usuario,t.estado,t.id_tablero
-                FROM tableros as t
-                INNER JOIN user as u ON t.id_usuario = u.id_user 
-                WHERE (t.titulo LIKE ? OR t.descripcion LIKE ?) 
-                AND t.estado = ? 
-                LIMIT 20
-            ");
+
+            if($config=='json'){
+               
+
+                $data = $this->conection->prepare("
+                    SELECT t.descripcion,t.fecha_creacion,t.tipo_tablero,
+                    t.imagen_tablero,u.foto_url,u.usuario,t.estado,t.id_tablero
+                    FROM tableros as t
+                    INNER JOIN user as u ON t.id_usuario = u.id_user 
+                    WHERE t.titulo LIKE ? OR t.descripcion LIKE ?
+                    LIMIT 20
+                ");
+                $data->bind_param('ss', $texto, $texto);
+            }else{
+
+                $data = $this->conection->prepare("
+                    SELECT * FROM tableros as t
+                    INNER JOIN user as u ON t.id_usuario = u.id_user 
+                    WHERE (t.titulo LIKE ? OR t.descripcion LIKE ?) 
+                    AND t.estado = ? 
+                    LIMIT 20
+                ");
+
+                $data->bind_param('sss', $texto, $texto, $estado);
+
+
+            }
             
             // Enlaza los parámetros a la consulta
-            $data->bind_param('sss', $texto, $texto, $estado);
             $data->execute();
             
             // Obtiene el resultado
@@ -372,9 +429,12 @@
 			
 			if($id_usuario=='general'){
 				
-				$sql = "select * from tableros inner join user on tableros.id_usuario=user.id_user where tableros.estado=? order by id_tablero desc limit 20";
+				$sql = "select * from tableros inner join user on 
+                tableros.id_usuario=user.id_user 
+                where tableros.estado=? order by id_tablero desc limit 20";
 				$cargado = $this->conection->prepare($sql);
-                $cargado->bind_param('s',$estatus);		
+                $cargado->bind_param('s',$estatus);	
+
 			}else{
 					
 				$sql = "select * from tableros  inner join user on tableros.id_usuario=user.id_user where id_usuario=? and tableros.estado=? order by id_tablero desc limit 20";
@@ -413,9 +473,13 @@
         }
     
      function cargar_multimedias_de_tablero($id_tablero,$config='json'){
-                $this->conection;
+              
+        $this->conection;
                 $estado =$this->enable();
-                $sql = "select * from asignar_multimedia_t where id_tablero=? and estado=?";
+                $sql = "SELECT * FROM tableros AS t 
+                INNER JOIN asignar_multimedia_t AS m
+                ON t.id_tablero=m.id_tablero WHERE t.id_tablero=? 
+                AND T.estado=?";
                 $cargar = $this->conection->prepare($sql);
                 $cargar->bind_param('is',$id_tablero,$estado);
                 $cargar->execute();
@@ -423,6 +487,7 @@
                 $cargar->close();
                 $datos = [];
                 foreach ($data as $key) {
+
                     $datos[] = $key;
                 }
                 if($config=='json') {
