@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-07-09 04:11:31
+/* Smarty version 5.1.0, created on 2024-07-11 05:09:20
   from 'file:back_office_components/modulo_configuracion.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_668c9c533f6799_32751783',
+  'unifunc' => 'content_668f4ce074e4f8_14049541',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '715e58ce8b1232eea9cd1ef5e6a7b51bf63761b9' => 
     array (
       0 => 'back_office_components/modulo_configuracion.tpl',
-      1 => 1720491089,
+      1 => 1720667358,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_668c9c533f6799_32751783 (\Smarty\Template $_smarty_tpl) {
+function content_668f4ce074e4f8_14049541 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_components';
 ?>
 <div class="col-md-8 col-12 content-container mx-auto tabla_buscar">
@@ -38,8 +38,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_compo
         <input type="text" class="form-control" id="nombre_sitio" name="nombre_sitio" maxlength="150" placeholder="Ingrese el nombre del sitio">
     </div>
     <div class="form-group">
-        <label for="descripcion_slogar">Descripción del Slogan</label>
-        <textarea class="form-control" id="descripcion_slogar" name="descripcion_slogar" rows="3" placeholder="Ingrese la descripción del slogan"></textarea>
+        <label for="descripcion_slogan">Descripción del Slogan</label>
+        <textarea class="form-control" id="descripcion_slogan" name="descripcion_slogar" rows="3" placeholder="Ingrese la descripción del slogan"></textarea>
     </div>
     <div class="form-group">
         <label for="descripcion_sitio">Descripción del Sitio</label>

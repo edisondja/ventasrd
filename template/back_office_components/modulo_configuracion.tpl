@@ -14,8 +14,8 @@
         <input type="text" class="form-control" id="nombre_sitio" name="nombre_sitio" maxlength="150" placeholder="Ingrese el nombre del sitio">
     </div>
     <div class="form-group">
-        <label for="descripcion_slogar">Descripción del Slogan</label>
-        <textarea class="form-control" id="descripcion_slogar" name="descripcion_slogar" rows="3" placeholder="Ingrese la descripción del slogan"></textarea>
+        <label for="descripcion_slogan">Descripción del Slogan</label>
+        <textarea class="form-control" id="descripcion_slogan" name="descripcion_slogar" rows="3" placeholder="Ingrese la descripción del slogan"></textarea>
     </div>
     <div class="form-group">
         <label for="descripcion_sitio">Descripción del Sitio</label>

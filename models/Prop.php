@@ -1,28 +1,25 @@
 <?php
 
-
-
-class Prop{
-
-
-    public function titleList($title){
-
-        $titulo_listo = str_replace(' ','_',$title);
-
+class Prop
+{
+    public function titleList($title)
+    {
+        $titulo_listo = str_replace(' ', '_', $title);
 
         return $titulo_listo;
     }
 
-    public function detectar_archivo($tipo){
+    public function detectar_archivo($tipo)
+    {
+        $tipo_archivo = $tipo;
+        $tipo_arc = explode('/', $tipo_archivo);
+        $tipo_arc = $tipo_arc[1]; //aqui esta capturada la fuente en el segundo indice
 
-		$tipo_archivo = $tipo;
-		$tipo_arc = explode("/", $tipo_archivo);
-		$tipo_arc = $tipo_arc[1];//aqui esta capturada la fuente en el segundo indice
-		return $tipo_arc;
-	}
+        return $tipo_arc;
+    }
 
-
-    public function limitarTexto($texto, $limite = 15) {
+    public function limitarTexto($texto, $limite = 15)
+    {
         // Verifica si la longitud del texto es mayor que el límite
         if (mb_strlen($texto) > $limite) {
             // Corta el texto al límite especificado y añade '...' al final
@@ -31,49 +28,26 @@ class Prop{
             // Si el texto es menor o igual al límite, se devuelve el texto original
             $textoCortado = $texto;
         }
-    
+
         return $textoCortado;
     }
 
-
-    function __construct(){
-
+    public function __construct()
+    {
     }
 
-    public function disable(){
-
+    public function disable()
+    {
         return 'inactivo';
     }
 
-
-    public function enable(){
-
-
+    public function enable()
+    {
         return 'activo';
-
     }
 
-
-    public function banned(){
-
+    public function banned()
+    {
         return 'baneado';
-
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>
