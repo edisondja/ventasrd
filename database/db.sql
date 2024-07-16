@@ -89,11 +89,12 @@ CREATE TABLE criterios (
   fecha_criterio DATE
 );
 
-CREATE TABLE like_video (
+CREATE TABLE likes (
   id_like INT PRIMARY KEY AUTO_INCREMENT,
   id_user INT,
   FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE,
-  id_video INT,
+  id_tablero int,
+  FOREIGN KEY (id_tablero) REFERENCES tableros(id_tablero),
   fecha_like DATETIME
 );
 
@@ -148,4 +149,17 @@ CREATE TABLE configuracion(
 	titulo_descripcion TEXT,
 	busqueda_hastag TEXT
 	
+);
+
+
+
+CREATE TABLE reportes (
+  id_report INT PRIMARY KEY AUTO_INCREMENT,
+  descripcion TEXT,
+  fecha_creacion DATETIME,
+  id_usuario INT, 
+  FOREIGN KEY (id_usuario) REFERENCES user(id_user) ON DELETE CASCADE,
+  id_board INT,
+  FOREIGN KEY (id_board) REFERENCES tableros(id_tablero)
+  
 );

@@ -21,30 +21,15 @@ var config = {
     }
     
 
-    var btn = document.querySelector('#flexSwitchCheckDefault');
-/*
-window.setInterval(()=>{
+   // var btn = document.querySelector('#flexSwitchCheckDefault');
 
- 
-    if(count==0){
 
-            btn.checked  = true;
-            count++;
-            console.log( btn.checked );
-    }else{
+    var token_get = localStorage.getItem('token');
 
-        
-        btn.checked  = false;
-        count= 0;
-        console.log( btn.checked );
-    }
-
-},5000);
-
-*/
-
-var token_get = localStorage.getItem('token');
-
+      /*
+        Modulo usuarios
+    
+    */
 
 
     function BuscarUsuarios(contexto){
@@ -318,6 +303,13 @@ var token_get = localStorage.getItem('token');
         return mod;
     }
 
+
+      /*
+        Modulo Tableros
+    
+    */
+
+
     function BuscarTableros(contexto){
 
 
@@ -455,30 +447,15 @@ var token_get = localStorage.getItem('token');
                     });
     }
 
-
+    /*
+        Modulo configuracion
+    
+    */
 
     if(detectar_modulo()=='config'){
 
+        cagar_configuracion();
 
-
-            let subir_logo = document.querySelector('#sitio_logo');
-
-            subir_logo.addEventListener('change',function(){
-
-
-                alert('subir_logo');
-
-
-            });
-
-            let subir_favicon = document.querySelector('#favicon');
-
-            subir_favicon.addEventListener('change',function(){
-
-                alert('subir_favicon');
-
-
-            });
 
 
             document.getElementById('guardar_config').addEventListener('click', function(event) {
@@ -488,6 +465,8 @@ var token_get = localStorage.getItem('token');
                 let nombre_sitio = document.getElementById('nombre_sitio').value;
                 let descripcion_slogan = document.getElementById('descripcion_slogan').value;
                 let descripcion_sitio = document.getElementById('descripcion_sitio').value;
+                let logo_sitio = document.getElementById('sitio_logo').files[0];
+                let favicon_sitio = document.getElementById('favicon').files[0];
                 let copyright_descripcion =  document.getElementById('copyright_descripcion').value;
                 let email_sitio = document.getElementById('email_sitio').value;
                 let busqueda_descripcion = document.getElementById('busqueda_descripcion').value;
@@ -501,7 +480,11 @@ var token_get = localStorage.getItem('token');
                 FormDatas.append('action','config_site_text');
                 FormDatas.append('nombre_sitio',nombre_sitio);
                 FormDatas.append('descripcion_slogan',descripcion_slogan);
+                FormDatas.append('favicon_sitio',favicon_sitio);
+                FormDatas.append('logo_sitio',logo_sitio);
                 FormDatas.append('descripcion_sitio',descripcion_sitio);
+                FormDatas.append('copyright_descripcion',copyright_descripcion);
+                FormDatas.append('pagina_descripcion',copyright_descripcion);
                 FormDatas.append('email_sitio',email_sitio);
                 FormDatas.append('busqueda_descripcion',busqueda_descripcion);
                 FormDatas.append('titulo_descripcion',titulo_descripcion);
@@ -511,19 +494,63 @@ var token_get = localStorage.getItem('token');
                 axios.post(api_config,
                     FormDatas,
                     config).then(data=>{
-
-                    
-                    message.alertify('Datos del sitio actualizado con exito');
+                    alertify.message(data.data);
+                    console.log(data.data);
 
                 }).catch(error=>{
 
-                    message.alertify('Error actualizando sitio')
+                    alertify.message('Error actualizando sitio');
 
                 });
 
                 
         
             });
+
+
+            function cagar_configuracion(){
+
+                
+                let api_config =`${get_domain}/controllers/actions_board.php`;
+
+                let FormDatas = new FormData();
+                FormDatas.append('action','config_load_site');
+
+
+                axios.post(api_config,
+                    FormDatas,
+                    config).then(data=>{
+
+                        document.getElementById('nombre_sitio').value = data.data.nombre_sitio;
+                        document.getElementById('descripcion_slogan').value = data.data.descripcion_slogan;
+                        document.getElementById('descripcion_sitio').value = data.data.descripcion_sitio;
+                        //document.getElementById('favicon').value = data.data.favicon_url;
+                        //document.getElementById('sitio_logo').value = data.data.sitio_logo_url;
+                        document.getElementById('copyright_descripcion').innerHTML = data.data.copyright_descripcion;
+                        document.getElementById('email_sitio').value = data.data.email_sitio;
+                        document.getElementById('busqueda_descripcion').innerHTML= data.data.busqueda_descripcion;
+                        document.getElementById('pagina_descripcion').innerHTML = data.data.pagina_descripcion;
+                        document.getElementById('titulo_descripcion').innerHTML= data.data.titulo_descripcion;
+                        document.getElementById('busqueda_hastag').value = data.data.busqueda_hastag;
+                        document.getElementById('favicon_img').src =`${get_domain}/${data.data.favicon_url}`;
+                        document.getElementById('logo_img').src =`${get_domain}/${data.data.sitio_logo_url}`;
+                        
+
+                }).catch(error=>{
+
+                    console.log(error);
+                    alertify.message('Error actualizando sitio');
+
+                });
+
+
+
+
+
+            }
+
+
+
     }
 
 

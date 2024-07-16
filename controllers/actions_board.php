@@ -36,14 +36,23 @@
 
         break;
 
-        case 'upload_lotype_config':
-        break;
-
-        case 'upload_favicon_config':
-        break;
-
         case 'config_site_text':
             $config = new Config();
+
+            #Verificando si se enviaron multimedias
+            if(isset($_FILES['logo_sitio']) && isset($_FILES['favicon_sitio']) ){
+
+                $config->DetectarMultimedias($_FILES['logo_sitio'], $_FILES['favicon_sitio']);
+            
+            }else if(isset($_FILES['logo_sitio']) && !isset($_FILES['favicon_sitio']) ){
+
+                $config->DetectarMultimedias($_FILES['logo_sitio'],null);
+                
+            }else if(!isset($_FILES['logo_sitio']) && isset($_FILES['favicon_sitio'])){
+
+                $config->DetectarMultimedias(null,$_FILES['favicon_sitio']);
+
+            }
             $config->nombre_sitio = $_POST['nombre_sitio'];
             $config->descripcion_slogan = $_POST['descripcion_slogan'];
             $config->descripcion_sitio = $_POST['descripcion_sitio'];
@@ -53,7 +62,22 @@
             $config->pagina_descripcion = $_POST['pagina_descripcion'];
             $config->titulo_descripcion = $_POST['titulo_descripcion'];
             $config->busqueda_hastag = $_POST['busqueda_hastag'];
-            $config->Guardar_configuracion();
+            if ($config->VerificarConfiguracion()>0){
+
+                #Si ya existe una configuracion guardada  se llama el metodo actualziar
+                #cuando es mayor que 0 es por que ya existe un registro de configuracion
+                $config->Actualizar_configuracion();
+            }else{  
+                    
+                #Se guarda la configuracion por primera vez
+                $config->Guardar_configuracion();
+            }
+
+        break;
+
+        case 'config_load_site':
+            $config = new Config();
+            $config->Cargar_configuracion('json');
 
         break;
 

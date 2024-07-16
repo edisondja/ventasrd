@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-07-09 03:09:54
+/* Smarty version 5.1.0, created on 2024-07-16 06:20:29
   from 'file:../template/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_668c8de229f040_85899987',
+  'unifunc' => 'content_6695f50d00ded8_53383418',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9d699248ab5ec114678273e2ea8969cd2e5146a' => 
     array (
       0 => '../template/header.tpl',
-      1 => 1720487383,
+      1 => 1721103626,
       2 => 'file',
     ),
   ),
@@ -29,7 +29,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_668c8de229f040_85899987 (\Smarty\Template $_smarty_tpl) {
+function content_6695f50d00ded8_53383418 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
 ?><!doctype html>
 <html lang="en">
@@ -51,6 +51,10 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
         <meta http-equiv="Content-Language" content="en-US">
         <meta name="Robots" content="all"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" href="<?php echo $_smarty_tpl->getValue('dominio');?>
+/<?php echo $_smarty_tpl->getValue('favicon');?>
+" type="image/png">
+
 
         <!-- ETIQUETAS TWITER -->
         <meta name="twitter:card" content="<?php echo $_smarty_tpl->getValue('og_imagen');?>
@@ -93,7 +97,8 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template';
         <div class="container-fluid">
 
           <a class="navbar-brand" style="color: #09b9e1;"  href="<?php echo $_smarty_tpl->getValue('dominio');?>
-"><img src='<?php echo $_smarty_tpl->getValue('logosite');?>
+"><img src='<?php echo $_smarty_tpl->getValue('dominio');?>
+/<?php echo $_smarty_tpl->getValue('logosite');?>
 ' /><strong style='color:#ebebeb; font-size:15px;'><?php echo $_smarty_tpl->getValue('user_session');?>
 </strong>
           </a>    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">

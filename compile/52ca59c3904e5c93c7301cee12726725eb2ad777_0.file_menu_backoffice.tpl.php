@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-07-09 03:20:55
+/* Smarty version 5.1.0, created on 2024-07-16 04:50:20
   from 'file:back_office_components/menu_backoffice.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_668c907799e392_65719121',
+  'unifunc' => 'content_6695dfecce5a65_98194393',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52ca59c3904e5c93c7301cee12726725eb2ad777' => 
     array (
       0 => 'back_office_components/menu_backoffice.tpl',
-      1 => 1720488053,
+      1 => 1721098218,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_668c907799e392_65719121 (\Smarty\Template $_smarty_tpl) {
+function content_6695dfecce5a65_98194393 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_components';
-?><nav class="col-md-2 col-12 mb-4 mb-md-0 menu-container">
+?><nav class="col-md-2 col-12 mb-4 mb-md-0 menu-container" style="height: 500px;">
 <div class="menu-title"><img class="imagenPerfil" src="<?php echo $_smarty_tpl->getValue('foto_perfil');?>
 "/> Herramientas</div>
 <ul class="nav flex-column">

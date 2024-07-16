@@ -1,4 +1,4 @@
-<nav class="col-md-2 col-12 mb-4 mb-md-0 menu-container">
+<nav class="col-md-2 col-12 mb-4 mb-md-0 menu-container" style="height: 500px;">
 <div class="menu-title"><img class="imagenPerfil" src="{$foto_perfil}"/> Herramientas</div>
 <ul class="nav flex-column">
 

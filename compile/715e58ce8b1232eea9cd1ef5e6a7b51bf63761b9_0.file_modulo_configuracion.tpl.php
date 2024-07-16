@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.1.0, created on 2024-07-11 05:09:20
+/* Smarty version 5.1.0, created on 2024-07-16 06:04:23
   from 'file:back_office_components/modulo_configuracion.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.1.0',
-  'unifunc' => 'content_668f4ce074e4f8_14049541',
+  'unifunc' => 'content_6695f1478eb9e1_07375316',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '715e58ce8b1232eea9cd1ef5e6a7b51bf63761b9' => 
     array (
       0 => 'back_office_components/modulo_configuracion.tpl',
-      1 => 1720667358,
+      1 => 1721102660,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_668f4ce074e4f8_14049541 (\Smarty\Template $_smarty_tpl) {
+function content_6695f1478eb9e1_07375316 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_components';
 ?>
 <div class="col-md-8 col-12 content-container mx-auto tabla_buscar">
@@ -45,11 +45,20 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_compo
         <label for="descripcion_sitio">Descripción del Sitio</label>
         <textarea class="form-control" id="descripcion_sitio" name="descripcion_sitio" rows="3" placeholder="Ingrese la descripción del sitio"></textarea>
     </div>
-    <div class="form-group">
+    <div class="form-group"><hr/>
+        <img class="imagenPerfil" id="favicon_img" src=""/>
+        <pre>
+            Puede subir su favicon formato JPG o PNG para ser visualizado en su web.
+        </pre>
         <label for="favicon">Subir Favicon</label>
         <input type="file" class="form-control" id="favicon" name="favicon" maxlength="200" placeholder="Ingrese el URL del favicon">
     </div>
-    <div class="form-group">
+    <div class="form-group"><hr/>
+        <img class="imagenPerfil" id="logo_img" src="" /> 
+        <pre>
+            La dimension para un logo de la plataforma debe de ser de 230px de anchura y 50px de altura,
+            para que se pueda visualizar de una manera correcta.
+        </pre>
         <label for="sitio_logo">Subir Logo</label>
         <input type="file" class="form-control" id="sitio_logo" name="sitio_logo" maxlength="200" placeholder="Ingrese el URL del logo del sitio">
     </div>
@@ -88,15 +97,15 @@ $_smarty_current_dir = 'C:\\xampp\\htdocs\\ventasrd\\template\\back_office_compo
 
 <style>
 body {
-    background-color: #343a40; /* Dark background */
+    background-color: #e6e6e6; /* Dark background */
     color: white; /* White text */
 }
 .form-control {
-    background-color: #495057;
-    color: white;
+    background-color: #e7ecf0;
+    color: rgb(88, 87, 87);
 }
 .form-control::placeholder {
-    color: #ced4da;
+    color: #707070;
 }
 </style>
 
